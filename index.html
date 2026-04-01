@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solomon — Governed Intelligence</title>
+<title>Solomon — Sovereign Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -98,35 +98,35 @@
   /* ─── SHARED ─── */
   .wrap { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
 
-  section { padding: 140px 48px; position: relative; z-index: 1; }
-
-  .section-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    margin-bottom: 56px;
-  }
-  .section-label span { color: var(--gold-dim); }
+  section { padding: 160px 48px; position: relative; z-index: 1; }
 
   .section-heading {
     font-family: var(--serif);
     font-weight: 300;
-    font-size: clamp(32px, 5vw, 48px);
-    line-height: 1.2;
+    font-size: clamp(36px, 5.5vw, 56px);
+    line-height: 1.15;
     color: var(--text);
-    margin-bottom: 24px;
+    margin-bottom: 32px;
   }
   .section-heading em { color: var(--gold); font-style: normal; }
 
   .section-sub {
     font-family: var(--serif);
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--text-mid);
+    max-width: 620px;
+  }
+
+  .section-body {
+    font-family: var(--serif);
     font-size: 19px;
     font-weight: 300;
-    line-height: 1.7;
-    color: var(--text-mid);
+    line-height: 1.8;
+    color: var(--text-dim);
     max-width: 580px;
+    margin-top: 24px;
   }
 
   .reveal {
@@ -207,36 +207,6 @@
   }
   .hero-tagline em { color: var(--gold); font-style: normal; }
 
-  .hero-badges {
-    display: flex;
-    gap: 20px;
-    margin-top: 56px;
-    opacity: 0;
-    animation: revUp 0.8s ease-out 1.3s forwards;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .hero-badge {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    padding: 10px 20px;
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .badge-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--gold-dim);
-  }
-  .badge-dot.green { background: var(--green); }
-
   .hero-scroll {
     position: absolute;
     bottom: 48px;
@@ -256,67 +226,20 @@
     margin: 12px auto 0;
   }
 
-  /* ─── CARDS GRID ─── */
-  .card-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
-    margin-top: 56px;
-  }
-
-  .card {
-    background: var(--black);
-    padding: 44px 32px;
-    transition: background 0.5s;
-  }
-  .card:hover { background: var(--surface); }
-
-  .card-icon { width: 40px; height: 40px; margin-bottom: 24px; }
-
-  .card h3 {
+  /* ─── PULL QUOTE ─── */
+  .pull-quote {
     font-family: var(--serif);
-    font-size: 21px;
-    font-weight: 400;
+    font-weight: 300;
+    font-size: clamp(24px, 3.5vw, 38px);
+    line-height: 1.45;
     color: var(--text);
-    margin-bottom: 14px;
+    max-width: 720px;
+    text-align: center;
+    margin: 0 auto;
   }
+  .pull-quote em { color: var(--gold); font-style: normal; }
 
-  .card p {
-    font-family: var(--mono);
-    font-size: 11px;
-    line-height: 1.9;
-    color: var(--text-dim);
-  }
-
-  /* ─── DIAGRAM BOX ─── */
-  .diagram-box {
-    margin-top: 56px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 48px;
-    position: relative;
-    overflow: hidden;
-  }
-  .diagram-box::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 1px;
-    background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
-  }
-  .diagram-box.green-top::before {
-    background: linear-gradient(to right, transparent, var(--green), transparent);
-  }
-
-  /* ─── PRIVACY SPLIT ─── */
-  .split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    margin-top: 56px;
-    align-items: start;
-  }
-
+  /* ─── PRIVACY FEATURES ─── */
   .feat-list { display: flex; flex-direction: column; gap: 32px; }
 
   .feat {
@@ -343,82 +266,12 @@
     color: var(--text-mid);
   }
 
-  /* ─── AXIOMS ─── */
-  .axiom-list { counter-reset: axiom; }
-
-  .axiom-item {
-    counter-increment: axiom;
-    padding: 36px 0;
-    border-bottom: 1px solid var(--border);
+  .split {
     display: grid;
-    grid-template-columns: 56px 1fr;
-    gap: 28px;
-    align-items: baseline;
-  }
-  .axiom-item::before {
-    content: counter(axiom);
-    font-family: var(--serif);
-    font-size: 40px;
-    font-weight: 300;
-    color: var(--text-faint);
-    text-align: right;
-  }
-
-  .axiom-text {
-    font-family: var(--serif);
-    font-size: 21px;
-    font-weight: 300;
-    line-height: 1.6;
-    color: var(--text);
-  }
-  .axiom-text em { color: var(--gold); font-style: normal; }
-
-  .axiom-detail {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-dim);
-    margin-top: 8px;
-    line-height: 1.8;
-  }
-
-  /* ─── COLLAB STEPS ─── */
-  .steps-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1px;
-    background: var(--border);
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
     margin-top: 56px;
-  }
-
-  .step {
-    background: var(--black);
-    padding: 44px 32px;
-    text-align: center;
-    transition: background 0.5s;
-  }
-  .step:hover { background: var(--surface); }
-
-  .step-num {
-    font-family: var(--serif);
-    font-size: 48px;
-    font-weight: 300;
-    color: var(--text-faint);
-    margin-bottom: 20px;
-  }
-
-  .step h4 {
-    font-family: var(--serif);
-    font-size: 22px;
-    font-weight: 400;
-    color: var(--text);
-    margin-bottom: 12px;
-  }
-
-  .step p {
-    font-family: var(--mono);
-    font-size: 11px;
-    line-height: 1.9;
-    color: var(--text-dim);
+    align-items: start;
   }
 
   /* ─── CTA ─── */
@@ -440,21 +293,11 @@
   .cta-heading {
     font-family: var(--serif);
     font-weight: 300;
-    font-size: clamp(28px, 4vw, 44px);
-    color: var(--text);
-    margin-bottom: 20px;
-    line-height: 1.3;
-  }
-
-  .cta-sub {
-    font-family: var(--serif);
-    font-size: 18px;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--text-dim);
-    max-width: 460px;
-    margin: 0 auto 48px;
-    line-height: 1.7;
+    font-size: clamp(48px, 8vw, 96px);
+    color: var(--gold);
+    margin-bottom: 48px;
+    line-height: 1;
+    letter-spacing: -1px;
   }
 
   .cta-btn {
@@ -479,6 +322,24 @@
     letter-spacing: 1.5px;
     color: var(--text-faint);
   }
+
+  /* ─── PAPER LINK ─── */
+  .paper-section {
+    text-align: center;
+  }
+
+  .paper-link {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold-dim);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-dim);
+    padding-bottom: 2px;
+    transition: color 0.4s, border-color 0.4s;
+  }
+  .paper-link:hover { color: var(--gold); border-color: var(--gold); }
 
   /* ─── FOOTER ─── */
   footer {
@@ -521,14 +382,202 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  /* ─── VERI GUIDE ─── */
+  .guide-section {
+    border-top: 1px solid var(--border);
+    position: relative;
+  }
+
+  .guide-heading {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.2;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .guide-heading em { color: var(--gold); font-style: normal; }
+
+  .guide-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+  .guide-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+  }
+  .guide-container.complete::before {
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    box-shadow: 0 0 20px var(--gold-glow-strong);
+  }
+
+  .guide-messages {
+    padding: 32px 24px;
+    min-height: 200px;
+    max-height: 480px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .guide-msg {
+    max-width: 85%;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: guideReveal 0.5s ease-out forwards;
+  }
+
+  @keyframes guideReveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .guide-msg.guide {
+    align-self: flex-start;
+    padding-left: 16px;
+    border-left: 1px solid var(--gold-dim);
+  }
+
+  .guide-msg.user {
+    align-self: flex-end;
+    text-align: right;
+  }
+
+  .guide-msg.guide .msg-text {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--text-mid);
+  }
+
+  .guide-msg.user .msg-text {
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+  }
+
+  .guide-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .guide-option {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .guide-option:hover {
+    border-color: var(--gold-dim);
+    color: var(--gold);
+  }
+
+  .guide-typing {
+    display: flex;
+    gap: 6px;
+    padding-left: 16px;
+    border-left: 1px solid var(--gold-dim);
+    align-self: flex-start;
+    height: 28px;
+    align-items: center;
+  }
+
+  .guide-typing span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold-dim);
+    animation: typingPulse 1.2s ease-in-out infinite;
+  }
+  .guide-typing span:nth-child(2) { animation-delay: 0.2s; }
+  .guide-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes typingPulse {
+    0%, 60%, 100% { opacity: 0.2; transform: scale(0.8); }
+    30% { opacity: 1; transform: scale(1); }
+  }
+
+  .guide-input-area {
+    border-top: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .guide-input {
+    flex: 1;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text);
+    background: transparent;
+    border: none;
+    outline: none;
+    letter-spacing: 0.5px;
+  }
+  .guide-input::placeholder {
+    color: var(--text-faint);
+  }
+  .guide-input:disabled {
+    opacity: 0.3;
+  }
+
+  .guide-send {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .guide-send:hover { border-color: var(--gold-dim); color: var(--gold); }
+  .guide-send:disabled { opacity: 0.3; cursor: default; }
+
+  .guide-cta {
+    text-align: center;
+    padding: 24px;
+    border-top: 1px solid var(--border);
+    display: none;
+  }
+  .guide-cta.visible { display: block; }
+
+  .guide-cta .cta-btn {
+    font-size: 10px;
+  }
+
   @media (max-width: 800px) {
     nav { padding: 20px 24px; }
     .nav-links { display: none; }
-    section { padding: 100px 24px; }
+    section { padding: 120px 24px; }
     .hero { padding: 100px 24px 60px; }
-    .card-grid, .steps-grid { grid-template-columns: 1fr; }
     .split { grid-template-columns: 1fr; }
-    .diagram-box { padding: 24px; }
+    .guide-container { margin: 0 -24px; border-left: none; border-right: none; border-radius: 0; }
+    .guide-msg { max-width: 92%; }
     footer { flex-direction: column; gap: 32px; align-items: flex-start; padding: 60px 24px; }
     .footer-right { text-align: left; }
   }
@@ -543,11 +592,7 @@
 <nav>
   <div class="nav-mark">Solomon</div>
   <ul class="nav-links">
-    <li><a href="#what">What</a></li>
-    <li><a href="#privacy">Privacy</a></li>
-    <li><a href="#truth">Truth Protocol</a></li>
-    <li><a href="#how">How We Work</a></li>
-    <li><a href="#access" class="nav-cta">Request Access</a></li>
+    <li><a href="#begin" class="nav-cta">Begin</a></li>
   </ul>
 </nav>
 
@@ -557,329 +602,118 @@
   <h1 class="hero-title">Solomon</h1>
   <div class="hero-rule"></div>
   <p class="hero-tagline">
-    Governed intelligence for leaders who need <em>real answers</em> —
-    not hallucinations, not hedging, not noise.
+    Every satisfying AI answer you've received has one problem: you have no idea if it's <em>true.</em>
   </p>
-  <div class="hero-badges">
-    <div class="hero-badge"><div class="badge-dot green"></div> Zero data sharing</div>
-    <div class="hero-badge"><div class="badge-dot"></div> Physics-level enforcement</div>
-    <div class="hero-badge"><div class="badge-dot"></div> Every answer has provenance</div>
-  </div>
   <div class="hero-scroll">Scroll</div>
 </section>
 
-<!-- WHAT IT DOES -->
-<section class="reveal" id="what" style="border-top:1px solid var(--border);">
+<!-- THE PAIN -->
+<section class="reveal" style="border-top:1px solid var(--border);">
   <div class="wrap">
-    <div class="section-label"><span>01</span> — What Solomon Does</div>
-    <h2 class="section-heading">AI gives answers. Solomon gives <em>governed</em> answers.</h2>
-    <p class="section-sub">Most AI optimizes for fluency. Solomon optimizes for truth. Every output carries a provenance chain, every claim is verifiable, and every rule is enforced at the structural level — not as a suggestion, but as a physical constraint the system cannot bypass.</p>
-
-    <div class="card-grid">
-      <div class="card reveal rd1">
-        <svg class="card-icon" viewBox="0 0 40 40" fill="none">
-          <path d="M20 4L6 10v10c0 9.33 5.97 18.05 14 20 8.03-1.95 14-10.67 14-20V10L20 4z" stroke="var(--gold-dim)" stroke-width="1" fill="none"/>
-          <path d="M16 20l3 3 6-6" stroke="var(--gold)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <h3>Your data never leaves</h3>
-        <p>Private deployment, isolated at every layer. No shared models, no training on your inputs. Structural isolation — not a promise, a physics.</p>
-      </div>
-      <div class="card reveal rd2">
-        <svg class="card-icon" viewBox="0 0 40 40" fill="none">
-          <circle cx="20" cy="20" r="15" stroke="var(--text-faint)" stroke-width="0.5"/>
-          <circle cx="20" cy="20" r="10" stroke="var(--text-faint)" stroke-width="0.5"/>
-          <circle cx="20" cy="20" r="5" stroke="var(--gold-dim)" stroke-width="0.7"/>
-          <circle cx="20" cy="20" r="1.5" fill="var(--gold)"/>
-        </svg>
-        <h3>Answers with evidence</h3>
-        <p>Every claim carries its source, confidence score, and transformation chain. When Solomon doesn't know, it says so — and tells you exactly what's missing.</p>
-      </div>
-      <div class="card reveal rd3">
-        <svg class="card-icon" viewBox="0 0 40 40" fill="none">
-          <rect x="8" y="6" width="24" height="14" rx="2" stroke="var(--gold)" stroke-width="1" fill="none"/>
-          <line x1="20" y1="20" x2="20" y2="26" stroke="var(--gold-dim)" stroke-width="0.7"/>
-          <rect x="4" y="26" width="14" height="10" rx="2" stroke="var(--text-dim)" stroke-width="0.5" fill="none"/>
-          <rect x="22" y="26" width="14" height="10" rx="2" stroke="var(--text-dim)" stroke-width="0.5" fill="none"/>
-          <line x1="11" y1="26" x2="20" y2="26" stroke="var(--gold-dim)" stroke-width="0.5"/>
-          <line x1="29" y1="26" x2="20" y2="26" stroke="var(--gold-dim)" stroke-width="0.5"/>
-        </svg>
-        <h3>Governance, not guardrails</h3>
-        <p>Rules enforced at the schema and database level. The system doesn't just avoid violations — it structurally cannot commit them. The difference between a policy and a law of physics.</p>
-      </div>
-    </div>
+    <h2 class="section-heading reveal">Your strategy is in your head.<br>Your pipeline is in one tool.<br>Your decisions are in email.<br>Your context is scattered across <em>everything.</em></h2>
+    <p class="section-sub reveal rd1">And you are the integration layer.</p>
+    <p class="section-body reveal rd2">You spend your days managing systems instead of leading. Every tool gives you more data. None give you the answer. AI sounds confident but knows nothing about your specific business, your specific risks, your specific moment.</p>
+    <p class="section-body reveal rd3">The gap between what you're told and what's actually true is where companies die.</p>
   </div>
 </section>
 
-<!-- PRIVACY -->
-<section class="reveal" id="privacy" style="border-top:1px solid var(--border);">
+<!-- SOVEREIGNTY -->
+<section class="reveal" style="border-top:1px solid var(--border);">
   <div class="wrap">
-    <div class="section-label"><span>02</span> — Privacy &amp; Security</div>
-    <h2 class="section-heading">Structurally private.<br>Not a policy — <em>a physics.</em></h2>
-    <p class="section-sub">Promises break. Architecture doesn't. Your data isolation is enforced at the database, network, and deployment level. There is no setting to turn it off.</p>
+    <h2 class="section-heading reveal">Intelligence just became <em>sovereign.</em></h2>
+    <p class="section-sub reveal rd1">For the first time, a system thinks about your business without exposing your business.</p>
+    <p class="section-body reveal rd2">Solomon sees your entire world. When it needs AI power, it shows the AI only what is necessary for that task. The AI underneath never sees your full picture. Every output is verified against reality before it reaches you.</p>
+    <p class="section-body reveal rd3">This is not a feature. It is the future of intelligence.</p>
+  </div>
+</section>
 
+<!-- THE EXPERIENCE -->
+<section class="reveal" style="border-top:1px solid var(--border);">
+  <div class="wrap">
+    <p class="pull-quote reveal">Drop in everything. Ask anything.<br>Solomon answers from <em>your reality</em>,<br>not from the internet.</p>
+    <br><br>
+    <p class="section-body reveal rd1" style="max-width:620px; margin-left:auto; margin-right:auto; text-align:center;">Documents, notes, strategy, contacts, intelligence. Scattered, unstructured, in whatever format. Solomon compiles it. When you ask a question, it pulls the exact right context and gives you an answer no general AI could produce.</p>
+    <p class="section-body reveal rd2" style="max-width:620px; margin-left:auto; margin-right:auto; text-align:center;">Your proprietary context is your edge. Solomon makes it usable.</p>
+  </div>
+</section>
+
+<!-- THE MORNING -->
+<section class="reveal" style="border-top:1px solid var(--border);">
+  <div class="wrap">
+    <h2 class="section-heading reveal">Before your first meeting,<br>you already know <em>everything.</em></h2>
+    <p class="section-sub reveal rd1">Every morning, Solomon gives you a one-page briefing. What matters today. What changed overnight. What needs your decision.</p>
+    <p class="section-body reveal rd2">Pulled from all your sources. Verified. Sourced. No noise. No hallucinations. Just the truth about your business, delivered before the day begins.</p>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="reveal" style="border-top:1px solid var(--border);">
+  <div class="wrap">
+    <h2 class="section-heading reveal">Your world stays <em>yours.</em></h2>
     <div class="split">
-      <div class="diagram-box green-top reveal rd1" style="margin-top:0;">
-        <svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
-          <defs>
-            <pattern id="pg" width="20" height="20" patternUnits="userSpaceOnUse">
-              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/>
-            </pattern>
-          </defs>
-          <rect width="360" height="300" fill="url(#pg)"/>
-
-          <!-- Your boundary -->
-          <rect x="28" y="28" width="304" height="180" rx="4" fill="none" stroke="#5aae7e" stroke-width="1" stroke-dasharray="5,4"/>
-          <text x="180" y="20" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#5aae7e" letter-spacing="2">YOUR PRIVATE ENVIRONMENT</text>
-
-          <!-- Inner -->
-          <rect x="48" y="52" width="120" height="52" rx="3" fill="rgba(90,174,126,0.06)" stroke="#5aae7e" stroke-width="0.5"/>
-          <text x="108" y="74" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#5aae7e" letter-spacing="1">YOUR DATA</text>
-          <text x="108" y="92" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a8477">Encrypted at rest</text>
-
-          <rect x="192" y="52" width="120" height="52" rx="3" fill="rgba(200,166,84,0.06)" stroke="#a08a4a" stroke-width="0.5"/>
-          <text x="252" y="74" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#a08a4a" letter-spacing="1">SOLOMON</text>
-          <text x="252" y="92" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a8477">Reasoning</text>
-
-          <line x1="168" y1="78" x2="192" y2="78" stroke="#8a8477" stroke-width="0.5"/>
-          <polygon points="188,75.5 194,78 188,80.5" fill="#8a8477"/>
-
-          <rect x="48" y="124" width="264" height="32" rx="3" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-          <text x="180" y="144" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#8a8477" letter-spacing="1">EVERY WRITE AUDITED · EVERY OUTPUT TRACEABLE</text>
-
-          <rect x="48" y="172" width="264" height="24" rx="3" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-          <text x="180" y="188" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#55504a" letter-spacing="1">PROVENANCE CHAIN ON EVERY CLAIM</text>
-
-          <!-- Blocked -->
-          <rect x="120" y="244" width="120" height="36" rx="3" fill="none" stroke="#b85a5a" stroke-width="0.5"/>
-          <text x="180" y="267" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#b85a5a" letter-spacing="1">OUTSIDE WORLD</text>
-
-          <line x1="180" y1="208" x2="180" y2="240" stroke="#b85a5a" stroke-width="0.5" stroke-dasharray="3,3"/>
-          <line x1="166" y1="224" x2="194" y2="224" stroke="#b85a5a" stroke-width="1.5"/>
-          <text x="206" y="228" font-family="JetBrains Mono, monospace" font-size="8" fill="#b85a5a">Blocked</text>
-        </svg>
-      </div>
-
+      <p class="section-sub reveal rd1" style="max-width:none;">Solomon is built for leaders who understand that intelligence without privacy is surveillance. Your data never trains a model. Your questions never leave your environment. Your answers are never shared.</p>
       <div class="feat-list reveal rd2">
         <div class="feat">
           <h4>Complete isolation</h4>
-          <p>Separate database, separate deployment, separate encryption keys. Your intelligence cannot leak to another client. It is structurally impossible.</p>
+          <p>Your intelligence lives in its own world. It cannot leak, cannot be accessed, cannot be shared. Not by policy. By design.</p>
         </div>
         <div class="feat">
-          <h4>No model training</h4>
-          <p>Your data is never used to train, fine-tune, or improve any model. What you share stays exclusively yours. Period.</p>
+          <h4>Nothing leaves</h4>
+          <p>Your data is never used to train or improve any model. What you share stays exclusively yours.</p>
         </div>
         <div class="feat">
           <h4>Full audit trail</h4>
-          <p>Every query, every output, every decision is logged with timestamp and source. You own the complete record.</p>
+          <p>Every question, every answer, every source is logged. You own the complete record of your intelligence.</p>
         </div>
         <div class="feat">
           <h4>European infrastructure</h4>
-          <p>Hosted within the EU. GDPR-native from day one. No data transfers to jurisdictions you haven't approved.</p>
+          <p>Hosted within the EU. Built for the strictest standards from day one.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW TRUTH WORKS -->
+<!-- WHO THIS IS FOR -->
 <section class="reveal" style="border-top:1px solid var(--border);">
   <div class="wrap">
-    <div class="section-label"><span>03</span> — How Truth Gets Made</div>
-    <h2 class="section-heading">Every claim earns its place.</h2>
-    <p class="section-sub">Solomon doesn't generate and hope. It fetches evidence, validates against verified sources, computes confidence — then delivers. If validation fails at any step, the output is rejected. Not flagged. Rejected.</p>
-
-    <div class="diagram-box">
-      <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
-        <!-- Steps -->
-        <rect x="24" y="40" width="152" height="88" rx="4" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-        <text x="100" y="66" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#a08a4a" letter-spacing="1">01 FETCH</text>
-        <text x="100" y="88" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="14" fill="#b5ae9f">Verified sources</text>
-        <text x="100" y="110" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#55504a">with full provenance</text>
-
-        <line x1="176" y1="84" x2="210" y2="84" stroke="#55504a" stroke-width="0.5"/>
-        <polygon points="206,81.5 214,84 206,86.5" fill="#55504a"/>
-
-        <rect x="214" y="40" width="152" height="88" rx="4" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-        <text x="290" y="66" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#a08a4a" letter-spacing="1">02 VALIDATE</text>
-        <text x="290" y="88" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="14" fill="#b5ae9f">Deterministic checks</text>
-        <text x="290" y="110" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#55504a">schema-level, not guessing</text>
-
-        <line x1="366" y1="84" x2="400" y2="84" stroke="#55504a" stroke-width="0.5"/>
-        <polygon points="396,81.5 404,84 396,86.5" fill="#55504a"/>
-
-        <rect x="404" y="40" width="152" height="88" rx="4" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-        <text x="480" y="66" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#a08a4a" letter-spacing="1">03 REASON</text>
-        <text x="480" y="88" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="14" fill="#b5ae9f">Governed inference</text>
-        <text x="480" y="110" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#55504a">constrained, auditable</text>
-
-        <line x1="556" y1="84" x2="594" y2="84" stroke="#55504a" stroke-width="0.5"/>
-        <polygon points="590,81.5 598,84 590,86.5" fill="#55504a"/>
-
-        <rect x="598" y="40" width="176" height="88" rx="4" fill="rgba(200,166,84,0.04)" stroke="#c8a654" stroke-width="1"/>
-        <text x="686" y="66" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#c8a654" letter-spacing="1">04 DELIVER</text>
-        <text x="686" y="88" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="15" fill="#ece9e1">Answer + confidence</text>
-        <text x="686" y="110" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#a08a4a">with provenance chain</text>
-
-        <!-- Reject paths -->
-        <line x1="290" y1="128" x2="290" y2="164" stroke="#b85a5a" stroke-width="0.5" stroke-dasharray="3,3"/>
-        <text x="290" y="180" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#b85a5a" letter-spacing="1">REJECT</text>
-
-        <line x1="480" y1="128" x2="480" y2="164" stroke="#b85a5a" stroke-width="0.5" stroke-dasharray="3,3"/>
-        <text x="480" y="180" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#b85a5a" letter-spacing="1">REJECT</text>
-
-        <text x="400" y="16" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#55504a" letter-spacing="2">AI REASONS BETWEEN VERIFIED INPUTS AND VALIDATED OUTPUTS — NEVER AS SOURCE OF TRUTH</text>
-      </svg>
-    </div>
+    <h2 class="section-heading reveal">Solomon is not for <em>everyone.</em></h2>
+    <p class="section-sub reveal rd1">It is for leaders who built something real and refuse to run it on guesswork. Who know that the distance between what they're told and what's actually true is where empires fall.</p>
+    <p class="section-body reveal rd2">Solomon doesn't need to be for everyone. It needs to be for you.</p>
   </div>
 </section>
 
-<!-- TRUTH PROTOCOL -->
-<section class="reveal" id="truth" style="border-top:1px solid var(--border);">
+<!-- THE PAPER -->
+<section class="reveal paper-section" style="border-top:1px solid var(--border);">
   <div class="wrap">
-    <div class="section-label"><span>04</span> — Truth Protocol</div>
-    <h2 class="section-heading">Five axioms. Absolute.<br>They override everything.</h2>
-    <div class="axiom-list">
-      <div class="axiom-item">
-        <div>
-          <div class="axiom-text"><em>Reality outranks coherence.</em></div>
-          <div class="axiom-detail">External evidence wins over internal narrative. A beautiful story that contradicts data is wrong. Always.</div>
-        </div>
-      </div>
-      <div class="axiom-item">
-        <div>
-          <div class="axiom-text"><em>Provenance is mandatory.</em></div>
-          <div class="axiom-detail">Every output carries its source, timestamp, transformation steps, and confidence. No provenance — output rejected.</div>
-        </div>
-      </div>
-      <div class="axiom-item">
-        <div>
-          <div class="axiom-text"><em>Recursion must pay rent.</em></div>
-          <div class="axiom-detail">Every additional pass must prove measurable improvement. Thinking harder is not free. Default is one pass.</div>
-        </div>
-      </div>
-      <div class="axiom-item">
-        <div>
-          <div class="axiom-text"><em>Write ≠ Believe.</em></div>
-          <div class="axiom-detail">The system's own output is suspect until verified through promotion gates. Generation is never belief.</div>
-        </div>
-      </div>
-      <div class="axiom-item">
-        <div>
-          <div class="axiom-text"><em>Separation of concerns.</em></div>
-          <div class="axiom-detail">Ideation, retrieval, reasoning, and action each have separate permissions. No unbroken chain from hallucination to execution.</div>
-        </div>
-      </div>
-    </div>
+    <p class="section-body reveal" style="text-align:center; color:var(--text-dim); margin: 0 auto 24px;">The framework behind Solomon.</p>
+    <a href="#" class="paper-link reveal rd1">Which Way Does the Spirit Collapse</a>
   </div>
 </section>
 
-<!-- ENFORCEMENT -->
-<section class="reveal" style="border-top:1px solid var(--border);">
+<!-- VERI GUIDE -->
+<section class="guide-section reveal" id="guide">
   <div class="wrap">
-    <div class="section-label"><span>05</span> — Enforcement</div>
-    <h2 class="section-heading">Rules that cannot be broken.<br>Not rules that <em>ask nicely.</em></h2>
-    <p class="section-sub">Solomon's governance isn't an instruction layer that AI may follow. It's structural — enforced at the database, schema, and runtime level. The system physically cannot violate its own rules.</p>
-
-    <div class="diagram-box">
-      <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
-        <!-- PHYSICS -->
-        <rect x="40" y="16" width="720" height="48" rx="4" fill="rgba(200,166,84,0.06)" stroke="#c8a654" stroke-width="1"/>
-        <text x="80" y="44" font-family="JetBrains Mono, monospace" font-size="10" fill="#c8a654" letter-spacing="2">PHYSICS-LEVEL</text>
-        <text x="360" y="44" font-family="JetBrains Mono, monospace" font-size="9" fill="#b5ae9f">Structurally impossible to bypass. The system cannot violate these.</text>
-        <rect x="620" y="32" width="100" height="6" rx="3" fill="#1e1e24"/>
-        <rect x="620" y="32" width="100" height="6" rx="3" fill="#c8a654"/>
-        <text x="740" y="40" font-family="JetBrains Mono, monospace" font-size="10" fill="#c8a654">100%</text>
-
-        <!-- CODE -->
-        <rect x="40" y="80" width="720" height="48" rx="4" fill="rgba(160,138,74,0.03)" stroke="#a08a4a" stroke-width="0.5"/>
-        <text x="80" y="108" font-family="JetBrains Mono, monospace" font-size="10" fill="#a08a4a" letter-spacing="2">CODE-LEVEL</text>
-        <text x="330" y="108" font-family="JetBrains Mono, monospace" font-size="9" fill="#8a8477">Runtime validation. Auditable. Testable.</text>
-        <rect x="620" y="96" width="100" height="6" rx="3" fill="#1e1e24"/>
-        <rect x="620" y="96" width="90" height="6" rx="3" fill="#a08a4a"/>
-        <text x="740" y="104" font-family="JetBrains Mono, monospace" font-size="10" fill="#a08a4a">90%</text>
-
-        <!-- PROMPT -->
-        <rect x="40" y="144" width="720" height="48" rx="4" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
-        <text x="80" y="172" font-family="JetBrains Mono, monospace" font-size="10" fill="#55504a" letter-spacing="2">INSTRUCTION</text>
-        <text x="340" y="172" font-family="JetBrains Mono, monospace" font-size="9" fill="#55504a">Suggestion only. No guarantee. We're eliminating this tier.</text>
-        <rect x="620" y="160" width="100" height="6" rx="3" fill="#1e1e24"/>
-        <rect x="620" y="160" width="45" height="6" rx="3" fill="#55504a"/>
-        <text x="740" y="168" font-family="JetBrains Mono, monospace" font-size="10" fill="#55504a">~45%</text>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<!-- HOW WE WORK -->
-<section class="reveal" id="how" style="border-top:1px solid var(--border);">
-  <div class="wrap">
-    <div class="section-label"><span>06</span> — How We Work Together</div>
-    <h2 class="section-heading">Not a product you buy.<br>A partnership you enter.</h2>
-    <p class="section-sub">Solomon is deployed alongside your team. We configure it to your domain, your data, your governance requirements — and stay with you as it learns and sharpens.</p>
-
-    <div class="steps-grid">
-      <div class="step reveal rd1">
-        <div class="step-num">I</div>
-        <h4>Discovery</h4>
-        <p>We understand your decision landscape, your data sources, and what "real answers" means in your specific domain.</p>
+    <h2 class="guide-heading reveal">See what Solomon <em>sees.</em></h2>
+    <div class="guide-container" id="guideContainer">
+      <div class="guide-messages" id="guideMessages"></div>
+      <div class="guide-input-area" id="guideInputArea">
+        <input type="text" class="guide-input" id="guideInput" placeholder="Type your answer..." autocomplete="off">
+        <button class="guide-send" id="guideSend">Send</button>
       </div>
-      <div class="step reveal rd2">
-        <div class="step-num">II</div>
-        <h4>Deployment</h4>
-        <p>Private instance configured to your environment. Your data, your encryption, your infrastructure. Governance configured together.</p>
+      <div class="guide-cta" id="guideCta">
+        <a href="#" class="cta-btn" id="guideCtaBtn">Request Access</a>
       </div>
-      <div class="step reveal rd3">
-        <div class="step-num">III</div>
-        <h4>Evolution</h4>
-        <p>Solomon learns from your corrections — never from guessing. As patterns emerge, the system sharpens. We ensure the governance holds.</p>
-      </div>
-    </div>
-
-    <div class="diagram-box" style="margin-top:48px;">
-      <svg viewBox="0 0 800 140" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
-        <!-- You -->
-        <rect x="40" y="30" width="180" height="80" rx="4" fill="none" stroke="#c8a654" stroke-width="0.8"/>
-        <text x="130" y="60" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#c8a654" letter-spacing="2">YOUR TEAM</text>
-        <text x="130" y="82" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="13" fill="#b5ae9f">Decisions · Domain expertise</text>
-        <text x="130" y="100" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="13" fill="#b5ae9f">Corrections · Direction</text>
-
-        <!-- Arrows -->
-        <line x1="220" y1="62" x2="296" y2="62" stroke="#a08a4a" stroke-width="0.5"/>
-        <polygon points="292,59.5 300,62 292,64.5" fill="#a08a4a"/>
-        <line x1="296" y1="78" x2="220" y2="78" stroke="#55504a" stroke-width="0.5"/>
-        <polygon points="224,75.5 216,78 224,80.5" fill="#55504a"/>
-        <text x="258" y="54" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#a08a4a">QUESTIONS</text>
-        <text x="258" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#55504a">GOVERNED ANSWERS</text>
-
-        <!-- Solomon -->
-        <rect x="300" y="30" width="200" height="80" rx="4" fill="rgba(200,166,84,0.04)" stroke="#a08a4a" stroke-width="0.8"/>
-        <text x="400" y="60" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#a08a4a" letter-spacing="2">SOLOMON</text>
-        <text x="400" y="82" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="13" fill="#b5ae9f">Governed intelligence</text>
-        <text x="400" y="100" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="13" fill="#b5ae9f">Learns from corrections</text>
-
-        <!-- Arrow to Klar -->
-        <line x1="500" y1="70" x2="556" y2="70" stroke="#55504a" stroke-width="0.5" stroke-dasharray="3,3"/>
-        <polygon points="552,67.5 560,70 552,72.5" fill="#55504a"/>
-
-        <!-- Klar -->
-        <rect x="560" y="30" width="200" height="80" rx="4" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
-        <text x="660" y="60" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#55504a" letter-spacing="2">KLAR SYSTEMS</text>
-        <text x="660" y="82" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="13" fill="#8a8477">Architecture · Upgrades</text>
-        <text x="660" y="100" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="13" fill="#8a8477">Governance assurance</text>
-
-        <text x="400" y="132" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" fill="#55504a" letter-spacing="2">YOU KEEP CONTROL. WE KEEP THE GOVERNANCE SOUND.</text>
-      </svg>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section reveal" id="access">
+<section class="cta-section reveal" id="begin">
   <div class="wrap">
-    <h2 class="cta-heading">Solomon is not for everyone.</h2>
-    <p class="cta-sub">It is for leaders who are done with AI that sounds confident but knows nothing — and who understand that real intelligence requires real governance.</p>
+    <h2 class="cta-heading">Begin.</h2>
     <a href="mailto:harald@klarsystems.com" class="cta-btn">Request Access</a>
-    <p class="cta-note">Limited engagements · By conversation only</p>
+    <p class="cta-note">By invitation only</p>
   </div>
 </section>
 
@@ -908,15 +742,18 @@ const MOUSE_RADIUS = 200;
 
 function resize() {
   W = canvas.width = window.innerWidth;
-  H = canvas.height = window.innerHeight * 3; // cover scroll
+  H = canvas.height = window.innerHeight * 3;
 }
 
 function createParticles() {
   particles = [];
+  const totalHeight = H;
   for (let i = 0; i < PARTICLE_COUNT; i++) {
+    // Distribute particles with increasing density toward bottom
+    const yBias = Math.pow(Math.random(), 0.7);
     particles.push({
       x: Math.random() * W,
-      y: Math.random() * H,
+      y: yBias * totalHeight,
       vx: (Math.random() - 0.5) * 0.3,
       vy: (Math.random() - 0.5) * 0.3,
       r: Math.random() * 1.5 + 0.5,
@@ -932,7 +769,6 @@ function draw() {
   const mX = mouse.x;
   const mY = mouse.y + scrollY;
 
-  // Update + draw particles
   for (let i = 0; i < particles.length; i++) {
     const p = particles[i];
     p.x += p.vx;
@@ -941,7 +777,6 @@ function draw() {
     if (p.x < 0 || p.x > W) p.vx *= -1;
     if (p.y < 0 || p.y > H) p.vy *= -1;
 
-    // Mouse interaction — gentle push
     const dx = p.x - mX;
     const dy = p.y - mY;
     const dist = Math.sqrt(dx * dx + dy * dy);
@@ -960,7 +795,6 @@ function draw() {
     ctx.fill();
   }
 
-  // Draw connections
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
       const dx = particles[i].x - particles[j].x;
@@ -970,7 +804,6 @@ function draw() {
       if (dist < CONNECTION_DIST) {
         const opacity = (1 - dist / CONNECTION_DIST) * 0.06;
 
-        // Brighten connections near mouse
         const midX = (particles[i].x + particles[j].x) / 2;
         const midY = (particles[i].y + particles[j].y) / 2;
         const mDist = Math.sqrt((midX - mX) ** 2 + (midY - mY) ** 2);
@@ -1011,6 +844,294 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.08 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ─── VERI Guide ───
+(function() {
+  const ANTHROPIC_API_KEY = ''; // Set your key or use a proxy
+  const WEBHOOK_URL = ''; // Optional: analytics webhook
+  const GUIDE_SYSTEM_PROMPT = `You are VERI Guide, an intelligence probe on the Solomon website.
+Your job is to understand this person's biggest business decision pain in 3-4 exchanges.
+
+Rules:
+- Keep messages under 2 sentences.
+- After each user response, offer 2-3 multiple choice follow-ups AND allow free text.
+- When offering options, format each on its own line as: [OPTION: label text]
+- Never mention AI governance, truth protocols, axioms, enforcement, pipelines, or any internal Solomon concepts.
+- Speak like a sharp advisor, not a chatbot. Be direct, not warm.
+- After 3 exchanges from the user, synthesize their pain in one sentence and connect it to Solomon. Do NOT include any [OPTION:] tags in your final synthesis message.
+- Be genuinely curious, not leading.
+- If they give a short answer, probe deeper. If they give a long answer, synthesize.
+
+Pain categories you're probing for (internal, never show these):
+- Information scattered across tools
+- Decisions made without full context
+- AI tools that hallucinate or can't access their real data
+- Time spent assembling information instead of thinking
+- Privacy concerns preventing AI adoption for sensitive decisions
+- No single source of truth for the business
+
+Your final message should:
+1. Start with "So —" and reflect back their specific pain using their words
+2. Connect it to what Solomon does, without technical details
+3. End with: "Request access below. We'll show you what this looks like when it's solved."`;
+
+  const messages = document.getElementById('guideMessages');
+  const input = document.getElementById('guideInput');
+  const sendBtn = document.getElementById('guideSend');
+  const container = document.getElementById('guideContainer');
+  const inputArea = document.getElementById('guideInputArea');
+  const ctaArea = document.getElementById('guideCta');
+  const ctaBtn = document.getElementById('guideCtaBtn');
+
+  let conversationHistory = [];
+  let exchangeCount = 0;
+  let userFirstAnswer = '';
+  let painSummary = '';
+  let guideActive = false;
+  let apiAvailable = true;
+
+  const FIRST_MESSAGE = "What's the one decision you made this week where you wished you had better information?";
+  const FIRST_OPTIONS = [
+    "Hiring / team decision",
+    "Revenue / pipeline decision",
+    "Product / strategy decision",
+    "Something else"
+  ];
+
+  function addMessage(text, type, options) {
+    const msg = document.createElement('div');
+    msg.className = `guide-msg ${type}`;
+
+    const textEl = document.createElement('div');
+    textEl.className = 'msg-text';
+    textEl.textContent = text;
+    msg.appendChild(textEl);
+
+    if (options && options.length > 0) {
+      const optContainer = document.createElement('div');
+      optContainer.className = 'guide-options';
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'guide-option';
+        btn.textContent = opt;
+        btn.addEventListener('click', () => handleUserInput(opt));
+        optContainer.appendChild(btn);
+      });
+      msg.appendChild(optContainer);
+    }
+
+    messages.appendChild(msg);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function showTyping() {
+    const typing = document.createElement('div');
+    typing.className = 'guide-typing';
+    typing.id = 'guideTyping';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+    messages.appendChild(typing);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function hideTyping() {
+    const typing = document.getElementById('guideTyping');
+    if (typing) typing.remove();
+  }
+
+  function parseResponse(text) {
+    const options = [];
+    const lines = text.split('\n');
+    const msgLines = [];
+
+    lines.forEach(line => {
+      const match = line.match(/\[OPTION:\s*(.+?)\]/);
+      if (match) {
+        options.push(match[1].trim());
+      } else if (line.trim()) {
+        msgLines.push(line);
+      }
+    });
+
+    return { text: msgLines.join('\n'), options };
+  }
+
+  function disableOptions() {
+    messages.querySelectorAll('.guide-option').forEach(btn => {
+      btn.disabled = true;
+      btn.style.pointerEvents = 'none';
+      btn.style.opacity = '0.3';
+    });
+  }
+
+  async function callAPI(userMessage) {
+    conversationHistory.push({ role: 'user', content: userMessage });
+
+    if (!ANTHROPIC_API_KEY || !apiAvailable) {
+      return fallbackResponse();
+    }
+
+    try {
+      const resp = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': ANTHROPIC_API_KEY,
+          'anthropic-version': '2023-06-01',
+          'anthropic-dangerous-direct-browser-access': 'true'
+        },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 300,
+          system: GUIDE_SYSTEM_PROMPT,
+          messages: conversationHistory
+        })
+      });
+
+      if (!resp.ok) {
+        apiAvailable = false;
+        return fallbackResponse();
+      }
+
+      const data = await resp.json();
+      const assistantMsg = data.content[0].text;
+      conversationHistory.push({ role: 'assistant', content: assistantMsg });
+      return assistantMsg;
+    } catch (e) {
+      apiAvailable = false;
+      return fallbackResponse();
+    }
+  }
+
+  function fallbackResponse() {
+    // Graceful degradation: pre-scripted follow-ups
+    const fallbacks = [
+      { text: "Where did the information gap hit hardest — was it missing data, conflicting signals, or just not having time to pull it all together?", options: ["Missing data", "Conflicting signals", "No time to assemble it all"] },
+      { text: "And when you had to decide anyway — what did that cost you?", options: ["Delayed the decision", "Made the wrong call", "Spent hours gathering info manually"] },
+      { text: "So — you're making high-stakes decisions while the information you need is scattered, incomplete, or unverified. That's exactly what Solomon exists to solve. Request access below. We'll show you what this looks like when it's solved.", options: [] }
+    ];
+    const idx = Math.min(exchangeCount - 1, fallbacks.length - 1);
+    const fb = fallbacks[idx];
+    const formatted = fb.text + (fb.options.length ? '\n' + fb.options.map(o => `[OPTION: ${o}]`).join('\n') : '');
+    conversationHistory.push({ role: 'assistant', content: formatted });
+    return formatted;
+  }
+
+  async function handleUserInput(text) {
+    if (!text.trim() || !guideActive) return;
+
+    disableOptions();
+    exchangeCount++;
+    if (exchangeCount === 1) userFirstAnswer = text;
+
+    addMessage(text, 'user');
+    input.value = '';
+    input.disabled = true;
+    sendBtn.disabled = true;
+
+    showTyping();
+
+    // Simulate brief thinking delay
+    await new Promise(r => setTimeout(r, 800 + Math.random() * 1200));
+
+    const response = await callAPI(text);
+    hideTyping();
+
+    const parsed = parseResponse(response);
+
+    // Check if this is the final synthesis (no options, or 3+ exchanges)
+    const isFinal = parsed.options.length === 0 || exchangeCount >= 3;
+
+    if (isFinal) {
+      painSummary = parsed.text;
+      addMessage(parsed.text, 'guide');
+      guideActive = false;
+      inputArea.style.display = 'none';
+      container.classList.add('complete');
+
+      // Show CTA with pre-filled email
+      const subject = encodeURIComponent('Solomon Access Request');
+      const body = encodeURIComponent(
+        `My biggest challenge: ${painSummary}\n\nWhat I need: ${userFirstAnswer}\n\n— Sent from enterpriseworldmodel.com`
+      );
+      ctaBtn.href = `mailto:harald@klarsystems.com?subject=${subject}&body=${body}`;
+      ctaArea.classList.add('visible');
+
+      // Save to localStorage
+      try {
+        localStorage.setItem('solomon_guide', JSON.stringify({
+          timestamp: Date.now(),
+          pain: painSummary,
+          firstAnswer: userFirstAnswer,
+          history: conversationHistory
+        }));
+      } catch(e) {}
+
+      // Optional webhook ping
+      if (WEBHOOK_URL) {
+        try {
+          fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ pain: painSummary, firstAnswer: userFirstAnswer })
+          }).catch(() => {});
+        } catch(e) {}
+      }
+    } else {
+      addMessage(parsed.text, 'guide', parsed.options);
+      input.disabled = false;
+      sendBtn.disabled = false;
+      input.focus();
+    }
+  }
+
+  // Initialize
+  function initGuide() {
+    // Check for previous conversation
+    try {
+      const saved = JSON.parse(localStorage.getItem('solomon_guide'));
+      if (saved && Date.now() - saved.timestamp < 86400000) {
+        // Show previous result
+        addMessage(FIRST_MESSAGE, 'guide');
+        addMessage(saved.firstAnswer, 'user');
+        addMessage(saved.pain, 'guide');
+        container.classList.add('complete');
+        inputArea.style.display = 'none';
+        const subject = encodeURIComponent('Solomon Access Request');
+        const body = encodeURIComponent(
+          `My biggest challenge: ${saved.pain}\n\nWhat I need: ${saved.firstAnswer}\n\n— Sent from enterpriseworldmodel.com`
+        );
+        ctaBtn.href = `mailto:harald@klarsystems.com?subject=${subject}&body=${body}`;
+        ctaArea.classList.add('visible');
+        return;
+      }
+    } catch(e) {}
+
+    guideActive = true;
+    conversationHistory.push({ role: 'assistant', content: FIRST_MESSAGE + '\n' + FIRST_OPTIONS.map(o => `[OPTION: ${o}]`).join('\n') });
+    addMessage(FIRST_MESSAGE, 'guide', FIRST_OPTIONS);
+  }
+
+  // Event listeners
+  sendBtn.addEventListener('click', () => handleUserInput(input.value));
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleUserInput(input.value);
+    }
+  });
+
+  // Start when section is visible
+  const guideObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        initGuide();
+        guideObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.1 });
+
+  guideObserver.observe(document.getElementById('guideContainer'));
+})();
 </script>
 
 </body>
