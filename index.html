@@ -127,7 +127,7 @@
   }
 
   .hero-figure svg {
-    width: 280px;
+    width: 150px;
     height: auto;
   }
 
@@ -150,7 +150,12 @@
     font-family: var(--mono);
     font-size: 7px;
     fill: var(--text-secondary);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .hero-figure svg .label.accent {
+    fill: var(--gold);
   }
 
   .hero-anchor {
@@ -343,8 +348,6 @@
   }
 
   .draw-line.d2 { transition-delay: 0.3s; }
-  .draw-line.d3 { transition-delay: 0.5s; }
-  .draw-line.d4 { transition-delay: 0.7s; }
 
   /* Node fade */
   .draw-node {
@@ -352,13 +355,13 @@
     transition: opacity 0.5s ease;
   }
   .visible .draw-node { opacity: 1; }
-  .draw-node.n1 { transition-delay: 0.6s; }
-  .draw-node.n2 { transition-delay: 0.8s; }
-  .draw-node.n3 { transition-delay: 1.0s; }
-  .draw-node.n4 { transition-delay: 1.2s; }
-  .draw-node.n5 { transition-delay: 1.4s; }
-  .draw-node.n6 { transition-delay: 0.9s; }
-  .draw-node.n7 { transition-delay: 1.1s; }
+  .draw-node.n1 { transition-delay: 0.6s; }   /* origin */
+  .draw-node.n2 { transition-delay: 0.9s; }   /* solomon: bottom step */
+  .draw-node.n3 { transition-delay: 1.1s; }   /* solomon: mid */
+  .draw-node.n4 { transition-delay: 1.4s; }   /* solomon: terminal (gold) + label */
+  .draw-node.n5 { transition-delay: 1.0s; }   /* ai drift: bottom step */
+  .draw-node.n6 { transition-delay: 1.2s; }   /* ai drift: mid */
+  .draw-node.n7 { transition-delay: 1.5s; }   /* ai drift: terminal + label */
 
   /* ---- RESPONSIVE ---- */
   @media (max-width: 640px) {
@@ -378,7 +381,7 @@
       padding: 5rem 0;
     }
     .hero-figure svg {
-      width: 200px;
+      width: 110px;
     }
   }
 
@@ -416,36 +419,32 @@
       <span class="truth">Truth</span> is the opposite.
     </p>
 
-    <!-- Bifurcation diagram -->
+    <!-- Reality drift diagram (Tlön): Solomon stays on truth, AI drifts -->
     <div class="hero-figure reveal reveal-delay-3">
-      <svg viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg">
-        <!-- Origin point -->
-        <circle cx="30" cy="60" r="2.5" class="draw-node n1"/>
+      <svg viewBox="0 0 120 280" xmlns="http://www.w3.org/2000/svg">
+        <!-- Shared origin at the bottom -->
+        <circle cx="60" cy="262" r="2.5" class="draw-node n1"/>
 
-        <!-- Upper path: optimization (plateaus) -->
-        <path d="M 30 60 C 80 60, 100 25, 160 22 C 200 20, 230 20, 260 20"
-              class="draw-line" />
+        <!-- Solomon: vertical truth line going UP -->
+        <line x1="60" y1="262" x2="60" y2="30" class="draw-line"/>
 
-        <!-- Lower path: verification (opens outward) -->
-        <path d="M 30 60 C 80 60, 100 80, 140 90 C 170 97, 210 102, 260 108"
-              class="draw-line d2" />
+        <!-- Solomon nodes anchored to truth (bottom → top = progression) -->
+        <circle cx="60" cy="200" r="2" class="draw-node n2"/>
+        <circle cx="60" cy="120" r="2" class="draw-node n3"/>
+        <circle cx="60" cy="30" r="2.5" class="accent draw-node n4"/>
 
-        <!-- Nodes on upper path -->
-        <circle cx="100" cy="35" r="2" class="draw-node n2"/>
-        <circle cx="160" cy="22" r="2" class="draw-node n3"/>
-        <circle cx="230" cy="20" r="2" class="draw-node n4"/>
+        <!-- AI drift: starts on truth, departs slowly, accelerates -->
+        <path d="M 60 262 C 61 235, 62 215, 63 200 C 70 175, 76 145, 78 120 C 88 95, 100 60, 108 40"
+              class="draw-line d2"/>
 
-        <!-- Nodes on lower path -->
-        <circle cx="100" cy="72" r="2" class="draw-node n5"/>
-        <circle cx="160" cy="92" r="2.5" class="accent draw-node n6"/>
-        <circle cx="230" cy="105" r="2" class="draw-node n7"/>
+        <!-- AI drift nodes, paired y-positions with Solomon -->
+        <circle cx="63" cy="200" r="2" class="draw-node n5"/>
+        <circle cx="78" cy="120" r="2" class="draw-node n6"/>
+        <circle cx="108" cy="40" r="2" class="draw-node n7"/>
 
-        <!-- Asymptotic ceiling line (dashed) -->
-        <line x1="140" y1="18" x2="265" y2="18"
-              stroke-dasharray="3,4" opacity="0.3" class="draw-line d3"/>
-
-        <!-- Labels -->
-        <text x="248" y="14" class="label draw-node n4">ceiling</text>
+        <!-- Labels at line endpoints -->
+        <text x="60" y="20" class="label accent draw-node n4" text-anchor="middle">solomon</text>
+        <text x="108" y="30" class="label draw-node n7" text-anchor="middle">ai</text>
       </svg>
     </div>
 
