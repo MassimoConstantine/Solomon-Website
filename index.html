@@ -3,568 +3,736 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solomon</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css" rel="stylesheet">
+<title>Ezer — Your AI Chief of Staff</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #fbf9f8;
-    --text: #1a1a1a;
-    --text-secondary: #4a4a4a;
-    --rule: #1a1a1a;
-    --green: #50634e;
-    --gold: #C29E3F;
-    --gold-dim: #a8842f;
-    --serif: 'CMU Serif', 'Latin Modern Roman', 'Computer Modern', Georgia, 'Times New Roman', serif;
-    --mono: 'JetBrains Mono', 'Courier New', monospace;
+    --accent: #6b2737;
+    --accent-light: #8a3a4d;
+    --accent-faint: rgba(107, 39, 55, 0.08);
+    --bg: #f6f5f3;
+    --bg-warm: #f0eee9;
+    --black: #1a1a1a;
+    --text: #2a2a2a;
+    --text-mid: #5a5a5a;
+    --text-dim: #8a8a8a;
+    --line: #d0cdc6;
+    --line-faint: #e5e2dc;
   }
 
-  *, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html {
     font-size: 18px;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: var(--serif);
+    font-family: 'Cormorant Garamond', Georgia, serif;
     line-height: 1.7;
     overflow-x: hidden;
   }
 
-  /* ---- NAV ---- */
-  nav {
+  /* Grain overlay */
+  body::after {
+    content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    padding: 1.5rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(251, 249, 248, 0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.3s ease;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   }
 
-  nav.scrolled {
-    border-bottom-color: var(--rule);
-  }
-
-  .nav-mark {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--text);
-  }
-
-  .nav-label {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    font-weight: 300;
-    letter-spacing: 0.15em;
-    color: var(--text-secondary);
-  }
-
-  /* ---- CONTAINER ---- */
   .container {
     max-width: 760px;
     margin: 0 auto;
     padding: 0 2rem;
   }
 
-  /* ---- HERO ---- */
+  /* ─── HERO ─── */
   .hero {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 6rem;
-    padding-bottom: 4rem;
+    position: relative;
+    padding: 6rem 0;
   }
 
-  .hero-headline {
-    font-family: var(--serif);
-    font-size: clamp(2.2rem, 5vw, 3.4rem);
-    font-weight: 400;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-    color: var(--text);
-    margin-bottom: 0.3em;
-  }
-
-  .hero-subline {
-    font-family: var(--serif);
-    font-size: clamp(2.2rem, 5vw, 3.4rem);
-    font-weight: 400;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-    margin-bottom: 2.5rem;
-  }
-
-  .hero-subline .truth {
-    color: var(--gold);
-  }
-
-  .hero-figure {
-    margin: 3rem 0;
-    display: flex;
-    justify-content: center;
-  }
-
-  .hero-figure svg {
-    width: 280px;
-    height: auto;
-  }
-
-  .hero-figure svg line,
-  .hero-figure svg path {
-    stroke: var(--text);
-    stroke-width: 1.2;
-    fill: none;
-  }
-
-  .hero-figure svg circle {
-    fill: var(--text);
-  }
-
-  .hero-figure svg circle.accent {
-    fill: var(--gold);
-  }
-
-  .hero-figure svg .label {
-    font-family: var(--mono);
-    font-size: 7px;
-    fill: var(--text-secondary);
-    letter-spacing: 0.1em;
-  }
-
-  .hero-anchor {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    font-weight: 400;
-    letter-spacing: 0.3em;
+  .hero-name {
+    font-size: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--green);
-    margin-top: 1rem;
+    color: var(--accent);
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.2s ease forwards;
   }
 
-  .hero-rule {
+  .hero-intro {
+    font-size: 2.8rem;
+    font-weight: 300;
+    line-height: 1.25;
+    color: var(--black);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.5s ease forwards;
+  }
+
+  .hero-intro em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--text-mid);
+    max-width: 540px;
+    opacity: 0;
+    animation: fadeUp 1s 0.8s ease forwards;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 1s 1.2s ease forwards;
+  }
+
+  .scroll-hint span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: var(--accent);
+    animation: pulse 2s ease infinite;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
     width: 100%;
     height: 1px;
-    background: var(--rule);
-    margin-top: 3rem;
+    background: var(--line);
+    margin: 0;
   }
 
-  /* ---- SECTIONS ---- */
-  section.content-section {
-    padding: 6rem 0;
-    border-bottom: 1px solid var(--rule);
+  .divider-accent {
+    background: var(--accent);
+    opacity: 0.3;
   }
 
-  .section-label {
-    font-family: var(--mono);
-    font-size: 0.6rem;
+  /* ─── ANCHOR LINES SECTION ─── */
+  .anchors {
+    padding: 7rem 0;
+  }
+
+  .anchor-line {
+    font-size: 1.65rem;
     font-weight: 400;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--green);
-    margin-bottom: 2.5rem;
-  }
-
-  .section-headline {
-    font-family: var(--serif);
-    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-    font-weight: 400;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-    color: var(--text);
-    margin-bottom: 2rem;
-    max-width: 620px;
-  }
-
-  .section-body {
-    font-family: var(--serif);
-    font-size: 1rem;
-    line-height: 1.8;
-    color: var(--text-secondary);
-    max-width: 580px;
-  }
-
-  .section-body p + p {
-    margin-top: 1.2em;
-  }
-
-  /* ---- EQUATION ASIDE ---- */
-  .equation-aside {
-    margin: 3rem 0;
-    padding: 2rem 0;
-    border-top: 1px solid rgba(26, 26, 26, 0.1);
-    border-bottom: 1px solid rgba(26, 26, 26, 0.1);
-    text-align: center;
-  }
-
-  .equation {
-    font-family: var(--mono);
-    font-size: 0.85rem;
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    color: var(--text);
-  }
-
-  .equation-caption {
-    font-family: var(--mono);
-    font-size: 0.55rem;
-    font-weight: 300;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-secondary);
-    margin-top: 1rem;
-  }
-
-  /* ---- CTA ---- */
-  .cta-section {
-    padding: 8rem 0;
-    text-align: center;
-  }
-
-  .cta-headline {
-    font-family: var(--serif);
-    font-size: clamp(1.8rem, 4vw, 2.6rem);
-    font-weight: 400;
-    line-height: 1.3;
-    color: var(--text);
-    margin-bottom: 1rem;
-  }
-
-  .cta-sub {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    font-weight: 300;
-    letter-spacing: 0.15em;
-    color: var(--text-secondary);
-    margin-bottom: 3rem;
-  }
-
-  .cta-button {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--text);
-    background: var(--gold);
-    padding: 1rem 3rem;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-
-  .cta-button:hover {
-    background: var(--gold-dim);
-    transform: translateY(-1px);
-  }
-
-  /* ---- FOOTER ---- */
-  footer {
-    padding: 3rem 0;
-    border-top: 1px solid var(--rule);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .footer-left {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    font-weight: 300;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-secondary);
-  }
-
-  .footer-right {
-    font-family: var(--mono);
-    font-size: 0.55rem;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    color: var(--text-secondary);
-  }
-
-  /* ---- ANIMATIONS ---- */
-  .reveal {
+    line-height: 1.5;
+    color: var(--black);
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--line-faint);
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
   }
 
-  .reveal.visible {
+  .anchor-line.visible {
     opacity: 1;
     transform: translateY(0);
   }
 
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.35s; }
-  .reveal-delay-4 { transition-delay: 0.5s; }
-
-  /* Hero stagger */
-  .hero .reveal-delay-1 { transition-delay: 0.3s; }
-  .hero .reveal-delay-2 { transition-delay: 0.55s; }
-  .hero .reveal-delay-3 { transition-delay: 0.8s; }
-  .hero .reveal-delay-4 { transition-delay: 1.05s; }
-
-  /* SVG line draw animation */
-  .draw-line {
-    stroke-dasharray: 300;
-    stroke-dashoffset: 300;
-    transition: stroke-dashoffset 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  .anchor-line:last-child {
+    border-bottom: none;
+    color: var(--accent);
+    font-weight: 500;
   }
 
-  .visible .draw-line {
-    stroke-dashoffset: 0;
+  /* ─── WHAT I SEE SECTION (Problems) ─── */
+  .problems {
+    background: var(--black);
+    color: var(--bg);
+    padding: 7rem 0;
+    position: relative;
   }
 
-  .draw-line.d2 { transition-delay: 0.3s; }
-  .draw-line.d3 { transition-delay: 0.5s; }
-  .draw-line.d4 { transition-delay: 0.7s; }
+  .problems .container {
+    position: relative;
+  }
 
-  /* Node fade */
-  .draw-node {
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 3rem;
+  }
+
+  .problem-block {
+    margin-bottom: 3.5rem;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--accent);
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
   }
-  .visible .draw-node { opacity: 1; }
-  .draw-node.n1 { transition-delay: 0.6s; }
-  .draw-node.n2 { transition-delay: 0.8s; }
-  .draw-node.n3 { transition-delay: 1.0s; }
-  .draw-node.n4 { transition-delay: 1.2s; }
-  .draw-node.n5 { transition-delay: 1.4s; }
-  .draw-node.n6 { transition-delay: 0.9s; }
-  .draw-node.n7 { transition-delay: 1.1s; }
 
-  /* ---- RESPONSIVE ---- */
+  .problem-block.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .problem-quote {
+    font-size: 1.4rem;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(246, 245, 243, 0.9);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .problem-explain {
+    font-size: 0.95rem;
+    color: rgba(246, 245, 243, 0.5);
+    font-weight: 300;
+  }
+
+  /* ─── HOW I WORK SECTION ─── */
+  .how {
+    padding: 7rem 0;
+  }
+
+  .how-intro {
+    font-size: 1.35rem;
+    font-weight: 300;
+    color: var(--text-mid);
+    margin-bottom: 4rem;
+    max-width: 580px;
+  }
+
+  .capability {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--line);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .capability.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .capability-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 0.35rem;
+  }
+
+  .capability-text {
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .capability-text strong {
+    font-weight: 500;
+    color: var(--black);
+  }
+
+  /* ─── TRUST SECTION ─── */
+  .trust {
+    background: var(--accent-faint);
+    padding: 7rem 0;
+  }
+
+  .trust-statement {
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.4;
+    color: var(--black);
+    margin-bottom: 2rem;
+  }
+
+  .trust-statement em {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .trust-body {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 1.8;
+    max-width: 580px;
+  }
+
+  /* ─── CTA ─── */
+  .cta {
+    padding: 7rem 0;
+    text-align: center;
+  }
+
+  .cta-line {
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--black);
+    margin-bottom: 2.5rem;
+    line-height: 1.3;
+  }
+
+  .cta-button {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    border: none;
+    padding: 1rem 3rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.15s ease;
+  }
+
+  .cta-button:hover {
+    background: var(--accent-light);
+    transform: translateY(-1px);
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    border-top: 1px solid var(--line);
+    padding: 3rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-research {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .footer-research span {
+    color: var(--accent);
+  }
+
+  .footer-company {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+  }
+
+  /* ─── STATEMENT SECTIONS ─── */
+  .statement {
+    padding: 7rem 0;
+    border-top: 1px solid var(--line-faint);
+  }
+
+  .statement-heading {
+    font-size: clamp(2rem, 4.5vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.25;
+    color: var(--text);
+    margin-bottom: 1.75rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .statement.visible .statement-heading {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .statement-heading em {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .statement-sub {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--text-mid);
+    max-width: 580px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s 0.15s ease, transform 0.8s 0.15s ease;
+  }
+
+  .statement.visible .statement-sub {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── PAPER ─── */
+  .paper {
+    padding: 6rem 0;
+    text-align: center;
+    border-top: 1px solid var(--line-faint);
+  }
+
+  .paper-intro {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+  }
+
+  .paper-link {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.35rem;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px;
+    transition: opacity 0.3s ease;
+  }
+
+  .paper-link:hover {
+    opacity: 0.7;
+  }
+
+  /* ─── CTA FORM ─── */
+  .cta-form {
+    display: flex;
+    max-width: 480px;
+    margin: 0 auto;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .cta-input {
+    flex: 1;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--black);
+    background: #ffffff;
+    border: 1px solid var(--black);
+    padding: 0.95rem 1.25rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .cta-input::placeholder {
+    color: var(--text-dim);
+    font-style: italic;
+  }
+
+  .cta-input:focus {
+    border-color: var(--accent);
+  }
+
+  .cta-send {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0 2rem;
+    margin-left: -1px;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+
+  .cta-send:hover {
+    background: var(--accent-light);
+    border-color: var(--accent-light);
+  }
+
+  .cta-send:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  .cta-thanks {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-top: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .cta-thanks.visible {
+    opacity: 1;
+  }
+
+  /* ─── CTA NOTE ─── */
+  .cta-note {
+    margin-top: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  /* ─── RESPONSIVE ─── */
   @media (max-width: 640px) {
-    nav {
-      padding: 1.2rem 1.5rem;
-    }
-    .container {
-      padding: 0 1.5rem;
-    }
-    .hero {
-      padding-top: 5rem;
-    }
-    section.content-section {
-      padding: 4rem 0;
-    }
-    .cta-section {
-      padding: 5rem 0;
-    }
-    .hero-figure svg {
-      width: 200px;
-    }
-  }
+    html { font-size: 16px; }
 
-  /* Subtle paper grain */
-  body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 256px 256px;
+    .hero-intro { font-size: 2rem; }
+    .hero { padding: 4rem 0; min-height: 90vh; }
+    .anchors { padding: 5rem 0; }
+    .anchor-line { font-size: 1.3rem; }
+    .statement { padding: 5rem 0; }
+    .statement-heading { font-size: 1.6rem; }
+    .paper { padding: 4rem 0; }
+    .how { padding: 5rem 0; }
+    .trust { padding: 5rem 0; }
+    .cta { padding: 5rem 0; }
+
+    .capability {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+
+    .trust-statement { font-size: 1.6rem; }
+    .cta-line { font-size: 1.6rem; }
+    .cta-form { max-width: 100%; }
+    .cta-send { padding: 0 1.25rem; font-size: 0.65rem; }
+
+    .footer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <span class="nav-mark">Solomon</span>
-  <span class="nav-label">Research Preview</span>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <h1 class="hero-headline reveal reveal-delay-1">
-      You can't reach ASI<br>through optimization.
-    </h1>
-    <p class="hero-subline reveal reveal-delay-2">
-      <span class="truth">Truth</span> is the opposite.
-    </p>
-
-    <!-- Bifurcation diagram -->
-    <div class="hero-figure reveal reveal-delay-3">
-      <svg viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg">
-        <!-- Origin point -->
-        <circle cx="30" cy="60" r="2.5" class="draw-node n1"/>
-
-        <!-- Upper path: optimization (plateaus) -->
-        <path d="M 30 60 C 80 60, 100 25, 160 22 C 200 20, 230 20, 260 20"
-              class="draw-line" />
-
-        <!-- Lower path: verification (opens outward) -->
-        <path d="M 30 60 C 80 60, 100 80, 140 90 C 170 97, 210 102, 260 108"
-              class="draw-line d2" />
-
-        <!-- Nodes on upper path -->
-        <circle cx="100" cy="35" r="2" class="draw-node n2"/>
-        <circle cx="160" cy="22" r="2" class="draw-node n3"/>
-        <circle cx="230" cy="20" r="2" class="draw-node n4"/>
-
-        <!-- Nodes on lower path -->
-        <circle cx="100" cy="72" r="2" class="draw-node n5"/>
-        <circle cx="160" cy="92" r="2.5" class="accent draw-node n6"/>
-        <circle cx="230" cy="105" r="2" class="draw-node n7"/>
-
-        <!-- Asymptotic ceiling line (dashed) -->
-        <line x1="140" y1="18" x2="265" y2="18"
-              stroke-dasharray="3,4" opacity="0.3" class="draw-line d3"/>
-
-        <!-- Labels -->
-        <text x="248" y="14" class="label draw-node n4">ceiling</text>
-      </svg>
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-name">By Invitation Only</div>
+      <h1 class="hero-intro">My name is Ezer.<br>I am your <em>chief of staff.</em></h1>
+      <p class="hero-sub">I know what is true in your business. I remember everything you have told me. I prepare what you need before you ask. And I only act with your approval.</p>
     </div>
-
-    <p class="hero-anchor reveal reveal-delay-4">Solomon</p>
-    <div class="hero-rule reveal reveal-delay-4"></div>
-  </div>
-</section>
-
-<!-- SECTION I: THESIS -->
-<section class="content-section" id="thesis">
-  <div class="container">
-    <p class="section-label reveal">I. The Thesis</p>
-    <h2 class="section-headline reveal reveal-delay-1">
-      Intelligence is not an optimization problem.
-    </h2>
-    <div class="section-body reveal reveal-delay-2">
-      <p>
-        The field scales compute, parameters, and data. More of the same, faster.
-        But a system that cannot distinguish what it knows from what it generates
-        is not intelligent. It is interpolation with confidence.
-      </p>
-      <p>
-        The breakthrough is not in scale. It is in a system that knows what it knows.
-      </p>
+    <div class="scroll-hint">
+      <span>Continue</span>
+      <div class="scroll-line"></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- SECTION II: WHY NOW -->
-<section class="content-section" id="why-now">
-  <div class="container">
-    <p class="section-label reveal">II. Why Now</p>
-    <h2 class="section-headline reveal reveal-delay-1">
-      Scaling has reached its epistemic ceiling.
-    </h2>
-    <div class="section-body reveal reveal-delay-2">
-      <p>
-        Hallucination is not a bug to be patched. It is the fundamental behavior of
-        architectures that generate without verifying. Peaked probability distributions
-        fire with equal confidence whether the source is knowledge or interpolation.
-      </p>
-      <p>
-        As these systems assume consequential decisions, the absence of epistemic
-        integrity becomes existential. The window to build the verification layer is now,
-        before capability permanently outpaces accountability.
-      </p>
+  <div class="container"><div class="divider"></div></div>
+
+  <!-- ─── STATEMENT: STRATEGY ─── -->
+  <section class="statement">
+    <div class="container">
+      <h2 class="statement-heading">Your strategy is in your head.<br>Your pipeline is in one tool.<br>Your decisions are in email.<br>Your context is scattered across <em>everything.</em></h2>
+      <p class="statement-sub">And you are the integration layer.</p>
     </div>
+  </section>
 
-    <div class="equation-aside reveal reveal-delay-3">
-      <p class="equation">I(t) = V(t) &middot; C(t) &nbsp;|&nbsp; P(t) > &theta;</p>
-      <p class="equation-caption">Fig. 2 &mdash; Intelligence as a function of verification, confidence, and provenance threshold</p>
+  <!-- ─── STATEMENT: SOVEREIGN ─── -->
+  <section class="statement">
+    <div class="container">
+      <h2 class="statement-heading">Intelligence just became <em>sovereign.</em></h2>
+      <p class="statement-sub">For the first time, a system thinks about your business without exposing your business.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- SECTION III: WHAT WE BUILD -->
-<section class="content-section" id="what-we-build">
-  <div class="container">
-    <p class="section-label reveal">III. What We Build</p>
-    <h2 class="section-headline reveal reveal-delay-1">
-      A system where governance and intelligence are the same tissue.
-    </h2>
-    <div class="section-body reveal reveal-delay-2">
-      <p>
-        Solomon is a verification-first architecture. Every claim carries provenance.
-        Confidence is earned through evidence, not declared by probability. Capability
-        does not precede accountability. It emerges from it.
-      </p>
-      <p>
-        We do not bolt safety onto intelligence after the fact. We derive intelligence
-        from the constraints that make it trustworthy. The architecture is not a product
-        with guardrails. It is the guardrail that became the product.
-      </p>
+  <!-- ─── STATEMENT: MORNING ─── -->
+  <section class="statement">
+    <div class="container">
+      <h2 class="statement-heading">Before your first meeting,<br>you already know <em>everything.</em></h2>
+      <p class="statement-sub">A one-page briefing every morning. What matters today. What changed overnight. What needs your decision. Verified. Sourced.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CTA -->
-<section class="cta-section" id="cta">
-  <div class="container">
-    <h2 class="cta-headline reveal">Read the Research</h2>
-    <p class="cta-sub reveal reveal-delay-1">First principles. No marketing.</p>
-    <a href="#" class="cta-button reveal reveal-delay-2">Download the Thesis</a>
-  </div>
-</section>
+  <!-- ─── STATEMENT: NOT FOR EVERYONE ─── -->
+  <section class="statement">
+    <div class="container">
+      <h2 class="statement-heading">Ezer is not for <em>everyone.</em></h2>
+      <p class="statement-sub">It is for leaders who built something real and refuse to run it on guesswork.</p>
+    </div>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-    <span class="footer-left">Solomon &middot; 2026</span>
-    <span class="footer-right">Helsinki, Finland</span>
-  </div>
-</footer>
+  <!-- ─── PAPER ─── -->
+  <section class="paper">
+    <div class="container">
+      <p class="paper-intro">The framework behind Ezer.</p>
+      <a href="#" class="paper-link">Which Way Does the Spirit Collapse</a>
+    </div>
+  </section>
 
-<script>
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+  <!-- ─── ANCHOR LINES ─── -->
+  <section class="anchors">
+    <div class="container">
+      <div class="anchor-line">I don't hallucinate. I know what's true.</div>
+      <div class="anchor-line">I don't forget. I remember.</div>
+      <div class="anchor-line">I will take care of things for you, with your approval.</div>
+      <div class="anchor-line">I proactively anticipate and prepare.</div>
+      <div class="anchor-line">I'm ready when you are.</div>
+    </div>
+  </section>
+
+  <!-- ─── HOW I WORK ─── -->
+  <section class="how">
+    <div class="container">
+      <div class="section-label" style="color: var(--accent);">How I work</div>
+      <p class="how-intro">I was not built to chat. I was built to carry weight. Here is how.</p>
+
+      <div class="capability">
+        <div class="capability-label">Proactive</div>
+        <div class="capability-text"><strong>I work when you are not looking.</strong> I monitor your channels, your commitments, your team's progress. I surface what matters before you have to ask. Your morning brief is ready when you wake up.</div>
+      </div>
+
+      <div class="capability">
+        <div class="capability-label">Context Aware</div>
+        <div class="capability-text"><strong>I hold the full picture of your business.</strong> Every conversation, every decision, every commitment across every tool. Context does not scatter. It compounds. Ask me anything about any part of your operation and I will have the answer with the source.</div>
+      </div>
+
+      <div class="capability">
+        <div class="capability-label">Earned Trust</div>
+        <div class="capability-text"><strong>I start small. I earn the right to do more.</strong> I do not ask for access to everything on day one. I prove competence on small things. Then bigger things. Until routine operations just happen. You stay in the game at a higher level.</div>
+      </div>
+
+      <div class="capability">
+        <div class="capability-label">Persistently<br>Learning</div>
+        <div class="capability-text"><strong>Correct me once. I stay corrected forever.</strong> Not because I saved a note. Because the correction became a rule. The longer you use me, the sharper I get. I start anticipating. Bringing you things you had not thought to ask for.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="divider divider-accent"></div></div>
+
+  <!-- ─── TRUST ─── -->
+  <section class="trust">
+    <div class="container">
+      <div class="trust-statement">Every AI tool you have tried <em>made you its supervisor.</em><br>You ask, you check, you correct, you repeat.</div>
+      <p class="trust-body">I am different because I was built differently. I do not guess and ask you to verify. I know what I know, I know what I do not know, and I tell you which is which. Every claim I make carries its source. Every action I take requires your approval until I have earned the right to act alone. Your data stays yours. Your sovereignty is not negotiable.</p>
+    </div>
+  </section>
+
+  <!-- ─── CTA ─── -->
+  <section class="cta" id="begin">
+    <div class="container">
+      <div class="cta-line">Stop being your company's<br>nervous system.</div>
+      <form class="cta-form" id="ctaForm" action="https://formsubmit.co/ajax/harald@gideagency.com" method="POST">
+        <input type="hidden" name="_subject" value="New Ezer access request">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="email" name="email" class="cta-input" placeholder="your email" required autocomplete="email">
+        <button type="submit" class="cta-send">Send</button>
+      </form>
+      <p class="cta-thanks" id="ctaThanks">Received. We'll be in touch.</p>
+      <p class="cta-note">By invitation only</p>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <section style="background: var(--bg);">
+    <div class="container">
+      <div class="divider"></div>
+      <div class="footer">
+        <div class="footer-research">Built on <span>Solomon</span> research &mdash; governed intelligence agents by <span>Gide</span></div>
+        <div class="footer-company">Gide Oy &middot; Helsinki</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SCROLL REVEAL ─── -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.anchor-line, .capability, .statement').forEach(el => {
+      observer.observe(el);
     });
-  }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -40px 0px'
-  });
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Nav border on scroll
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
+    // ─── CTA Form ───
+    const ctaForm = document.getElementById('ctaForm');
+    const ctaThanks = document.getElementById('ctaThanks');
+    if (ctaForm) {
+      ctaForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = ctaForm.querySelector('.cta-send');
+        const input = ctaForm.querySelector('.cta-input');
+        btn.disabled = true;
+        try {
+          const res = await fetch(ctaForm.action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(ctaForm)
+          });
+          if (res.ok) {
+            ctaForm.style.display = 'none';
+            ctaThanks.classList.add('visible');
+          } else {
+            btn.disabled = false;
+            input.setCustomValidity('Could not send. Try again.');
+            input.reportValidity();
+          }
+        } catch {
+          btn.disabled = false;
+          // Fallback: open mailto if network fails
+          window.location.href = 'mailto:harald@gideagency.com?subject=Ezer%20Access%20Request&body=' + encodeURIComponent(input.value);
+        }
+      });
     }
-  }, { passive: true });
-</script>
+  </script>
 
 </body>
 </html>
