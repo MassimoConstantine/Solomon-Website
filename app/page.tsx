@@ -1,6 +1,37 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { site } from "@/lib/site";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: site.legalName,
+    alternateName: site.shortName,
+    url: site.url,
+    logo: `${site.url}/icon.png`,
+    description: site.description,
+    founder: {
+      "@type": "Person",
+      name: site.author.name,
+      jobTitle: site.author.role,
+    },
+    sameAs: [],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: site.name,
+    url: site.url,
+    description: site.description,
+    publisher: {
+      "@type": "Organization",
+      name: site.legalName,
+      url: site.url,
+    },
+  },
+];
 
 export default function Home() {
   const fractalRef = useRef<HTMLImageElement>(null);
@@ -75,6 +106,11 @@ export default function Home() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <nav id="nav">
         <span className="nav-mark">Solomon</span>
         <span className="nav-label">Research Preview</span>
@@ -141,7 +177,7 @@ export default function Home() {
         <div className="container">
           <p className="section-label reveal">II. Why Now</p>
           <h2 className="section-headline reveal reveal-delay-1">
-            Scaling has reached its epistemic ceiling.
+            Scaling has an epistemic ceiling.
           </h2>
           <div className="section-body reveal reveal-delay-2">
             <p>
