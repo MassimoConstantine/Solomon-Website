@@ -193,7 +193,7 @@ export default function Home() {
             rel="noopener"
             className="cta-button reveal reveal-delay-1"
           >
-            View the Thesis
+            View the Whitepaper
           </a>
         </div>
       </section>
