@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
+  const fractalRef = useRef<HTMLImageElement>(null);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -18,16 +20,56 @@ export default function Home() {
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
     const nav = document.getElementById("nav");
-    const onScroll = () => {
-      if (!nav) return;
-      if (window.scrollY > 40) nav.classList.add("scrolled");
-      else nav.classList.remove("scrolled");
+
+    let targetRotY = 0;
+    let currentRotY = 0;
+    let rafId = 0;
+
+    const onMouseMove = (e: MouseEvent) => {
+      const cx = window.innerWidth / 2;
+      targetRotY = ((e.clientX - cx) / cx) * 6;
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const onMouseLeave = () => {
+      targetRotY = 0;
+    };
+
+    const tick = () => {
+      const y = window.scrollY;
+      const vh = window.innerHeight;
+
+      if (nav) {
+        if (y > vh * 0.7) nav.classList.add("scrolled");
+        else nav.classList.remove("scrolled");
+      }
+
+      currentRotY += (targetRotY - currentRotY) * 0.08;
+
+      const img = fractalRef.current;
+      if (img) {
+        const progress = Math.min(y / vh, 1);
+        const translateY = y * 0.25;
+        const scale = 1 - progress * 0.15;
+        const opacity = Math.max(0, 1 - progress * 0.85);
+        img.style.transform =
+          `translate3d(0, ${translateY}px, 0) ` +
+          `scale(${scale}) ` +
+          `rotateY(${currentRotY}deg)`;
+        img.style.opacity = String(opacity);
+      }
+
+      rafId = window.requestAnimationFrame(tick);
+    };
+
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
+    window.addEventListener("mouseleave", onMouseLeave, { passive: true });
+    rafId = window.requestAnimationFrame(tick);
 
     return () => {
       observer.disconnect();
-      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseleave", onMouseLeave);
+      window.cancelAnimationFrame(rafId);
     };
   }, []);
 
@@ -37,6 +79,11 @@ export default function Home() {
         <span className="nav-mark">Solomon</span>
         <span className="nav-label">Research Preview</span>
       </nav>
+
+      <section className="hero-fractal">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img ref={fractalRef} src="/solomon-fractal.png" alt="Solomon" />
+      </section>
 
       <section className="hero">
         <div className="container">
@@ -67,7 +114,6 @@ export default function Home() {
             </svg>
           </div>
 
-          <p className="hero-anchor reveal reveal-delay-4">Solomon</p>
           <div className="hero-rule reveal reveal-delay-4"></div>
         </div>
       </section>
