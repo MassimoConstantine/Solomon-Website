@@ -1,6 +1,12 @@
 "use client";
 
 import { useEffect } from "react";
+import dynamic from "next/dynamic";
+
+const DiamondScene = dynamic(() => import("./components/DiamondScene"), {
+  ssr: false,
+  loading: () => <div style={{ width: "100%", height: "100%", background: "#0e0e0e" }} />,
+});
 
 export default function Home() {
   useEffect(() => {
@@ -20,10 +26,12 @@ export default function Home() {
     const nav = document.getElementById("nav");
     const onScroll = () => {
       if (!nav) return;
-      if (window.scrollY > 40) nav.classList.add("scrolled");
+      const vh = window.innerHeight;
+      if (window.scrollY > vh * 0.7) nav.classList.add("scrolled");
       else nav.classList.remove("scrolled");
     };
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
 
     return () => {
       observer.disconnect();
@@ -37,6 +45,10 @@ export default function Home() {
         <span className="nav-mark">Solomon</span>
         <span className="nav-label">Research Preview</span>
       </nav>
+
+      <section className="hero-fractal">
+        <DiamondScene />
+      </section>
 
       <section className="hero">
         <div className="container">
