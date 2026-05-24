@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { site } from "@/lib/site";
+import GeometryOfTruth from "./GeometryOfTruth";
 
 const jsonLd = [
   {
@@ -30,6 +31,88 @@ const jsonLd = [
       name: site.legalName,
       url: site.url,
     },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: "Intelligence ≠ Wisdom — The Solomon Architecture",
+    url: site.url,
+    author: {
+      "@type": "Person",
+      name: site.author.name,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: site.legalName,
+      url: site.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${site.url}/icon.png`,
+      },
+    },
+    description:
+      "A five-part exposition of the Solomon architecture: the fundamental flaw of stateless generation, the sustainable foundation that removes AI from the driver's seat, the physics of the epistemic ceiling, the brain-nerves-body loop wired to reality, and the adaptive loop that compounds verified evidence over time.",
+    about: [
+      { "@type": "Thing", name: "Governed intelligence" },
+      { "@type": "Thing", name: "Synthetic Collapse" },
+      { "@type": "Thing", name: "Adaptive Loop" },
+      { "@type": "Thing", name: "Geometry of Truth" },
+      { "@type": "Thing", name: "Bayesian governance" },
+      { "@type": "Thing", name: "Substrate compounding" },
+    ],
+    articleSection: [
+      "I. Fundamental Flaw",
+      "II. Sustainable Foundation",
+      "III. Physics",
+      "IV. Reality",
+      "V. Adaptive Loop",
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is the difference between intelligence and wisdom in the Solomon architecture?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Intelligence is statistical interpolation that maximizes plausible continuation. Wisdom is intelligence that knows what it knows — a system whose every claim is anchored to evidence outside itself. Solomon treats these as categorically different, not just different in degree.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is Synthetic Collapse?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Synthetic Collapse is the failure mode where near-truth propagates as convenience, settles into common knowledge through reuse, hardens into authority through citation, and embeds as infrastructure through integration. Institutions build on the distortion, and the human future faces a world of mirage.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is the Adaptive Loop?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The Adaptive Loop is the architecture that closes the cycle: every verified signal writes back into the substrate. The system at T+1 is structurally different from the system at T, not merely more prompted. Substrate density compounds — model size curves plateau.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is the brain-nerves-body architecture?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The brain holds the world model, written only through constrained pathways. The nerves carry signal from email, transcripts, calendar, files, signed third-party data, and direct conversation. The body acts only within laws the brain enforces. Each claim is anchored to evidence outside the system.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is the Geometry of Truth?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Truth is the bounded operational domain. A sphere — an LLM — grows inside that domain but cannot fill its corners. A cube — a system whose form matches truth's geometry — fills the domain completely. Form must match the territory.",
+        },
+      },
+    ],
   },
 ];
 
@@ -156,26 +239,50 @@ export default function Home() {
 
       <section className="content-section" id="thesis">
         <div className="container">
-          <p className="section-label reveal">I. The Thesis</p>
+          <p className="section-label reveal">I. Fundamental Flaw.</p>
           <h2 className="section-headline inequality reveal reveal-delay-1">
-            wisdom <span className="gt">&gt;</span> intelligence
+            intelligence <span className="gt">&ne;</span> wisdom
           </h2>
-          <div className="section-body reveal reveal-delay-2">
-            <p>
-              The field scales compute, parameters, and data. More of the same, faster.
-              But a system that cannot distinguish what it knows from what it generates
-              is not intelligent. It is interpolation with confidence.
-            </p>
-            <p>
-              The breakthrough is not in scale. It is in a system that knows what it knows.
-            </p>
+          <div className="thesis-list reveal reveal-delay-2">
+            <div className="thesis-item">
+              <p><strong>Frozen &amp; Stateless</strong> &mdash; Acting as a stateless model that is trained and optimized on old data. With a limited context window that has no concept of truth.</p>
+            </div>
+            <div className="thesis-item">
+              <p><strong>Plausible &amp; Regressive</strong> &mdash; Auto-Regressively maximizing for plausible continuation. Generating near-truth statistical averages.</p>
+            </div>
+            <div className="thesis-item">
+              <p><strong>Unwise Intelligence</strong> &mdash; Treating partial truth as complete, which compounds distortions and missed errors feedback into the stateless machine.</p>
+            </div>
+            <div className="thesis-item thesis-item--aftermath">
+              <p><strong>Synthetic Collapse</strong> &mdash; Near-truth propagates as convenience, settles into common knowledge through reuse, hardens into authority through citation, and embeds as infrastructure through integration. Institutions build on the distortion and the human future faces a world of mirage.</p>
+            </div>
           </div>
+
         </div>
       </section>
 
-      <section className="content-section" id="why-now">
+      <section className="content-section content-section--accent" id="what-we-build">
         <div className="container">
-          <p className="section-label reveal">II. Why Now</p>
+          <p className="section-label reveal">II. Sustainable Foundation</p>
+          <h2 className="section-headline reveal reveal-delay-1">
+            AI removed from the driver&apos;s seat.
+          </h2>
+          <div className="section-body reveal reveal-delay-2">
+            <p>
+              Solomon closes the loop around raw intelligence. The <em>brain</em> is a governed
+              world model, physically enforced rather than prompt-suggested. Every claim carries
+              its provenance. Every state transition runs under law. The <em>nerves</em> bind
+              that world to reality so internal coherence cannot drift away from external truth.
+              The <em>body</em> carries reasoning into controlled, contextual action.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <section className="content-section" id="physics">
+        <div className="container">
+          <p className="section-label reveal">III. Physics</p>
           <h2 className="section-headline reveal reveal-delay-1">
             Scaling has an epistemic ceiling.
           </h2>
@@ -192,26 +299,34 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="equation-aside reveal reveal-delay-3">
-            <p className="equation">I(t) = V(t) &middot; C(t) &nbsp;|&nbsp; P(t) &gt; &theta;</p>
-            <p className="equation-caption">Fig. 2 &mdash; Intelligence as a function of verification, confidence, and provenance threshold</p>
+          <div className="section-figure section-figure--wide reveal reveal-delay-3">
+            <GeometryOfTruth />
+            <p className="figure-caption">
+              Fig. 4 &mdash; The geometry of truth
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="content-section" id="what-we-build">
+      <section className="content-section" id="reality">
         <div className="container">
-          <p className="section-label reveal">III. What We Build</p>
+          <p className="section-label reveal">IV. Reality</p>
           <h2 className="section-headline reveal reveal-delay-1">
-            We take the AI out of the driver&apos;s seat.
+            Brain, nerves, and body.
           </h2>
           <div className="section-body reveal reveal-delay-2">
             <p>
-              Solomon closes the loop around raw intelligence. The <em>brain</em> is a governed
-              world model, physically enforced rather than prompt-suggested. Every claim carries
-              its provenance. Every state transition runs under law. The <em>nerves</em> bind
-              that world to reality so internal coherence cannot drift away from external truth.
-              The <em>body</em> carries reasoning into controlled, contextual action.
+              A closed loop produces internally coherent, externally wrong output. The fix is
+              compartmentalization wired to reality. A brain that governs. Nerves that perceive.
+              A body that acts. Each part has its role.
+            </p>
+            <p>
+              The brain holds the world model, written only through constrained pathways. The
+              nerves carry signal from email, transcripts, calendar, files, signed third party
+              data, direct conversation. Every claim that enters the substrate is anchored to
+              evidence that exists outside the system. The body acts only within laws the brain
+              enforces. The model perceives. The structure holds what was perceived. The loop
+              is open to the world by design.
             </p>
           </div>
 
@@ -287,6 +402,38 @@ export default function Home() {
             </svg>
             <p className="figure-caption">
               Fig. 3 &mdash; A brain divided into compartments, with the LLM as one constrained operator inside the looping system; nerves reach outward; the body is the boundary.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+      <section className="content-section" id="adaptive-loop">
+        <div className="container">
+          <p className="section-label reveal">V. Adaptive Loop</p>
+          <h2 className="section-headline reveal reveal-delay-1">
+            Recursive exponential compounding.
+          </h2>
+          <div className="section-body reveal reveal-delay-2">
+            <p>
+              Learning is stable when every claim entering the substrate is anchored to evidence
+              outside the system. Stable learning compounds. The system at T+1 is structurally
+              different from the system at T — not merely more prompted, but more grounded.
+            </p>
+            <p>
+              After a year, the structure holds machine-actionable context no foundation model can
+              produce. Model size curves plateau. Substrate density does not. Without an external
+              anchor, the loop closes on itself and collapse follows. With it, the architecture
+              compounds on truth indefinitely.
+            </p>
+          </div>
+
+          <div className="equation-aside reveal reveal-delay-3">
+            <p className="equation">
+              S(n+1) = S(n) + &Sigma;<sub>i</sub> G<sub>i</sub> &middot; &Delta;Bayes<sub>i</sub>(S(n), E<sub>i</sub>)
+            </p>
+            <p className="equation-caption">
+              Fig. 2 &mdash; Every piece of evidence that enters Solomon must pass governance. What passes, compounds. The system at any point in time is the sum of everything that has ever been verified &mdash; and it only grows.
             </p>
           </div>
         </div>

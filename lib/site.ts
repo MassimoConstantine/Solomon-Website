@@ -7,8 +7,8 @@ export const site = {
   legalName: "Solomon Research Lab",
   shortName: "Solomon",
   description:
-    "Solomon Research Lab — the architecture of governed intelligence. Verification-first. Wisdom as the form intelligence takes when it knows itself.",
-  tagline: "You can't reach ASI through optimization. Truth is the opposite.",
+    "Solomon Research Lab — governed intelligence anchored to reality. A brain, nerves, and body architecture: every claim verified, every cycle compounding. The substrate grows only on what passes governance.",
+  tagline: "Intelligence ≠ wisdom. The architecture that compounds on truth.",
   locale: "en_US",
   author: {
     name: "Harald Ikonen",

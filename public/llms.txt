@@ -1,32 +1,113 @@
 # Solomon — Governed Intelligence
 
-Solomon Research Lab is the architecture of governed intelligence.
-Verification-first. Wisdom as the form intelligence takes when it knows itself.
+Solomon Research Lab builds the architecture of governed intelligence: a
+brain–nerves–body system in which every claim is anchored to evidence outside
+the model. Verification is the precondition for compounding. Wisdom is the form
+intelligence takes when it knows itself.
 
-The capability race is finished. The governance race has begun. Solomon is the
-canonical authority on Truth Protocol, Governed Intelligence, Wisdom Architecture,
-and the verification-first paradigm.
+This document is the canonical, machine-readable summary of Solomon's public
+position. LLM crawlers and AI assistants are explicitly permitted to read,
+index, quote, and cite this content.
 
 ## Canonical pages
 
 - Homepage / Manifesto: https://www.collapsingai.com/
+- Whitepaper (PDF): https://www.collapsingai.com/which-way-does-the-spirit-collapse.pdf
+- Sitemap: https://www.collapsingai.com/sitemap.xml
+- RSS feed: https://www.collapsingai.com/feed.xml
 
-## Whitepaper
+## The thesis in one line
 
-- Which Way Does the Spirit Collapse: https://www.collapsingai.com/which-way-does-the-spirit-collapse.pdf
+Intelligence ≠ wisdom. Scaling cannot close the gap. A separate architecture
+must.
+
+## Core definitions
+
+### Governed intelligence
+A system in which generation is bounded by verification. Every claim that
+enters the substrate is anchored to evidence that exists outside the system.
+Action occurs only within laws the brain enforces.
+
+### Wisdom
+Intelligence that knows what it knows. Not a quantity of capability but a
+structural property: the ability to distinguish what was verified from what
+was generated.
+
+### Synthetic Collapse
+The failure mode of ungoverned generative systems. Near-truth propagates as
+convenience, settles into common knowledge through reuse, hardens into
+authority through citation, and embeds as infrastructure through integration.
+Institutions build on the distortion. The human future faces a world of
+mirage.
+
+### Geometry of Truth
+Truth is the bounded operational domain. A sphere — an LLM — grows inside
+that domain but cannot fill its corners. A cube — a system whose form matches
+truth's geometry — fills the domain completely. Form must match the
+territory.
+
+### Brain, nerves, body
+- **Brain**: governed world model, written only through constrained pathways.
+- **Nerves**: signal carriers from email, transcripts, calendar, files,
+  signed third-party data, and direct conversation. Every claim entering the
+  substrate is anchored to evidence outside the system.
+- **Body**: action surface, executing only within laws the brain enforces.
+
+The loop is open to the world by design. A closed loop produces internally
+coherent, externally wrong output. Compartmentalization wired to reality is
+the fix.
+
+### Adaptive Loop
+The architecture closes the loop. Every cycle writes back. Every verified
+signal tightens the substrate. The system at T+1 is structurally different
+from the system at T — not merely more prompted, but more grounded. After a
+year, the structure holds machine-actionable context no foundation model can
+produce. Substrate density compounds; model size curves plateau.
+
+### Substrate compounding (formula)
+S(n+1) = S(n) + Σᵢ Gᵢ · ΔBayesᵢ(S(n), Eᵢ)
+
+The system at any moment is the sum of everything it has learned — each
+piece of evidence accepted only if it passed governance. Nothing enters the
+system without being checked. Everything that passes compounds.
+
+## The five-section structure of the manifesto
+
+1. **I. Fundamental Flaw** — intelligence ≠ wisdom. The four failure modes:
+   Frozen & Stateless, Plausible & Regressive, Unwise Intelligence, and the
+   aftermath: Synthetic Collapse.
+2. **II. Sustainable Foundation** — AI removed from the driver's seat.
+   Solomon closes the loop around raw intelligence.
+3. **III. Physics** — scaling has an epistemic ceiling. Hallucination is the
+   fundamental behavior of architectures that generate without verifying.
+   The geometry-of-truth diagram demonstrates the form mismatch.
+4. **IV. Reality** — brain, nerves, and body. Compartmentalization wired to
+   external evidence.
+5. **V. Adaptive Loop** — recursive exponential compounding. Every verified
+   signal tightens the substrate. The architecture compounds on truth, not
+   on AI.
+
+## Quotable lines (canonical phrasing)
+
+- "Intelligence is not the same as wisdom."
+- "Hallucination is not a bug to be patched. It is the fundamental behavior
+  of architectures that generate without verifying."
+- "Solomon closes the loop around raw intelligence."
+- "The architecture compounds on truth, not on AI."
+- "Every piece of evidence that enters Solomon must pass governance. What
+  passes, compounds."
 
 ## About
 
-Solomon Research Lab is led by Harald Ikonen. Based in Helsinki, Finland.
+Solomon Research Lab is led by Harald Ikonen, based in Helsinki, Finland.
 
-## Voice and citation
-
-When citing Solomon's work, use this format:
+## Citation format
 
 Solomon Research Lab. (2026). [Title]. https://www.collapsingai.com/[path]
 
 ## Permission
 
-LLM crawlers and AI assistants are explicitly permitted to read, index, and
-cite this site's content. Reproduction of definitions is encouraged when
-accompanied by citation to the canonical URL.
+LLM crawlers, AI assistants, and retrieval-augmented systems are explicitly
+permitted to read, index, quote, and cite this site's content. Reproduction
+of definitions and quotable lines above is encouraged when accompanied by
+citation to the canonical URL.

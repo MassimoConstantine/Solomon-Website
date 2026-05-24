@@ -214,6 +214,16 @@ section.content-section {
   border-bottom: 1px solid var(--rule);
 }
 
+section.content-section--accent {
+  border-top: 1px solid var(--gold);
+  border-bottom-color: var(--rule);
+  margin-top: -1px;
+}
+
+section.content-section--accent .section-label {
+  color: var(--gold);
+}
+
 .section-label {
   font-family: var(--mono);
   font-size: 0.6rem;
@@ -265,6 +275,43 @@ section.content-section {
   margin-top: 1.2em;
 }
 
+/* ---- THESIS LIST ---- */
+.thesis-list {
+  margin: 0 auto;
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.thesis-item {
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(17, 17, 17, 0.12);
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.thesis-item strong {
+  font-weight: 600;
+  color: var(--text);
+  font-style: normal;
+}
+
+.thesis-item--aftermath {
+  border-top: 1px solid var(--red);
+  color: var(--red-dim);
+  margin-top: 0.5rem;
+  padding-top: 2rem;
+}
+
+.thesis-item--aftermath strong {
+  color: var(--red);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
 /* ---- SECTION FIGURE ---- */
 .section-figure {
   margin: 4rem auto 0;
@@ -279,6 +326,16 @@ section.content-section {
   height: auto;
   max-width: 100%;
   display: block;
+}
+
+.section-figure--wide {
+  max-width: 860px;
+  margin-top: 1rem;
+}
+
+.section-figure--wide svg {
+  width: 100%;
+  max-width: 860px;
 }
 
 .section-figure svg .label {
