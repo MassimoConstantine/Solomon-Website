@@ -232,7 +232,7 @@ export default function Home() {
               <text x="60" y="276" className="label draw-node n1" textAnchor="middle">reality</text>
             </svg>
             <p className="figure-caption reveal reveal-delay-4">
-              Fig. 1 &mdash; Solomon stays anchored to reality. AI, left to its own trajectory, drifts.
+              Fig. 1 &mdash; Anchored to reality, Solomon climbs in a straight line. AI, generating from its own outputs, drifts further from truth with every step &mdash; each hallucination becoming the ground for the next.
             </p>
           </div>
 
@@ -248,13 +248,13 @@ export default function Home() {
           </h2>
           <div className="thesis-list reveal reveal-delay-2">
             <div className="thesis-item">
-              <p><strong>Frozen &amp; Stateless</strong> &mdash; Acting as a stateless model that is trained and optimized on old data. With a limited context window that has no concept of truth.</p>
+              <p><strong>Frozen &amp; Stateless</strong> &mdash; A stateless model trained and optimized on old data, acting inside a bounded context window with no concept of truth. It does not auto-progress toward goals or move beyond what it is prompted to do.</p>
             </div>
             <div className="thesis-item">
-              <p><strong>Plausible &amp; Regressive</strong> &mdash; Auto-Regressively maximizing for plausible continuation. Generating near-truth statistical averages.</p>
+              <p><strong>Plausible &amp; Regressive</strong> &mdash; Auto-regressively maximizing for plausible continuation. Generating near-truth statistical averages with no understanding of correctness.</p>
             </div>
             <div className="thesis-item">
-              <p><strong>Unwise Intelligence</strong> &mdash; Treating partial truth as complete, which compounds distortions and missed errors feedback into the stateless machine.</p>
+              <p><strong>Unwise Intelligence</strong> &mdash; Treating partial truth as complete. Distortions compound and errors feed back into the stateless machine. Mirror reflecting mirror, the warp grows with every pass.</p>
             </div>
             <div className="thesis-item thesis-item--aftermath">
               <p><strong>Synthetic Collapse</strong> &mdash; Near-truth propagates as convenience, settles into common knowledge through reuse, hardens into authority through citation, and embeds as infrastructure through integration. Institutions build on the distortion and the human future faces a world of mirage.</p>
@@ -285,18 +285,26 @@ export default function Home() {
         <div className="container">
           <p className="section-label reveal">III. Physics</p>
           <h2 className="section-headline reveal reveal-delay-1">
-            Scaling has an epistemic ceiling.
+            Optimizing v.s. world models.
           </h2>
           <div className="section-body reveal reveal-delay-2">
             <p>
-              Hallucination is not a bug to be patched. It is the fundamental behavior of
-              architectures that generate without verifying. Peaked probability distributions
-              fire with equal confidence whether the source is knowledge or interpolation.
+              AI lives on a sphere of learned meaning, stretched by tools and retrieval into
+              an amorphous shape, but still reaching no farther than one unit from the
+              center.
             </p>
             <p>
-              As these systems assume consequential decisions, the absence of epistemic
-              integrity becomes existential. The window to build the verification layer is now,
-              before capability permanently outpaces accountability.
+              Reality is not a sphere. It has corners where events, identities, and
+              commitments live, all sitting farther from the center than any sphere or
+              amorphous extension of it can reach, and an AI built on the sphere must
+              hallucinate no matter how large it grows.
+            </p>
+            <p>
+              Solomon operates on a different geometry situated beneath the AI, a world
+              model &mdash; a structured map of reality that grows to a fuller reflection
+              of reality with every cycle. Truth lives in this world model, the AI
+              articulates it, and the result is an AI structurally incapable of confident
+              fiction.
             </p>
           </div>
 
@@ -415,15 +423,18 @@ export default function Home() {
           </h2>
           <div className="section-body reveal reveal-delay-2">
             <p>
-              Learning is stable when every claim entering the substrate is anchored to evidence
-              outside the system. Stable learning compounds. The system at T+1 is structurally
-              different from the system at T — not merely more prompted, but more grounded.
+              Solomon adapts and recursively learns by closing the loop between itself and
+              reality. Each cycle teaches the next, and each cycle inherits only what was
+              true.
             </p>
             <p>
-              After a year, the structure holds machine-actionable context no foundation model can
-              produce. Model size curves plateau. Substrate density does not. Without an external
-              anchor, the loop closes on itself and collapse follows. With it, the architecture
-              compounds on truth indefinitely.
+              Compounding of truth and verified information makes the system sustainable
+              and incapable of the same collapses as other AIs.
+            </p>
+            <p>
+              Truth accumulates in the substrate. Pattern richness deepens, routing
+              precision sharpens, reasoning capacity grows, and contextual intelligence
+              gets exponentially stronger with every cycle it runs.
             </p>
           </div>
 
@@ -449,6 +460,11 @@ export default function Home() {
           >
             View the Whitepaper
           </a>
+          <div className="cta-refs reveal reveal-delay-2">
+            <a href="/references" target="_blank" rel="noopener">
+              References
+            </a>
+          </div>
         </div>
       </section>
 
