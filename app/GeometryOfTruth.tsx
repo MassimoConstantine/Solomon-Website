@@ -143,7 +143,8 @@ export default function GeometryOfTruth() {
   return (
     <canvas
       ref={canvasRef}
-      style={{ display: "block", width: "100%", height: "480px" }}
+      className="geometry-canvas"
+      style={{ display: "block", width: "100%" }}
       aria-label="Two 3D diagrams. A wireframe cube represents the bounded domain of truth. On the left, a sphere (AI) grows inside it but cannot fill the corners. On the right, a cube (our system) grows inside it and fills it completely."
     />
   );

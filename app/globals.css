@@ -215,8 +215,8 @@ section.content-section {
 }
 
 section.content-section--accent {
-  border-top: 1px solid var(--gold);
-  border-bottom-color: var(--rule);
+  border-top: 1px solid var(--gold) !important;
+  border-bottom: 1px solid var(--gold) !important;
   margin-top: -1px;
 }
 
@@ -511,25 +511,95 @@ footer {
 .draw-node.n6 { transition-delay: 1.2s; }
 .draw-node.n7 { transition-delay: 1.5s; }
 
+/* ---- GEOMETRY CANVAS (3D figure) ---- */
+.geometry-canvas {
+  height: 480px;
+}
+
 /* ---- RESPONSIVE ---- */
 @media (max-width: 640px) {
   nav {
     padding: 1.2rem 1.5rem;
   }
   .container {
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
   }
   .hero {
     padding-top: 5rem;
   }
   section.content-section {
-    padding: 4rem 0;
+    padding: 3.5rem 0;
   }
   .cta-section {
-    padding: 5rem 0;
+    padding: 4rem 0;
   }
   .hero-figure svg {
     width: 110px;
+  }
+  .hero-rule {
+    margin-top: 4rem;
+  }
+
+  /* Thesis list — tighten on mobile */
+  .thesis-item {
+    padding: 1.1rem 0;
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+  .thesis-item--aftermath {
+    padding-top: 1.5rem;
+  }
+
+  /* Equation — prevent overflow, allow wrap */
+  .equation-aside {
+    margin: 2rem 0;
+    padding: 1.5rem 0;
+  }
+  .equation {
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+  .equation-caption {
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+    line-height: 1.7;
+  }
+
+  /* Geometry of Truth canvas — shorter on mobile */
+  .geometry-canvas {
+    height: 320px;
+  }
+
+  /* Wide figure — let it fill */
+  .section-figure--wide {
+    max-width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  /* Figure caption — tighter */
+  .figure-caption {
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* Section labels and body — slight reduction */
+  .section-label {
+    margin: 0 auto 1.75rem;
+  }
+  .section-body {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 400px) {
+  .equation {
+    font-size: 0.62rem;
+  }
+  .geometry-canvas {
+    height: 260px;
   }
 }
 

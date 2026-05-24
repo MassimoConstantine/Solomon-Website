@@ -231,6 +231,9 @@ export default function Home() {
               <text x="108" y="30" className="label draw-node n7" textAnchor="middle">ai</text>
               <text x="60" y="276" className="label draw-node n1" textAnchor="middle">reality</text>
             </svg>
+            <p className="figure-caption reveal reveal-delay-4">
+              Fig. 1 &mdash; Solomon stays anchored to reality. AI, left to its own trajectory, drifts.
+            </p>
           </div>
 
           <div className="hero-rule reveal reveal-delay-4"></div>
@@ -269,11 +272,9 @@ export default function Home() {
           </h2>
           <div className="section-body reveal reveal-delay-2">
             <p>
-              Solomon closes the loop around raw intelligence. The <em>brain</em> is a governed
-              world model, physically enforced rather than prompt-suggested. Every claim carries
-              its provenance. Every state transition runs under law. The <em>nerves</em> bind
-              that world to reality so internal coherence cannot drift away from external truth.
-              The <em>body</em> carries reasoning into controlled, contextual action.
+              AI is one component inside Solomon&apos;s brain, merely generating. Underneath
+              sits the substrate &mdash; the structure that perceives the world, holds what is
+              true, and governs every claim before it compounds.
             </p>
           </div>
 
@@ -302,7 +303,7 @@ export default function Home() {
           <div className="section-figure section-figure--wide reveal reveal-delay-3">
             <GeometryOfTruth />
             <p className="figure-caption">
-              Fig. 4 &mdash; The geometry of truth
+              Fig. 2 &mdash; The geometry of truth
             </p>
           </div>
         </div>
@@ -316,17 +317,15 @@ export default function Home() {
           </h2>
           <div className="section-body reveal reveal-delay-2">
             <p>
-              A closed loop produces internally coherent, externally wrong output. The fix is
-              compartmentalization wired to reality. A brain that governs. Nerves that perceive.
-              A body that acts. Each part has its role.
+              Our brain is a structure that uses AI. Our system holds a world model and builds
+              the physics under which it may act in reality.
             </p>
             <p>
-              The brain holds the world model, written only through constrained pathways. The
-              nerves carry signal from email, transcripts, calendar, files, signed third party
-              data, direct conversation. Every claim that enters the substrate is anchored to
-              evidence that exists outside the system. The body acts only within laws the brain
-              enforces. The model perceives. The structure holds what was perceived. The loop
-              is open to the world by design.
+              A structured foundation where generation can exist, because the nerves bridge it
+              to the truth.
+            </p>
+            <p>
+              Allowing it also to act in a governed way, executing with control.
             </p>
           </div>
 
@@ -433,7 +432,7 @@ export default function Home() {
               S(n+1) = S(n) + &Sigma;<sub>i</sub> G<sub>i</sub> &middot; &Delta;Bayes<sub>i</sub>(S(n), E<sub>i</sub>)
             </p>
             <p className="equation-caption">
-              Fig. 2 &mdash; Every piece of evidence that enters Solomon must pass governance. What passes, compounds. The system at any point in time is the sum of everything that has ever been verified &mdash; and it only grows.
+              Fig. 4 &mdash; Every piece of evidence that enters Solomon must pass governance. What passes, compounds. The system at any point in time is the sum of everything that has ever been verified &mdash; and it only grows.
             </p>
           </div>
         </div>
