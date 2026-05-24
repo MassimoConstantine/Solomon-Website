@@ -473,8 +473,18 @@ export default function Home() {
           className="container"
           style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%" }}
         >
-          <span className="footer-left">Solomon &middot; 2026</span>
-          <span className="footer-right">Helsinki, Finland</span>
+          <span className="footer-left">Solomon &middot; 2026 &middot; Helsinki, Finland</span>
+          <span className="footer-right">
+            <a href="mailto:harald@gideagency.com">harald@gideagency.com</a>
+            <span className="footer-sep" aria-hidden="true">/</span>
+            <a
+              href="https://www.linkedin.com/company/collapsing-ai"
+              target="_blank"
+              rel="noopener"
+            >
+              LinkedIn
+            </a>
+          </span>
         </div>
       </footer>
     </>

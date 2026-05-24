@@ -468,6 +468,25 @@ footer {
   font-weight: 300;
   letter-spacing: 0.1em;
   color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.footer-right a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-right a:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+.footer-sep {
+  color: #ccc;
 }
 
 /* ---- CTA REFERENCES NAV ---- */
