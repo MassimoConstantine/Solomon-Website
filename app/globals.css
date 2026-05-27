@@ -670,6 +670,16 @@ footer {
   .hero {
     padding-top: 5rem;
   }
+  /* Hero diamond on mobile — section height matches image height exactly,
+     no extra black space above or below. */
+  .hero-fractal {
+    min-height: min(100vw, 75vh);
+    align-items: flex-end;
+  }
+  .hero-fractal img {
+    width: min(100vw, 75vh);
+    height: min(100vw, 75vh);
+  }
   section.content-section {
     padding: 3.5rem 0;
   }
