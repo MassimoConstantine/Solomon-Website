@@ -18,6 +18,19 @@ const jsonLd = [
       name: site.author.name,
       jobTitle: site.author.role,
     },
+    makesOffer: {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Product",
+        name: "Ezer",
+        description:
+          "Ezer is the AI Solomon governs — a constrained operator inside the brain-nerves-body architecture. Generation is bounded by verification; every claim is anchored to evidence outside the system.",
+        brand: {
+          "@type": "Organization",
+          name: site.legalName,
+        },
+      },
+    },
     sameAs: [],
   },
   {
@@ -325,90 +338,31 @@ export default function Home() {
           </h2>
           <div className="section-body reveal reveal-delay-2">
             <p>
+              The architecture takes its shape from the body that built it. Cortex, brainstem,
+              nerve, synapse &mdash; the form is borrowed from human anatomy and repurposed as
+              a structure for governed cognition.
+            </p>
+            <p>
               Our brain is a structure that uses AI. Our system holds a world model and builds
-              the physics under which it may act in reality.
+              the physics under which it may act in reality. Ezer &mdash; the AI Solomon governs
+              &mdash; operates as one constrained component inside it, never the operator of the
+              whole.
             </p>
             <p>
               A structured foundation where generation can exist, because the nerves bridge it
-              to the truth.
-            </p>
-            <p>
-              Allowing it also to act in a governed way, executing with control.
+              to the truth. The body acts only within laws the brain enforces.
             </p>
           </div>
 
-          <div className="section-figure reveal reveal-delay-3">
-            <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="180" cy="180" r="140" fill="none" stroke="#111" strokeWidth="1.2" className="draw-node n1" />
-
-              <polyline points="237,167 270,160 305,170 340,160" fill="none" stroke="#111" strokeWidth="1" className="draw-node n2" />
-              <polyline points="221,148 245,120 275,95 295,65" fill="none" stroke="#111" strokeWidth="1" className="draw-node n2" />
-              <polyline points="205,128 220,100 240,75 250,40" fill="none" stroke="#111" strokeWidth="1" className="draw-node n2" />
-              <polyline points="180,128 175,95 185,65 175,30" fill="none" stroke="#111" strokeWidth="1" className="draw-node n2" />
-              <polyline points="155,128 140,100 120,75 110,40" fill="none" stroke="#111" strokeWidth="1" className="draw-node n2" />
-              <polyline points="139,148 115,125 90,105 70,75" fill="none" stroke="#111" strokeWidth="1" className="draw-node n2" />
-              <polyline points="123,167 95,160 70,170 40,160" fill="none" stroke="#111" strokeWidth="1" className="draw-node n2" />
-              <polyline points="129,192 100,210 75,225 50,220" fill="none" stroke="#111" strokeWidth="1" className="draw-node n2" />
-              <polyline points="135,216 115,240 95,265 75,295" fill="none" stroke="#111" strokeWidth="1" className="draw-node n2" />
-              <polyline points="158,227 145,260 155,290 145,325" fill="none" stroke="#111" strokeWidth="1" className="draw-node n2" />
-              <polyline points="180,238 175,265 185,295 175,335" fill="none" stroke="#111" strokeWidth="1" className="draw-node n2" />
-              <polyline points="203,227 215,260 200,295 215,330" fill="none" stroke="#111" strokeWidth="1" className="draw-node n2" />
-              <polyline points="225,216 250,240 270,270 290,300" fill="none" stroke="#111" strokeWidth="1" className="draw-node n2" />
-              <polyline points="231,192 260,205 290,215 320,205" fill="none" stroke="#111" strokeWidth="1" className="draw-node n2" />
-
-              <line x1="237" y1="167" x2="205" y2="128" stroke="#111" strokeWidth="1.2" className="draw-node n3" />
-              <line x1="205" y1="128" x2="155" y2="128" stroke="#111" strokeWidth="1.2" className="draw-node n3" />
-              <line x1="155" y1="128" x2="123" y2="167" stroke="#111" strokeWidth="1.2" className="draw-node n3" />
-              <line x1="123" y1="167" x2="135" y2="216" stroke="#111" strokeWidth="1.2" className="draw-node n3" />
-              <line x1="135" y1="216" x2="180" y2="238" stroke="#111" strokeWidth="1.2" className="draw-node n3" />
-              <line x1="180" y1="238" x2="225" y2="216" stroke="#111" strokeWidth="1.2" className="draw-node n3" />
-              <line x1="225" y1="216" x2="237" y2="167" stroke="#111" strokeWidth="1.2" className="draw-node n3" />
-
-              <line x1="207" y1="158" x2="180" y2="145" stroke="#111" strokeWidth="0.6" className="draw-node n4" />
-              <line x1="180" y1="145" x2="153" y2="158" stroke="#111" strokeWidth="0.6" className="draw-node n4" />
-              <line x1="153" y1="158" x2="146" y2="188" stroke="#111" strokeWidth="0.6" className="draw-node n4" />
-              <line x1="146" y1="188" x2="165" y2="212" stroke="#111" strokeWidth="0.6" className="draw-node n4" />
-              <line x1="165" y1="212" x2="195" y2="212" stroke="#111" strokeWidth="0.6" className="draw-node n4" />
-              <line x1="195" y1="212" x2="214" y2="188" stroke="#111" strokeWidth="0.6" className="draw-node n4" />
-              <line x1="214" y1="188" x2="207" y2="158" stroke="#111" strokeWidth="0.6" className="draw-node n4" />
-
-              <line x1="237" y1="167" x2="207" y2="158" stroke="#111" strokeWidth="0.6" className="draw-node n4" />
-              <line x1="205" y1="128" x2="180" y2="145" stroke="#111" strokeWidth="0.6" className="draw-node n4" />
-              <line x1="155" y1="128" x2="153" y2="158" stroke="#111" strokeWidth="0.6" className="draw-node n4" />
-              <line x1="123" y1="167" x2="146" y2="188" stroke="#111" strokeWidth="0.6" className="draw-node n4" />
-              <line x1="135" y1="216" x2="165" y2="212" stroke="#111" strokeWidth="0.6" className="draw-node n4" />
-              <line x1="180" y1="238" x2="195" y2="212" stroke="#111" strokeWidth="0.6" className="draw-node n4" />
-              <line x1="225" y1="216" x2="214" y2="188" stroke="#111" strokeWidth="0.6" className="draw-node n4" />
-
-              <line x1="180" y1="145" x2="180" y2="180" stroke="#111" strokeWidth="0.5" className="draw-node n4" />
-              <line x1="146" y1="188" x2="180" y2="180" stroke="#111" strokeWidth="0.5" className="draw-node n4" />
-              <line x1="195" y1="212" x2="180" y2="180" stroke="#111" strokeWidth="0.5" className="draw-node n4" />
-              <line x1="214" y1="188" x2="180" y2="180" stroke="#111" strokeWidth="0.5" className="draw-node n4" />
-
-              <circle cx="237" cy="167" r="2" fill="#111" className="draw-node n3" />
-              <circle cx="205" cy="128" r="2" fill="#111" className="draw-node n3" />
-              <circle cx="155" cy="128" r="2" fill="#111" className="draw-node n3" />
-              <circle cx="123" cy="167" r="2" fill="#111" className="draw-node n3" />
-              <circle cx="135" cy="216" r="2" fill="#111" className="draw-node n3" />
-              <circle cx="180" cy="238" r="2" fill="#111" className="draw-node n3" />
-              <circle cx="225" cy="216" r="2" fill="#111" className="draw-node n3" />
-
-              <circle cx="207" cy="158" r="1.5" fill="#111" className="draw-node n4" />
-              <circle cx="180" cy="145" r="1.5" fill="#111" className="draw-node n4" />
-              <circle cx="153" cy="158" r="1.5" fill="#111" className="draw-node n4" />
-              <circle cx="146" cy="188" r="1.5" fill="#111" className="draw-node n4" />
-              <circle cx="165" cy="212" r="1.5" fill="#111" className="draw-node n4" />
-              <circle cx="195" cy="212" r="1.5" fill="#111" className="draw-node n4" />
-              <circle cx="214" cy="188" r="1.5" fill="#111" className="draw-node n4" />
-
-              <circle cx="180" cy="180" r="2" fill="#111" className="draw-node n4" />
-
-              <text x="180" y="20" className="label" textAnchor="middle">body</text>
-              <text x="180" y="70" className="label" textAnchor="middle">nerves</text>
-              <text x="180" y="115" className="label" textAnchor="middle">brain</text>
-            </svg>
+          <div className="section-figure section-figure--wide reveal reveal-delay-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/solomon-temple.png"
+              alt="A brain inside a body. Regions — cortex, sensory, motor, memory, gating, limbic — hold AI neurons; introspection sits above; the brainstem descends; sensory and affector nerves cross the body boundary."
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
             <p className="figure-caption">
-              Fig. 3 &mdash; A brain divided into compartments, with the LLM as one constrained operator inside the looping system; nerves reach outward; the body is the boundary.
+              Fig. 3 &mdash; A brain inside a body. Named regions hold the AI&apos;s neurons; introspection sits above the cortex; the brainstem descends below. Sensory nerves carry signal in, affector nerves carry action out &mdash; the loop closes at the boundary of the body.
             </p>
           </div>
         </div>
@@ -434,7 +388,8 @@ export default function Home() {
             <p>
               Truth accumulates in the substrate. Pattern richness deepens, routing
               precision sharpens, reasoning capacity grows, and contextual intelligence
-              gets exponentially stronger with every cycle it runs.
+              gets exponentially stronger with every cycle it runs. Ezer compounds
+              against this substrate &mdash; not against itself.
             </p>
           </div>
 
@@ -473,7 +428,7 @@ export default function Home() {
           className="container"
           style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%" }}
         >
-          <span className="footer-left">Solomon &middot; 2026 &middot; Helsinki, Finland</span>
+          <span className="footer-left">Solomon &middot; Ezer &middot; 2026 &middot; Helsinki, Finland</span>
           <span className="footer-right">
             <a href="mailto:harald@gideagency.com">harald@gideagency.com</a>
             <span className="footer-sep" aria-hidden="true">/</span>

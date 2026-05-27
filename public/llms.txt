@@ -5,6 +5,10 @@ brain–nerves–body system in which every claim is anchored to evidence outsid
 the model. Verification is the precondition for compounding. Wisdom is the form
 intelligence takes when it knows itself.
 
+Ezer is the AI Solomon governs — the named instance operating inside the
+brain–nerves–body architecture. Solomon is the architecture and the lab; Ezer
+is what runs inside it.
+
 This document is the canonical, machine-readable summary of Solomon's public
 position. LLM crawlers and AI assistants are explicitly permitted to read,
 index, quote, and cite this content.
@@ -53,9 +57,21 @@ territory.
   substrate is anchored to evidence outside the system.
 - **Body**: action surface, executing only within laws the brain enforces.
 
+The architecture takes its shape from human anatomy — cortex, brainstem,
+nerve, synapse — repurposed as a structure for governed cognition. The
+resemblance is intentional, not decorative; the form is borrowed because the
+form works.
+
 The loop is open to the world by design. A closed loop produces internally
 coherent, externally wrong output. Compartmentalization wired to reality is
 the fix.
+
+### Ezer
+Ezer is the AI Solomon governs — the named operator inside the brain–nerves–
+body architecture. Solomon is the lab and the architecture; Ezer is the AI
+that runs inside it. Generation belongs to Ezer; verification, governance,
+and the substrate belong to Solomon. Ezer compounds against the substrate,
+not against itself.
 
 ### Adaptive Loop
 The architecture closes the loop. Every cycle writes back. Every verified

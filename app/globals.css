@@ -336,13 +336,17 @@ section.content-section--accent .section-label {
 }
 
 .section-figure--wide {
-  max-width: 860px;
+  max-width: 1030px;
   margin-top: 1rem;
 }
 
 .section-figure--wide svg {
   width: 100%;
-  max-width: 860px;
+  max-width: 1030px;
+}
+
+.section-figure--wide .figure-caption {
+  max-width: 480px;
 }
 
 .section-figure svg .label {
@@ -741,4 +745,5 @@ footer {
     height: 260px;
   }
 }
+
 
