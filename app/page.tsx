@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/site";
 import GeometryOfTruth from "./GeometryOfTruth";
 
@@ -129,8 +129,41 @@ const jsonLd = [
   },
 ];
 
+const governanceItems = [
+  { title: "Discern", body: "Solomon separates what is truth from hallucination." },
+  { title: "Name", body: "Everything it perceives is classified and typed so it can be reliably reasoned over." },
+  { title: "Measure", body: "Every fact carries its origin and its moment so it is traceable." },
+  { title: "Type", body: "It grows without losing itself. Capability expands while identity holds." },
+  { title: "Delegate", body: "It governs by nature, not by instruction. Its parts act freely within the bounds it sets." },
+  { title: "Steward", body: "It carries the likeness of its creator, the reason for its existence, and the trusted meaning it is meant to serve." },
+  { title: "Verify", body: "Nothing is called truth until reality confirms it." },
+];
+
+const HEPT_NODE_R = 64;
+const HEPT_HIT_R = 74;
+const HEPT_LABEL_R = 84;
+const heptagonPoints = governanceItems.map((item, i) => {
+  const angle = ((-90 + i * (360 / 7)) * Math.PI) / 180;
+  const cos = Math.cos(angle);
+  const sin = Math.sin(angle);
+  return {
+    ...item,
+    x: 100 + HEPT_NODE_R * cos,
+    y: 100 + HEPT_NODE_R * sin,
+    hx: 100 + HEPT_HIT_R * cos,
+    hy: 100 + HEPT_HIT_R * sin,
+    lx: 100 + HEPT_LABEL_R * cos,
+    ly: 100 + HEPT_LABEL_R * sin,
+  };
+});
+const heptagonOutline = heptagonPoints.map((p) => `${p.x},${p.y}`).join(" ");
+
 export default function Home() {
   const fractalRef = useRef<HTMLImageElement>(null);
+  const [selected, setSelected] = useState<number | null>(null);
+
+  const toggleItem = (index: number) =>
+    setSelected((prev) => (prev === index ? null : index));
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -291,27 +324,64 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="thesis-list reveal reveal-delay-3">
-            <div className="thesis-item">
-              <p><strong>Discern</strong> - Solomon separates what is truth from hallucination.</p>
-            </div>
-            <div className="thesis-item">
-              <p><strong>Name</strong> - Everything it perceives is classified and typed so it can be reliably reasoned over.</p>
-            </div>
-            <div className="thesis-item">
-              <p><strong>Measure</strong> - Every fact carries its origin and its moment so it is traceable.</p>
-            </div>
-            <div className="thesis-item">
-              <p><strong>Type</strong> - It grows without losing itself. Capability expands while identity holds.</p>
-            </div>
-            <div className="thesis-item">
-              <p><strong>Delegate</strong> - It governs by nature, not by instruction. Its parts act freely within the bounds it sets.</p>
-            </div>
-            <div className="thesis-item">
-              <p><strong>Steward</strong> - It carries the likeness of its creator, the reason for its existence, and the trusted meaning it is meant to serve.</p>
-            </div>
-            <div className="thesis-item">
-              <p><strong>Verify</strong> - Nothing is called truth until reality confirms it.</p>
+          <div className="heptagon-figure reveal reveal-delay-3">
+            <svg
+              className="heptagon-svg"
+              viewBox="0 0 200 200"
+              role="group"
+              aria-label="Seven governance principles"
+            >
+              <polygon className="heptagon-outline" points={heptagonOutline} />
+              {heptagonPoints.map((p, i) => {
+                const active = selected === i;
+                return (
+                  <g
+                    key={p.title}
+                    className={`heptagon-vertex${active ? " is-active" : ""}`}
+                    role="button"
+                    tabIndex={0}
+                    aria-pressed={active}
+                    aria-label={p.title}
+                    onClick={() => toggleItem(i)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        toggleItem(i);
+                      }
+                    }}
+                  >
+                    <circle
+                      className="heptagon-hit"
+                      cx={p.hx}
+                      cy={p.hy}
+                      r="20"
+                    />
+                    <circle
+                      className="heptagon-node"
+                      cx={p.x}
+                      cy={p.y}
+                      r={active ? 3 : 2}
+                    />
+                    <text
+                      className="heptagon-label"
+                      x={p.lx}
+                      y={p.ly}
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                    >
+                      {p.title}
+                    </text>
+                  </g>
+                );
+              })}
+            </svg>
+
+            <div className="heptagon-center" aria-live="polite">
+              {selected === null ? (
+                <span className="heptagon-hint">Select a principle</span>
+              ) : (
+                <p key={selected}>{governanceItems[selected].body}</p>
+              )}
             </div>
           </div>
 

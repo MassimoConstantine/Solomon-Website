@@ -319,6 +319,108 @@ section.content-section--accent .section-label {
   letter-spacing: 0.01em;
 }
 
+/* ---- HEPTAGON ---- */
+.heptagon-figure {
+  position: relative;
+  width: min(90vw, 360px);
+  margin: 4rem auto 0;
+}
+
+.heptagon-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.heptagon-outline {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 0.8;
+  opacity: 0.3;
+}
+
+.heptagon-vertex {
+  cursor: pointer;
+}
+
+.heptagon-hit {
+  fill: transparent;
+}
+
+.heptagon-node {
+  fill: var(--text);
+  transition: fill 0.25s ease, r 0.2s ease;
+}
+
+.heptagon-vertex:hover .heptagon-node,
+.heptagon-vertex:focus-visible .heptagon-node,
+.heptagon-vertex.is-active .heptagon-node {
+  fill: var(--gold);
+}
+
+.heptagon-label {
+  font-family: var(--mono);
+  font-size: 7px;
+  fill: var(--text-secondary);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: fill 0.25s ease;
+}
+
+.heptagon-vertex:hover .heptagon-label,
+.heptagon-vertex:focus-visible .heptagon-label,
+.heptagon-vertex.is-active .heptagon-label {
+  fill: var(--gold);
+}
+
+.heptagon-vertex:focus {
+  outline: none;
+}
+
+.heptagon-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 52%;
+  text-align: center;
+  pointer-events: none;
+}
+
+.heptagon-hint {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.heptagon-center p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 0.72rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  animation: hept-fade 0.35s ease;
+}
+
+@keyframes hept-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heptagon-center p {
+    animation: none;
+  }
+}
+
 /* ---- SECTION FIGURE ---- */
 .section-figure {
   margin: 4rem auto 0;
