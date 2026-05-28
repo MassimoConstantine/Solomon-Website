@@ -334,7 +334,7 @@ export default function Home() {
         <div className="container">
           <p className="section-label reveal">IV. Reality</p>
           <h2 className="section-headline reveal reveal-delay-1">
-            Brain, nerves, and body.
+            Synthetic mind: brain, nerves &amp; body.
           </h2>
           <div className="section-body reveal reveal-delay-2">
             <p>
