@@ -245,7 +245,7 @@ export default function Home() {
               <text x="60" y="276" className="label draw-node n1" textAnchor="middle">reality</text>
             </svg>
             <p className="figure-caption reveal reveal-delay-4">
-              Fig. 1 &mdash; Anchored to reality, Solomon climbs in a straight line. AI, generating from its own outputs, drifts further from truth with every step &mdash; each hallucination becoming the ground for the next.
+              Fig. 1, Anchored to reality, Solomon climbs in a straight line. AI, generating from its own outputs, drifts further from truth with every step, each hallucination becoming the ground for the next.
             </p>
           </div>
 
@@ -261,16 +261,16 @@ export default function Home() {
           </h2>
           <div className="thesis-list reveal reveal-delay-2">
             <div className="thesis-item">
-              <p><strong>Frozen &amp; Stateless</strong> &mdash; A stateless model trained and optimized on old data, acting inside a bounded context window with no concept of truth. It does not auto-progress toward goals or move beyond what it is prompted to do.</p>
+              <p><strong>Frozen &amp; Stateless</strong> - A stateless model trained and optimized on old data, acting inside a bounded context window with no concept of truth. It does not auto-progress toward goals or move beyond what it is prompted to do.</p>
             </div>
             <div className="thesis-item">
-              <p><strong>Plausible &amp; Regressive</strong> &mdash; Auto-regressively maximizing for plausible continuation. Generating near-truth statistical averages with no understanding of correctness.</p>
+              <p><strong>Plausible &amp; Regressive</strong> - Auto-regressively maximizing for plausible continuation. Generating near-truth statistical averages with no understanding of correctness.</p>
             </div>
             <div className="thesis-item">
-              <p><strong>Unwise Intelligence</strong> &mdash; Treating partial truth as complete. Distortions compound and errors feed back into the stateless machine. Mirror reflecting mirror, the warp grows with every pass.</p>
+              <p><strong>Unwise Intelligence</strong> - Treating partial truth as complete. Distortions compound and errors feed back into the stateless machine. Mirror reflecting mirror, the warp grows with every pass.</p>
             </div>
             <div className="thesis-item thesis-item--aftermath">
-              <p><strong>Synthetic Collapse</strong> &mdash; Near-truth propagates as convenience, settles into common knowledge through reuse, hardens into authority through citation, and embeds as infrastructure through integration. Institutions build on the distortion and the human future faces a world of mirage.</p>
+              <p><strong>Synthetic Collapse</strong> - Near-truth propagates as convenience, settles into common knowledge through reuse, hardens into authority through citation, and embeds as infrastructure through integration. Institutions build on the distortion and the human future faces a world of mirage.</p>
             </div>
           </div>
 
@@ -286,9 +286,33 @@ export default function Home() {
           <div className="section-body reveal reveal-delay-2">
             <p>
               AI is one component inside Solomon&apos;s brain, merely generating. Underneath
-              sits the substrate &mdash; the structure that perceives the world, holds what is
+              sits the substrate, the structure that perceives the world, holds what is
               true, and governs every claim before it compounds.
             </p>
+          </div>
+
+          <div className="thesis-list reveal reveal-delay-3">
+            <div className="thesis-item">
+              <p><strong>Discern</strong> - Solomon separates what is truth from hallucination.</p>
+            </div>
+            <div className="thesis-item">
+              <p><strong>Name</strong> - Everything it perceives is classified and typed so it can be reliably reasoned over.</p>
+            </div>
+            <div className="thesis-item">
+              <p><strong>Measure</strong> - Every fact carries its origin and its moment so it is traceable.</p>
+            </div>
+            <div className="thesis-item">
+              <p><strong>Type</strong> - It grows without losing itself. Capability expands while identity holds.</p>
+            </div>
+            <div className="thesis-item">
+              <p><strong>Delegate</strong> - It governs by nature, not by instruction. Its parts act freely within the bounds it sets.</p>
+            </div>
+            <div className="thesis-item">
+              <p><strong>Steward</strong> - It carries the likeness of its creator, the reason for its existence, and the trusted meaning it is meant to serve.</p>
+            </div>
+            <div className="thesis-item">
+              <p><strong>Verify</strong> - Nothing is called truth until reality confirms it.</p>
+            </div>
           </div>
 
         </div>
@@ -314,7 +338,7 @@ export default function Home() {
             </p>
             <p>
               Solomon operates on a different geometry situated beneath the AI, a world
-              model &mdash; a structured map of reality that grows to a fuller reflection
+              model, a structured map of reality that grows to a fuller reflection
               of reality with every cycle. Truth lives in this world model, the AI
               articulates it, and the result is an AI structurally incapable of confident
               fiction.
@@ -324,7 +348,7 @@ export default function Home() {
           <div className="section-figure section-figure--wide reveal reveal-delay-3">
             <GeometryOfTruth />
             <p className="figure-caption">
-              Fig. 2 &mdash; The geometry of truth
+              Fig. 2, The geometry of truth
             </p>
           </div>
         </div>
@@ -339,13 +363,13 @@ export default function Home() {
           <div className="section-body reveal reveal-delay-2">
             <p>
               The architecture takes its shape from the body that built it. Cortex, brainstem,
-              nerve, synapse &mdash; the form is borrowed from human anatomy and repurposed as
+              nerve, synapse, the form is borrowed from human anatomy and repurposed as
               a structure for governed cognition.
             </p>
             <p>
               Our brain is a structure that uses AI. Our system holds a world model and builds
-              the physics under which it may act in reality. Ezer &mdash; the AI Solomon governs
-              &mdash; operates as one constrained component inside it, never the operator of the
+              the physics under which it may act in reality. Ezer, the AI Solomon governs,
+              operates as one constrained component inside it, never the operator of the
               whole.
             </p>
             <p>
@@ -362,7 +386,7 @@ export default function Home() {
               style={{ width: "100%", height: "auto", display: "block" }}
             />
             <p className="figure-caption">
-              Fig. 3 &mdash; A brain inside a body. Named regions hold the AI&apos;s neurons; introspection sits above the cortex; the brainstem descends below. Sensory nerves carry signal in, affector nerves carry action out &mdash; the loop closes at the boundary of the body.
+              Fig. 3, A brain inside a body. Named regions hold the AI&apos;s neurons; introspection sits above the cortex; the brainstem descends below. Sensory nerves carry signal in, affector nerves carry action out, the loop closes at the boundary of the body.
             </p>
           </div>
         </div>
@@ -389,7 +413,7 @@ export default function Home() {
               Truth accumulates in the substrate. Pattern richness deepens, routing
               precision sharpens, reasoning capacity grows, and contextual intelligence
               gets exponentially stronger with every cycle it runs. Ezer compounds
-              against this substrate &mdash; not against itself.
+              against this substrate, not against itself.
             </p>
           </div>
 
@@ -398,7 +422,7 @@ export default function Home() {
               S(n+1) = S(n) + &Sigma;<sub>i</sub> G<sub>i</sub> &middot; &Delta;Bayes<sub>i</sub>(S(n), E<sub>i</sub>)
             </p>
             <p className="equation-caption">
-              Fig. 4 &mdash; Every piece of evidence that enters Solomon must pass governance. What passes, compounds. The system at any point in time is the sum of everything that has ever been verified &mdash; and it only grows.
+              Fig. 4, Every piece of evidence that enters Solomon must pass governance. What passes, compounds. The system at any point in time is the sum of everything that has ever been verified, and it only grows.
             </p>
           </div>
         </div>
