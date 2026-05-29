@@ -500,15 +500,25 @@ export default function Home() {
 
       <section className="cta-section" id="cta">
         <div className="container">
-          <h2 className="cta-headline reveal">Read the Research</h2>
-          <a
-            href="/which-way-does-the-spirit-collapse.pdf#toolbar=0"
-            target="_blank"
-            rel="noopener"
-            className="cta-button reveal reveal-delay-1"
-          >
-            View the Whitepaper
-          </a>
+          <h2 className="cta-headline reveal">Born from Research</h2>
+          <div className="cta-buttons reveal reveal-delay-1">
+            <a
+              href="/which-way-does-the-spirit-collapse.pdf#toolbar=0"
+              target="_blank"
+              rel="noopener"
+              className="cta-button"
+            >
+              View the Whitepaper
+            </a>
+            <a
+              href="https://www.enterpriseworldmodel.com"
+              target="_blank"
+              rel="noopener"
+              className="cta-button cta-button--secondary"
+            >
+              Get to know Ezer
+            </a>
+          </div>
           <div className="cta-refs reveal reveal-delay-2">
             <a href="/references" target="_blank" rel="noopener">
               References
@@ -518,22 +528,21 @@ export default function Home() {
       </section>
 
       <footer>
-        <div
-          className="container"
-          style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%" }}
-        >
-          <span className="footer-left">Solomon &middot; Ezer &middot; 2026 &middot; Helsinki, Finland</span>
-          <span className="footer-right">
-            <a href="mailto:harald@gideagency.com">harald@gideagency.com</a>
-            <span className="footer-sep" aria-hidden="true">/</span>
-            <a
-              href="https://www.linkedin.com/company/collapsing-ai"
-              target="_blank"
-              rel="noopener"
-            >
-              LinkedIn
-            </a>
-          </span>
+        <div className="container footer-inner">
+          <div className="footer-meta">
+            <span className="footer-right">
+              <a href="mailto:harald@gideagency.com">harald@gideagency.com</a>
+              <span className="footer-sep" aria-hidden="true">/</span>
+              <a
+                href="https://www.linkedin.com/company/collapsing-ai"
+                target="_blank"
+                rel="noopener"
+              >
+                LinkedIn
+              </a>
+            </span>
+            <span className="footer-left">Solomon &middot; 2026 &middot; Helsinki, Finland</span>
+          </div>
         </div>
       </footer>
     </>

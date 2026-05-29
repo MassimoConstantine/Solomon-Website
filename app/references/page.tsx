@@ -107,8 +107,32 @@ export default function References() {
             </li>
           </ol>
 
-          <h2 className="ref-group">Hallucination rates in practice</h2>
+          <h2 className="ref-group">Architectural foundation</h2>
           <ol className="references-page-list" start={5}>
+            <li>
+              <p>
+                <strong>Hawkins, J. &amp; Numenta</strong>.{" "}
+                <em>The Thousand Brains Project.</em>
+              </p>
+              <p className="ref-note">
+                An open-source effort implementing the Thousand Brains Theory of
+                Intelligence: the neocortex learns through thousands of cortical columns,
+                each building structured models of the world in reference frames and voting
+                toward consensus. A neuroscience-grounded case that intelligence rests on
+                many sensorimotor models of the world rather than a single monolithic
+                predictor &mdash; an antecedent for situating generation beneath a
+                structured world model.
+              </p>
+              <p className="ref-link">
+                <a href="https://thousandbrains.org/" target="_blank" rel="noopener">
+                  thousandbrains.org
+                </a>
+              </p>
+            </li>
+          </ol>
+
+          <h2 className="ref-group">Hallucination rates in practice</h2>
+          <ol className="references-page-list" start={6}>
             <li>
               <p>
                 <strong>Vectara HHEM Leaderboard</strong> (2022&ndash;2026).{" "}
@@ -165,7 +189,7 @@ export default function References() {
           </ol>
 
           <h2 className="ref-group">Synthetic content on the web</h2>
-          <ol className="references-page-list" start={8}>
+          <ol className="references-page-list" start={9}>
             <li>
               <p>
                 <strong>Graphite</strong>. <em>AI Content Study.</em> Analysis of 65,000
@@ -235,7 +259,7 @@ export default function References() {
           </ol>
 
           <h2 className="ref-group">Scale of generation</h2>
-          <ol className="references-page-list" start={14}>
+          <ol className="references-page-list" start={15}>
             <li>
               <p>
                 <strong>Microsoft Q3 2025 Earnings</strong> (Satya Nadella). Azure AI
@@ -245,7 +269,7 @@ export default function References() {
           </ol>
 
           <h2 className="ref-group">Cultural antecedents</h2>
-          <ol className="references-page-list" start={15}>
+          <ol className="references-page-list" start={16}>
             <li>
               <p>
                 <strong>Borges, J. L.</strong> (1940).{" "}

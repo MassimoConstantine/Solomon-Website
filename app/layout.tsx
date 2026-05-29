@@ -1,8 +1,35 @@
 import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
+import { Source_Serif_4, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { site } from "@/lib/site";
 import "./globals.css";
+
+// Computer Modern — display serif for headlines, equations, and labels.
+const computerModern = localFont({
+  src: [
+    { path: "./fonts/cmunrm.woff", weight: "400", style: "normal" },
+    { path: "./fonts/cmunti.woff", weight: "400", style: "italic" },
+  ],
+  variable: "--font-cm",
+  display: "swap",
+  fallback: ["Georgia", "Times New Roman", "serif"],
+});
+
+// Source Serif 4 — screen-optimized serif for running body text.
+const bodySerif = Source_Serif_4({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -95,18 +122,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css"
-          rel="stylesheet"
-        />
-      </head>
+    <html
+      lang="en"
+      className={`${computerModern.variable} ${bodySerif.variable} ${jetBrainsMono.variable}`}
+    >
       <body>
         {children}
         <Analytics />
