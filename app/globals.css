@@ -281,7 +281,7 @@ section.content-section--accent .section-label {
 .section-headline.inequality .gt {
   font-family: var(--mono);
   font-style: normal;
-  color: var(--gold);
+  color: var(--red);
   margin: 0 0.35em;
   font-weight: 300;
 }
@@ -310,13 +310,12 @@ section.content-section--accent .section-label {
 }
 
 .thesis-item {
-  padding: 1.5rem 0;
+  padding: 0;
   border-top: 1px solid rgba(17, 17, 17, 0.12);
   font-family: var(--sans);
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--text-secondary);
-  text-align: center;
 }
 
 .thesis-item strong {
@@ -329,13 +328,20 @@ section.content-section--accent .section-label {
   border-top: 1px solid var(--red);
   color: var(--red-dim);
   margin-top: 0.5rem;
-  padding-top: 2rem;
 }
 
 .thesis-item--aftermath strong {
   color: var(--red);
   font-weight: 700;
   letter-spacing: 0.01em;
+}
+
+.thesis-item--aftermath .thesis-icon {
+  color: var(--text);
+}
+
+.thesis-item--aftermath .thesis-toggle:hover strong {
+  color: var(--text);
 }
 
 /* ---- HEPTAGON ---- */
@@ -822,7 +828,7 @@ footer {
   gap: 1rem;
   background: transparent;
   border: none;
-  padding: 0;
+  padding: 1.5rem 0;
   margin: 0;
   cursor: pointer;
   font: inherit;
@@ -835,17 +841,38 @@ footer {
   font-family: var(--mono);
   font-size: 1rem;
   line-height: 1;
-  color: var(--gold);
+  color: var(--red);
   transition: color 0.2s ease;
 }
 
 .thesis-toggle:hover strong {
-  color: var(--gold);
+  color: var(--red);
+}
+
+.thesis-drawer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.thesis-item.is-open .thesis-drawer {
+  grid-template-rows: 1fr;
+}
+
+.thesis-drawer-inner {
+  overflow: hidden;
 }
 
 .thesis-body {
-  margin-top: 1rem;
+  margin: 0;
+  padding-bottom: 1.5rem;
   text-align: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thesis-drawer {
+    transition: none;
+  }
 }
 
 /* ---- RESPONSIVE ---- */
@@ -888,12 +915,11 @@ footer {
 
   /* Thesis list — tighten on mobile */
   .thesis-item {
-    padding: 1.1rem 0;
     font-size: 0.95rem;
     line-height: 1.65;
   }
-  .thesis-item--aftermath {
-    padding-top: 1.5rem;
+  .thesis-toggle {
+    padding: 1.1rem 0;
   }
 
   /* Equation — prevent overflow, allow wrap */

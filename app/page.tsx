@@ -274,7 +274,7 @@ export default function Home() {
       <section className="hero">
         <div className="container">
           <h1 className="hero-headline reveal reveal-delay-1">
-            You can&apos;t reach ASI<br />through optimization.
+            You can&apos;t reach <span className="asi">ASI</span><br />through optimization.
           </h1>
           <p className="hero-subline reveal reveal-delay-2">
             <span className="truth">Truth</span> is the opposite.
@@ -336,7 +336,11 @@ export default function Home() {
                       {open ? "−" : "+"}
                     </span>
                   </button>
-                  {open && <p className="thesis-body">{item.body}</p>}
+                  <div className="thesis-drawer">
+                    <div className="thesis-drawer-inner">
+                      <p className="thesis-body">{item.body}</p>
+                    </div>
+                  </div>
                 </div>
               );
             })}
