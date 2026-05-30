@@ -139,6 +139,26 @@ const governanceItems = [
   { title: "Verify", body: "Nothing is called truth until reality confirms it." },
 ];
 
+const thesisItems = [
+  {
+    title: "Frozen & Stateless",
+    body: "A stateless model trained and optimized on old data, acting inside a bounded context window with no concept of truth. It does not auto-progress toward goals or move beyond what it is prompted to do.",
+  },
+  {
+    title: "Plausible & Regressive",
+    body: "Auto-regressively maximizing for plausible continuation. Generating near-truth statistical averages with no understanding of correctness.",
+  },
+  {
+    title: "Unwise Intelligence",
+    body: "Treating partial truth as complete. Distortions compound and errors feed back into the stateless machine. Mirror reflecting mirror, the warp grows with every pass.",
+  },
+  {
+    title: "Synthetic Collapse",
+    body: "Near-truth propagates as convenience, settles into common knowledge through reuse, hardens into authority through citation, and embeds as infrastructure through integration. Institutions build on the distortion and the human future faces a world of mirage.",
+    aftermath: true,
+  },
+];
+
 const HEPT_NODE_R = 64;
 const HEPT_HIT_R = 74;
 const HEPT_LABEL_R = 84;
@@ -161,6 +181,7 @@ const heptagonOutline = heptagonPoints.map((p) => `${p.x},${p.y}`).join(" ");
 export default function Home() {
   const fractalRef = useRef<HTMLImageElement>(null);
   const [selected, setSelected] = useState<number | null>(null);
+  const [openThesis, setOpenThesis] = useState<number | null>(null);
 
   const toggleItem = (index: number) =>
     setSelected((prev) => (prev === index ? null : index));
@@ -293,18 +314,32 @@ export default function Home() {
             intelligence <span className="gt">&ne;</span> wisdom
           </h2>
           <div className="thesis-list reveal reveal-delay-2">
-            <div className="thesis-item">
-              <p><strong>Frozen &amp; Stateless</strong> - A stateless model trained and optimized on old data, acting inside a bounded context window with no concept of truth. It does not auto-progress toward goals or move beyond what it is prompted to do.</p>
-            </div>
-            <div className="thesis-item">
-              <p><strong>Plausible &amp; Regressive</strong> - Auto-regressively maximizing for plausible continuation. Generating near-truth statistical averages with no understanding of correctness.</p>
-            </div>
-            <div className="thesis-item">
-              <p><strong>Unwise Intelligence</strong> - Treating partial truth as complete. Distortions compound and errors feed back into the stateless machine. Mirror reflecting mirror, the warp grows with every pass.</p>
-            </div>
-            <div className="thesis-item thesis-item--aftermath">
-              <p><strong>Synthetic Collapse</strong> - Near-truth propagates as convenience, settles into common knowledge through reuse, hardens into authority through citation, and embeds as infrastructure through integration. Institutions build on the distortion and the human future faces a world of mirage.</p>
-            </div>
+            {thesisItems.map((item, i) => {
+              const open = openThesis === i;
+              return (
+                <div
+                  key={item.title}
+                  className={`thesis-item${
+                    item.aftermath ? " thesis-item--aftermath" : ""
+                  }${open ? " is-open" : ""}`}
+                >
+                  <button
+                    type="button"
+                    className="thesis-toggle"
+                    aria-expanded={open}
+                    onClick={() =>
+                      setOpenThesis((prev) => (prev === i ? null : i))
+                    }
+                  >
+                    <strong>{item.title}</strong>
+                    <span className="thesis-icon" aria-hidden="true">
+                      {open ? "−" : "+"}
+                    </span>
+                  </button>
+                  {open && <p className="thesis-body">{item.body}</p>}
+                </div>
+              );
+            })}
           </div>
 
         </div>
@@ -327,7 +362,7 @@ export default function Home() {
           <div className="heptagon-figure reveal reveal-delay-3">
             <svg
               className="heptagon-svg"
-              viewBox="0 0 200 200"
+              viewBox="-14 -14 228 228"
               role="group"
               aria-label="Seven governance principles"
             >

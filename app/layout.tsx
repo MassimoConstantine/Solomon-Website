@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import { Source_Serif_4, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { site } from "@/lib/site";
@@ -15,14 +15,6 @@ const computerModern = localFont({
   variable: "--font-cm",
   display: "swap",
   fallback: ["Georgia", "Times New Roman", "serif"],
-});
-
-// Source Serif 4 — screen-optimized serif for running body text.
-const bodySerif = Source_Serif_4({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-body",
-  display: "swap",
 });
 
 const jetBrainsMono = JetBrains_Mono({
@@ -124,7 +116,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${computerModern.variable} ${bodySerif.variable} ${jetBrainsMono.variable}`}
+      className={`${computerModern.variable} ${jetBrainsMono.variable}`}
     >
       <body>
         {children}

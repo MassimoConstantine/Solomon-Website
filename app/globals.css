@@ -14,8 +14,8 @@
   --red-dim: #6b0000;
   /* Computer Modern — display serif for headlines, equations, figure labels. */
   --serif: var(--font-cm), Georgia, 'Times New Roman', serif;
-  /* Source Serif 4 — screen-optimized serif for running body text. */
-  --body-serif: var(--font-body), Georgia, 'Times New Roman', serif;
+  /* Segoe UI on Windows; native UI sans on every other platform. */
+  --sans: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
   --mono: var(--font-mono), 'Courier New', monospace;
 
   /* ---- SPACING SCALE (vertical rhythm) ---- */
@@ -49,7 +49,7 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--body-serif);
+  font-family: var(--sans);
   line-height: 1.7;
   overflow-x: hidden;
 }
@@ -287,13 +287,13 @@ section.content-section--accent .section-label {
 }
 
 .section-body {
-  font-family: var(--body-serif);
-  font-size: 1rem;
-  line-height: 1.8;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  line-height: 1.6;
   color: var(--text-secondary);
   max-width: var(--measure);
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
 }
 
 .section-body p + p {
@@ -312,10 +312,11 @@ section.content-section--accent .section-label {
 .thesis-item {
   padding: 1.5rem 0;
   border-top: 1px solid rgba(17, 17, 17, 0.12);
-  font-family: var(--body-serif);
-  font-size: 1rem;
-  line-height: 1.8;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  line-height: 1.6;
   color: var(--text-secondary);
+  text-align: center;
 }
 
 .thesis-item strong {
@@ -417,7 +418,7 @@ section.content-section--accent .section-label {
 
 .heptagon-center p {
   margin: 0;
-  font-family: var(--body-serif);
+  font-family: var(--sans);
   font-size: 0.72rem;
   line-height: 1.55;
   color: var(--text-secondary);
@@ -813,6 +814,40 @@ footer {
   height: 480px;
 }
 
+.thesis-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+.thesis-icon {
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--gold);
+  transition: color 0.2s ease;
+}
+
+.thesis-toggle:hover strong {
+  color: var(--gold);
+}
+
+.thesis-body {
+  margin-top: 1rem;
+  text-align: left;
+}
+
 /* ---- RESPONSIVE ---- */
 @media (max-width: 640px) {
   nav {
@@ -878,9 +913,9 @@ footer {
     line-height: 1.7;
   }
 
-  /* Geometry of Truth canvas — shorter on mobile */
+  /* Geometry of Truth canvas — sized up on mobile for legibility */
   .geometry-canvas {
-    height: 320px;
+    height: 400px;
   }
 
   /* Wide figure — let it fill */
@@ -900,8 +935,8 @@ footer {
     margin: 0 auto 1.75rem;
   }
   .section-body {
-    font-size: 0.95rem;
-    line-height: 1.7;
+    font-size: 0.85rem;
+    line-height: 1.55;
   }
 
   /* Footer — stack and center so the meta links don't overflow */
@@ -919,7 +954,7 @@ footer {
     font-size: 0.62rem;
   }
   .geometry-canvas {
-    height: 260px;
+    height: 340px;
   }
 }
 

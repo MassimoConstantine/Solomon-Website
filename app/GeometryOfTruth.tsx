@@ -85,6 +85,23 @@ export default function GeometryOfTruth() {
       world.add(left.panel);
       world.add(right.panel);
 
+      // Side-by-side on wide screens; stacked + zoomed on portrait (mobile) so
+      // each shape reads larger instead of being squeezed by the narrow width.
+      const layout = () => {
+        const portrait = canvas.clientHeight > canvas.clientWidth;
+        if (portrait) {
+          left.panel.position.set(0, 1.7, 0);
+          right.panel.position.set(0, -1.7, 0);
+          camera.position.set(0, 0, 8.2);
+        } else {
+          left.panel.position.set(-1.8, 0, 0);
+          right.panel.position.set(1.8, 0, 0);
+          camera.position.set(0, 0.5, 9.5);
+        }
+        camera.lookAt(0, 0, 0);
+      };
+      layout();
+
       let t = 0;
       let last = performance.now();
 
@@ -125,6 +142,7 @@ export default function GeometryOfTruth() {
         renderer.setSize(s.w, s.h, false);
         camera.aspect = s.w / s.h;
         camera.updateProjectionMatrix();
+        layout();
       };
 
       window.addEventListener("resize", onResize);
