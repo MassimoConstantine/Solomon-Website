@@ -140,23 +140,16 @@ const governanceItems = [
 ];
 
 const thesisItems = [
-  {
-    title: "Frozen & Stateless",
-    body: "A stateless model trained and optimized on old data, acting inside a bounded context window with no concept of truth. It does not auto-progress toward goals or move beyond what it is prompted to do.",
-  },
-  {
-    title: "Plausible & Regressive",
-    body: "Auto-regressively maximizing for plausible continuation. Generating near-truth statistical averages with no understanding of correctness.",
-  },
-  {
-    title: "Unwise Intelligence",
-    body: "Treating partial truth as complete. Distortions compound and errors feed back into the stateless machine. Mirror reflecting mirror, the warp grows with every pass.",
-  },
-  {
-    title: "Synthetic Collapse",
-    body: "Near-truth propagates as convenience, settles into common knowledge through reuse, hardens into authority through citation, and embeds as infrastructure through integration. Institutions build on the distortion and the human future faces a world of mirage.",
-    aftermath: true,
-  },
+  { text: "AI is a crystallized picture of past intelligence and cannot natively evolve forwards." },
+  { text: "It holds no live picture of reality." },
+  { text: "It has no discernment of what enters it." },
+  { text: "Auto-regressing towards the most statistically probable continuation." },
+  { text: "Every output counts as a success, so reality mixes with hallucination." },
+  { text: "Optimization and automation accelerate the loop of it feeding on its own exhaust.", red: true },
+  { text: "Near-truth spreads because it is convenient.", red: true },
+  { text: "Reuse becomes knowledge; citation becomes authority, and institutions build on distortion.", red: true },
+  { text: "At scale, fact-checking fails, so hallucination is indistinguishable from the truth.", red: true },
+  { text: "Anomaly is also averaged out, removing the contrarian edge of the future, collapsing to entropy.", red: true },
 ];
 
 const HEPT_NODE_R = 64;
@@ -181,7 +174,6 @@ const heptagonOutline = heptagonPoints.map((p) => `${p.x},${p.y}`).join(" ");
 export default function Home() {
   const fractalRef = useRef<HTMLImageElement>(null);
   const [selected, setSelected] = useState<number | null>(null);
-  const [openThesis, setOpenThesis] = useState<number | null>(null);
 
   const toggleItem = (index: number) =>
     setSelected((prev) => (prev === index ? null : index));
@@ -313,38 +305,21 @@ export default function Home() {
           <h2 className="section-headline inequality reveal reveal-delay-1">
             intelligence <span className="gt">&ne;</span> wisdom
           </h2>
-          <div className="thesis-list reveal reveal-delay-2">
-            {thesisItems.map((item, i) => {
-              const open = openThesis === i;
-              return (
-                <div
-                  key={item.title}
-                  className={`thesis-item${
-                    item.aftermath ? " thesis-item--aftermath" : ""
-                  }${open ? " is-open" : ""}`}
-                >
-                  <button
-                    type="button"
-                    className="thesis-toggle"
-                    aria-expanded={open}
-                    onClick={() =>
-                      setOpenThesis((prev) => (prev === i ? null : i))
-                    }
-                  >
-                    <strong>{item.title}</strong>
-                    <span className="thesis-icon" aria-hidden="true">
-                      {open ? "−" : "+"}
-                    </span>
-                  </button>
-                  <div className="thesis-drawer">
-                    <div className="thesis-drawer-inner">
-                      <p className="thesis-body">{item.body}</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <ol className="thesis-list reveal reveal-delay-2">
+            {thesisItems.map((item, i) => (
+              <li
+                key={item.text}
+                className={`thesis-item${
+                  item.red ? " thesis-item--aftermath" : ""
+                }`}
+              >
+                <span className="thesis-num" aria-hidden="true">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="thesis-text">{item.text}</span>
+              </li>
+            ))}
+          </ol>
 
         </div>
       </section>

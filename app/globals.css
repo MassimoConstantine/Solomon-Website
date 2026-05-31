@@ -307,41 +307,46 @@ section.content-section--accent .section-label {
   display: flex;
   flex-direction: column;
   gap: 0;
+  list-style: none;
+  padding: 0;
+  counter-reset: none;
 }
 
 .thesis-item {
-  padding: 0;
+  margin: 0;
+  padding: 1.25rem 0;
   border-top: 1px solid rgba(17, 17, 17, 0.12);
   font-family: var(--sans);
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--text-secondary);
+  text-align: left;
+  display: flex;
+  gap: 1rem;
 }
 
-.thesis-item strong {
-  font-weight: 600;
-  color: var(--text);
-  font-style: normal;
+.thesis-num {
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  opacity: 0.55;
+}
+
+.thesis-item--aftermath .thesis-num {
+  color: var(--red);
+  opacity: 0.85;
 }
 
 .thesis-item--aftermath {
   border-top: 1px solid var(--red);
   color: var(--red-dim);
-  margin-top: 0.5rem;
 }
 
-.thesis-item--aftermath strong {
-  color: var(--red);
-  font-weight: 700;
-  letter-spacing: 0.01em;
-}
-
-.thesis-item--aftermath .thesis-icon {
-  color: var(--text);
-}
-
-.thesis-item--aftermath .thesis-toggle:hover strong {
-  color: var(--text);
+/* Visual break before the red block begins. */
+.thesis-item:not(.thesis-item--aftermath) + .thesis-item--aftermath {
+  margin-top: 0.75rem;
 }
 
 /* ---- HEPTAGON ---- */
@@ -820,61 +825,6 @@ footer {
   height: 480px;
 }
 
-.thesis-toggle {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  background: transparent;
-  border: none;
-  padding: 1.5rem 0;
-  margin: 0;
-  cursor: pointer;
-  font: inherit;
-  color: inherit;
-  text-align: left;
-}
-
-.thesis-icon {
-  flex-shrink: 0;
-  font-family: var(--mono);
-  font-size: 1rem;
-  line-height: 1;
-  color: var(--red);
-  transition: color 0.2s ease;
-}
-
-.thesis-toggle:hover strong {
-  color: var(--red);
-}
-
-.thesis-drawer {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.thesis-item.is-open .thesis-drawer {
-  grid-template-rows: 1fr;
-}
-
-.thesis-drawer-inner {
-  overflow: hidden;
-}
-
-.thesis-body {
-  margin: 0;
-  padding-bottom: 1.5rem;
-  text-align: left;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .thesis-drawer {
-    transition: none;
-  }
-}
-
 /* ---- RESPONSIVE ---- */
 @media (max-width: 640px) {
   nav {
@@ -917,8 +867,6 @@ footer {
   .thesis-item {
     font-size: 0.95rem;
     line-height: 1.65;
-  }
-  .thesis-toggle {
     padding: 1.1rem 0;
   }
 
