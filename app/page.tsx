@@ -410,22 +410,23 @@ export default function Home() {
           </h2>
           <div className="section-body reveal reveal-delay-2">
             <p>
-              AI lives on a sphere of learned meaning, stretched by tools and retrieval into
-              an amorphous shape, but still reaching no farther than one unit from the
-              center.
+              AI lives on a sphere of learned meaning, stretched by tools and retrieval
+              into an amorphous shape, but still reaching no farther than one unit from
+              the center.
             </p>
             <p>
-              Reality is not a sphere. It has corners where events, identities, and
-              commitments live, all sitting farther from the center than any sphere or
-              amorphous extension of it can reach, and an AI built on the sphere must
-              hallucinate no matter how large it grows.
+              Reality is not that sphere, and it is not the space the sphere sits in.
+              Reality is a thin, specific shape, and its sharp parts, the actual event,
+              the particular identity, the real commitment, sit out in the rare regions
+              a sphere of averages never arrives at, no matter how large it grows. An AI
+              built on the sphere has to invent them.
             </p>
             <p>
-              Solomon operates on a different geometry situated beneath the AI, a world
-              model, a structured map of reality that grows to a fuller reflection
-              of reality with every cycle. Truth lives in this world model, the AI
-              articulates it, and the result is an AI structurally incapable of confident
-              fiction.
+              Solomon operates beneath the AI on a different object: a structured world
+              model that tracks reality&apos;s actual shape and grows a fuller, correctable
+              map with every cycle. Truth lives in the model, the AI articulates it, and
+              because the model is structured and checkable, the system can tell what it
+              knows from what it is filling in.
             </p>
           </div>
 
@@ -452,9 +453,8 @@ export default function Home() {
             </p>
             <p>
               Our brain is a structure that uses AI. Our system holds a world model and builds
-              the physics under which it may act in reality. Ezer, the AI Solomon governs,
-              operates as one constrained component inside it, never the operator of the
-              whole.
+              the physics under which it may act in reality. The AI in Solomon operates as
+              one constrained component inside it, never the operator of the whole.
             </p>
             <p>
               A structured foundation where generation can exist, because the nerves bridge it
