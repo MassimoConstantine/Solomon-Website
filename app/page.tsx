@@ -1,8 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { site } from "@/lib/site";
-import GeometryOfTruth from "./GeometryOfTruth";
+// import GeometryOfTruth from "./GeometryOfTruth"; // hidden — swapped for the convergence figure
+
+const MI_TIP =
+  "Mutual information — how much the first thing reveals about the second.";
+const R_TIP = "Reality. The world as it actually is.";
+
+function EqSym({ children, tip }: { children: ReactNode; tip: string }) {
+  return (
+    <span className="eq-term" tabIndex={0} aria-label={tip}>
+      {children}
+      <span className="eq-tip" role="tooltip">
+        {tip}
+      </span>
+    </span>
+  );
+}
 
 const jsonLd = [
   {
@@ -140,9 +155,9 @@ const governanceItems = [
 ];
 
 const thesisItems = [
-  { text: "AI is a crystallized picture of past intelligence and cannot natively evolve forwards." },
+  { text: "AI is a crystallized picture of the past, frozen at training, and cannot natively evolve." },
   { text: "It holds no live picture of reality." },
-  { text: "It has no discernment of what enters it." },
+  { text: "It cannot discern whether what enters it is true." },
   { text: "Auto-regressing towards the most statistically probable continuation." },
   { text: "Every output counts as a success, so reality mixes with hallucination." },
   { text: "Automation accelerates the self-feeding loop so fluency and confidence only rise as it gets less true.", inflection: true },
@@ -273,6 +288,12 @@ export default function Home() {
           </p>
 
           <div className="hero-figure reveal reveal-delay-3">
+            <p className="equation hero-equation">
+              Reality &rarr; Model<sub>t</sub> &rarr; Model<sub>t+1</sub> = f(Model<sub>t</sub>)
+              <span className="equation-limit">
+                &rArr; I(Model<sub>t+1</sub> ; Reality) &le; I(Model<sub>t</sub> ; Reality)
+              </span>
+            </p>
             <svg viewBox="0 0 120 280" xmlns="http://www.w3.org/2000/svg">
               <circle cx="60" cy="262" r="2.5" className="draw-node n1" />
               <line x1="60" y1="262" x2="60" y2="30" className="draw-line" />
@@ -291,7 +312,7 @@ export default function Home() {
               <text x="60" y="276" className="label draw-node n1" textAnchor="middle">reality</text>
             </svg>
             <p className="figure-caption reveal reveal-delay-4">
-              Fig. 1, Anchored to reality, Solomon climbs in a straight line. AI, generating from its own outputs, drifts further from truth with every step, each hallucination becoming the ground for the next.
+              Fig. 1, Two paths from reality: anchored, Solomon climbs straight toward truth. A system that grows only by reworking itself cannot grow truer about the world. Scale it as far as you like, and its grip on reality can only hold or fade, never rise. This is why optimization alone never reaches superintelligence. Truth runs the opposite way. It enters only from reality.
             </p>
           </div>
 
@@ -321,6 +342,18 @@ export default function Home() {
             ))}
           </ol>
 
+          <div className="equation-aside reveal reveal-delay-3">
+            <p className="equation eq-interactive">
+              <EqSym tip={MI_TIP}>I</EqSym>(<EqSym tip="The model after one update step.">M<sub>t+1</sub></EqSym>{" ; "}<EqSym tip={R_TIP}>R</EqSym>){" − "}<EqSym tip={MI_TIP}>I</EqSym>(<EqSym tip="The model now.">M<sub>t</sub></EqSym>{" ; "}<EqSym tip={R_TIP}>R</EqSym>){" ≤ "}<EqSym tip={MI_TIP}>I</EqSym>(<EqSym tip="What the model observes of reality at this step.">O<sub>t</sub></EqSym>{" ; "}<EqSym tip={R_TIP}>R</EqSym>{" "}<EqSym tip="Given what the model already holds. It only counts information beyond what the model already knew.">| M<sub>t</sub></EqSym>)
+            </p>
+            <p className="eq-hint">Hover any symbol to read it</p>
+            <p className="equation-caption equation-legend">
+              A model grows truer about reality only by the new information about reality that
+              reaches it. Feed it its own output and nothing new enters, so it cannot improve,
+              however much it processes. Truth is imported from reality, not computed from within.
+            </p>
+          </div>
+
         </div>
       </section>
 
@@ -336,14 +369,21 @@ export default function Home() {
               sits the substrate, the structure that perceives the world, holds what is
               true, and governs every claim before it compounds.
             </p>
+            <p>
+              Solomon does not pretend to verify everything it receives from reality; it
+              discerns, separating what holds from what does not and acting accordingly, so
+              information is used accurately instead of blindly compounded. It can tell the
+              difference, and so make a difference.
+            </p>
           </div>
 
           <div className="heptagon-figure reveal reveal-delay-3">
+            <div className="heptagon-stage">
             <svg
               className="heptagon-svg"
               viewBox="-14 -14 228 228"
               role="group"
-              aria-label="Seven governance principles"
+              aria-label="Seven governance axioms"
             >
               <polygon className="heptagon-outline" points={heptagonOutline} />
               {heptagonPoints.map((p, i) => {
@@ -392,11 +432,16 @@ export default function Home() {
 
             <div className="heptagon-center" aria-live="polite">
               {selected === null ? (
-                <span className="heptagon-hint">Select a principle</span>
+                <span className="heptagon-hint">Select an axiom</span>
               ) : (
                 <p key={selected}>{governanceItems[selected].body}</p>
               )}
             </div>
+            </div>
+
+            <p className="figure-caption">
+              Fig. 2, The seven axioms are the origin of the system. Everything Solomon holds and does is built on them and adheres to them; select one to read it.
+            </p>
           </div>
 
         </div>
@@ -430,10 +475,17 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="section-figure section-figure--wide reveal reveal-delay-3">
-            <GeometryOfTruth />
+          <div className="section-figure section-figure--wide converge-fig reveal reveal-delay-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="converge-svg"
+              src="/converges-distortion.svg"
+              alt="A distribution converging onto a centre offset from reality; as optimization tightens the spike, edge-case dots in the tails vanish and the gap to reality is the distortion."
+            />
             <p className="figure-caption">
-              Fig. 2, The geometry of truth
+              Fig. 3, As it is optimized, the model converges with rising confidence onto a
+              slightly distorted reality, and the edge cases that would reveal the distortion
+              disappear with it.
             </p>
           </div>
         </div>
@@ -470,7 +522,7 @@ export default function Home() {
               style={{ width: "100%", height: "auto", display: "block" }}
             />
             <p className="figure-caption">
-              Fig. 3, A brain inside a body. Named regions hold the AI&apos;s neurons; introspection sits above the cortex; the brainstem descends below. Sensory nerves carry signal in, affector nerves carry action out, the loop closes at the boundary of the body.
+              Fig. 4, A brain inside a body. Named regions hold the AI&apos;s neurons; introspection sits above the cortex; the brainstem descends below. Sensory nerves carry signal in, affector nerves carry action out, the loop closes at the boundary of the body.
             </p>
           </div>
         </div>
@@ -506,7 +558,7 @@ export default function Home() {
               S(n+1) = S(n) + &Sigma;<sub>i</sub> G<sub>i</sub> &middot; &Delta;Bayes<sub>i</sub>(S(n), E<sub>i</sub>)
             </p>
             <p className="equation-caption">
-              Fig. 4, Every piece of evidence that enters Solomon must pass governance. What passes, compounds. The system at any point in time is the sum of everything that has ever been verified, and it only grows.
+              Every piece of evidence that enters Solomon must pass governance. What passes, compounds. The system at any point in time is the sum of everything that has ever been verified, and it only grows.
             </p>
           </div>
         </div>
@@ -543,6 +595,13 @@ export default function Home() {
 
       <footer>
         <div className="container footer-inner">
+          <div className="footer-opus">
+            <a href="/opus-humanitatis.pdf" target="_blank" rel="noopener">
+              Opus Humanitatis
+            </a>
+            <span className="footer-opus-dot" aria-hidden="true"></span>
+          </div>
+
           <div className="footer-meta">
             <span className="footer-right">
               <a href="mailto:harald@gideagency.com">harald@gideagency.com</a>
@@ -554,8 +613,16 @@ export default function Home() {
               >
                 LinkedIn
               </a>
+              <span className="footer-sep" aria-hidden="true">/</span>
+              <a
+                href="https://medium.com/@Harald-Ikonen"
+                target="_blank"
+                rel="noopener"
+              >
+                Medium
+              </a>
             </span>
-            <span className="footer-left">Solomon &middot; 2026 &middot; Helsinki, Finland</span>
+            <span className="footer-left">Helsinki, Finland</span>
           </div>
         </div>
       </footer>
