@@ -320,7 +320,7 @@ export default function Home() {
               <text x="60" y="276" className="label draw-node n1" textAnchor="middle">reality</text>
             </svg>
             <p className="figure-caption reveal reveal-delay-4">
-              Fig. 1, Two paths from reality: anchored, Solomon climbs straight toward truth. A system that grows only by reworking itself cannot grow truer about the world. Scale it as far as you like, and its grip on reality can only hold or fade, never rise. This is why optimization alone never reaches superintelligence. Truth runs the opposite way. It enters only from reality.
+              Fig. 1, Solomon discerns truth and operates on it. Others can&apos;t and drift further from it.
             </p>
           </div>
 
