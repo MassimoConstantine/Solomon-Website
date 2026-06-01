@@ -7,6 +7,11 @@ import { site } from "@/lib/site";
 const MI_TIP =
   "Mutual information — how much the first thing reveals about the second.";
 const R_TIP = "Reality. The world as it actually is.";
+const S_TIP = "Substrate now — everything verified so far.";
+const M_TIP = "The model now.";
+const MN_TIP = "The model next step.";
+const F_TIP = "Update from the model alone — no new input from reality.";
+const IMR_TIP = "How much the model knows about reality.";
 
 function EqSym({ children, tip }: { children: ReactNode; tip: string }) {
   return (
@@ -288,12 +293,15 @@ export default function Home() {
           </p>
 
           <div className="hero-figure reveal reveal-delay-3">
-            <p className="equation hero-equation">
-              Reality &rarr; Model<sub>t</sub> &rarr; Model<sub>t+1</sub> = f(Model<sub>t</sub>)
-              <span className="equation-limit">
-                &rArr; I(Model<sub>t+1</sub> ; Reality) &le; I(Model<sub>t</sub> ; Reality)
-              </span>
+            <p className="equation hero-equation eq-interactive">
+              <EqSym tip={R_TIP}>R</EqSym>{" → "}
+              <EqSym tip={M_TIP}>M<sub>t</sub></EqSym>{" → "}
+              <EqSym tip={MN_TIP}>M<sub>t+1</sub></EqSym>{" = "}
+              <EqSym tip={F_TIP}>f</EqSym>(<EqSym tip={M_TIP}>M<sub>t</sub></EqSym>){" ⇒ "}
+              <EqSym tip={IMR_TIP}>I</EqSym>(<EqSym tip={MN_TIP}>M<sub>t+1</sub></EqSym>{" ; "}<EqSym tip={R_TIP}>R</EqSym>){" ≤ "}
+              <EqSym tip={IMR_TIP}>I</EqSym>(<EqSym tip={M_TIP}>M<sub>t</sub></EqSym>{" ; "}<EqSym tip={R_TIP}>R</EqSym>)
             </p>
+            <p className="eq-hint">Hover any symbol to read it</p>
             <svg viewBox="0 0 120 280" xmlns="http://www.w3.org/2000/svg">
               <circle cx="60" cy="262" r="2.5" className="draw-node n1" />
               <line x1="60" y1="262" x2="60" y2="30" className="draw-line" />
@@ -554,9 +562,17 @@ export default function Home() {
           </div>
 
           <div className="equation-aside reveal reveal-delay-3">
-            <p className="equation">
-              S(n+1) = S(n) + &Sigma;<sub>i</sub> G<sub>i</sub> &middot; &Delta;Bayes<sub>i</sub>(S(n), E<sub>i</sub>)
+            <p className="equation eq-interactive">
+              <EqSym tip="Substrate next cycle.">S<sub>t+1</sub></EqSym>{" = "}
+              <EqSym tip={S_TIP}>S<sub>t</sub></EqSym>{" "}
+              <EqSym tip="Compounds — the new gain multiplies the whole substrate instead of being added beside it.">&middot; (1 +</EqSym>{" "}
+              <EqSym tip="Sum over all sources this cycle.">&Sigma;<sub>i</sub></EqSym>{" "}
+              <EqSym tip="The gate — how much source i is trusted (0 = blocked).">G<sub>i</sub></EqSym>{" "}&middot;{" "}
+              <EqSym tip="The correction that evidence implies.">&Delta;Bayes<sub>i</sub></EqSym>(
+              <EqSym tip={S_TIP}>S<sub>t</sub></EqSym>{", "}
+              <EqSym tip="Verified evidence from source i, after governance.">E<sub>i,t</sub></EqSym>))
             </p>
+            <p className="eq-hint">Hover any symbol to read it</p>
             <p className="equation-caption">
               Every piece of evidence that enters Solomon must pass governance. What passes, compounds. The system at any point in time is the sum of everything that has ever been verified, and it only grows.
             </p>

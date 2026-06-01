@@ -566,7 +566,14 @@ section.content-section--accent .section-label {
   text-align: center;
   font-size: 0.7rem;
   line-height: 1.8;
-  margin: 0.5rem 0 2.75rem;
+  margin: 0.5rem 0 0;
+}
+
+/* Keep the hint tight under the hero equation; the gap to the line
+   drawing lives below the hint instead. */
+.hero-figure .eq-hint {
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .equation-caption {
@@ -1097,6 +1104,7 @@ footer {
     height: 340px;
   }
 }
+
 
 
 
