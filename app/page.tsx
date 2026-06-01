@@ -463,23 +463,20 @@ export default function Home() {
           </h2>
           <div className="section-body reveal reveal-delay-2">
             <p>
-              AI lives on a sphere of learned meaning, stretched by tools and retrieval
-              into an amorphous shape, but still reaching no farther than one unit from
-              the center.
+              Optimization never reaches truth, however far it runs. It has no concept of
+              reality. It operates in no physics, so nothing rules out the false, and the
+              impossible comes out as readily as the real. More optimization only sharpens
+              the same untethered guess.
             </p>
             <p>
-              Reality is not that sphere, and it is not the space the sphere sits in.
-              Reality is a thin, specific shape, and its sharp parts, the actual event,
-              the particular identity, the real commitment, sit out in the rare regions
-              a sphere of averages never arrives at, no matter how large it grows. An AI
-              built on the sphere has to invent them.
+              A system bound to a world model stops guessing against a corpus and operates
+              against the actual structure of reality. What it produces is held to what the
+              model holds true, and where the model runs out, the gaps become visible rather
+              than gets filled.
             </p>
             <p>
-              Solomon operates beneath the AI on a different object: a structured world
-              model that tracks reality&apos;s actual shape and grows a fuller, correctable
-              map with every cycle. Truth lives in the model, the AI articulates it, and
-              because the model is structured and checkable, the system can tell what it
-              knows from what it is filling in.
+              Solomon binds the AI to reality. Inside it, the AI no longer operates in
+              statistics. It operates in truth.
             </p>
           </div>
 
