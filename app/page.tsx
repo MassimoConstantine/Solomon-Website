@@ -472,7 +472,7 @@ export default function Home() {
               A system bound to a world model stops guessing against a corpus and operates
               against the actual structure of reality. What it produces is held to what the
               model holds true, and where the model runs out, the gaps become visible rather
-              than gets filled.
+              than get filled.
             </p>
             <p>
               Solomon binds the AI to reality. Inside it, the AI no longer operates in
