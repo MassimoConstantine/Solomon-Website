@@ -319,7 +319,7 @@ section.content-section--accent .section-label {
   font-family: var(--sans);
   font-size: 0.9rem;
   line-height: 1.6;
-  color: var(--text-secondary);
+  color: var(--text);
   text-align: left;
   display: flex;
   gap: 1rem;
@@ -334,19 +334,29 @@ section.content-section--accent .section-label {
   opacity: 0.55;
 }
 
+.thesis-item--inflection .thesis-num {
+  color: var(--red);
+  opacity: 1;
+}
+
 .thesis-item--aftermath .thesis-num {
   color: var(--red);
   opacity: 0.85;
 }
 
+/* Inflection point (06): where the AI begins to compound — the pivot
+   from black (the flaws) to red (the scaled consequences in the world).
+   The break sits before this row, so 06 reads as the turn. */
+.thesis-item--inflection {
+  border-top: 1px solid var(--red);
+  color: var(--red);
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+
 .thesis-item--aftermath {
   border-top: 1px solid var(--red);
   color: var(--red-dim);
-}
-
-/* Visual break before the red block begins. */
-.thesis-item:not(.thesis-item--aftermath) + .thesis-item--aftermath {
-  margin-top: 0.75rem;
 }
 
 /* ---- HEPTAGON ---- */

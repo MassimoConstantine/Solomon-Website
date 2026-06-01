@@ -145,7 +145,7 @@ const thesisItems = [
   { text: "It has no discernment of what enters it." },
   { text: "Auto-regressing towards the most statistically probable continuation." },
   { text: "Every output counts as a success, so reality mixes with hallucination." },
-  { text: "Optimization and automation accelerate the loop of it feeding on its own exhaust.", red: true },
+  { text: "Automation accelerates the self-feeding loop so fluency and confidence only rise as it gets less true.", inflection: true },
   { text: "Near-truth spreads because it is convenient.", red: true },
   { text: "Reuse becomes knowledge; citation becomes authority, and institutions build on distortion.", red: true },
   { text: "At scale, fact-checking fails, so hallucination is indistinguishable from the truth.", red: true },
@@ -310,8 +310,8 @@ export default function Home() {
               <li
                 key={item.text}
                 className={`thesis-item${
-                  item.red ? " thesis-item--aftermath" : ""
-                }`}
+                  item.inflection ? " thesis-item--inflection" : ""
+                }${item.red ? " thesis-item--aftermath" : ""}`}
               >
                 <span className="thesis-num" aria-hidden="true">
                   {String(i + 1).padStart(2, "0")}
