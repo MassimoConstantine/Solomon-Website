@@ -105,10 +105,30 @@ export default function References() {
                 </a>
               </p>
             </li>
+
+            <li>
+              <p>
+                <strong>Alemohammad, S. et al.</strong> (2024).{" "}
+                <em>Self-Consuming Generative Models Go MAD.</em> ICLR 2024.
+              </p>
+              <p className="ref-note">
+                Names the self-feeding loop <em>autophagy</em> and the resulting failure
+                Model Autophagy Disorder (MAD): when generative models train on their own
+                synthetic output across generations without enough fresh real data, both
+                the quality and the diversity of what they produce progressively decay. The
+                companion mechanism to model collapse &mdash; what happens when the
+                substrate begins to consume itself.
+              </p>
+              <p className="ref-link">
+                <a href="https://arxiv.org/abs/2307.01850" target="_blank" rel="noopener">
+                  arxiv.org/abs/2307.01850
+                </a>
+              </p>
+            </li>
           </ol>
 
           <h2 className="ref-group">Architectural foundation</h2>
-          <ol className="references-page-list" start={5}>
+          <ol className="references-page-list" start={6}>
             <li>
               <p>
                 <strong>Hawkins, J. &amp; Numenta</strong>.{" "}
@@ -132,7 +152,7 @@ export default function References() {
           </ol>
 
           <h2 className="ref-group">Hallucination rates in practice</h2>
-          <ol className="references-page-list" start={6}>
+          <ol className="references-page-list" start={7}>
             <li>
               <p>
                 <strong>Vectara HHEM Leaderboard</strong> (2022&ndash;2026).{" "}
@@ -189,7 +209,7 @@ export default function References() {
           </ol>
 
           <h2 className="ref-group">Synthetic content on the web</h2>
-          <ol className="references-page-list" start={9}>
+          <ol className="references-page-list" start={10}>
             <li>
               <p>
                 <strong>Graphite</strong>. <em>AI Content Study.</em> Analysis of 65,000
@@ -259,7 +279,7 @@ export default function References() {
           </ol>
 
           <h2 className="ref-group">Scale of generation</h2>
-          <ol className="references-page-list" start={15}>
+          <ol className="references-page-list" start={16}>
             <li>
               <p>
                 <strong>Microsoft Q3 2025 Earnings</strong> (Satya Nadella). Azure AI
@@ -269,7 +289,7 @@ export default function References() {
           </ol>
 
           <h2 className="ref-group">Cultural antecedents</h2>
-          <ol className="references-page-list" start={16}>
+          <ol className="references-page-list" start={17}>
             <li>
               <p>
                 <strong>Borges, J. L.</strong> (1940).{" "}
