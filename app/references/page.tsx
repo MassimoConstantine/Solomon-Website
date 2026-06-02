@@ -127,8 +127,146 @@ export default function References() {
             </li>
           </ol>
 
-          <h2 className="ref-group">Architectural foundation</h2>
+          <h2 className="ref-group">What a language model is</h2>
           <ol className="references-page-list" start={6}>
+            <li>
+              <p>
+                <strong>
+                  Bender, E. M., Gebru, T., McMillan-Major, A. &amp; Shmitchell, S.
+                </strong>{" "}
+                (2021).{" "}
+                <em>
+                  On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?
+                </em>{" "}
+                FAccT &rsquo;21, 610&ndash;623.
+              </p>
+              <p className="ref-note">
+                The original statement that a language model is a stochastic parrot: it
+                stitches together statistically likely sequences of text without reference
+                to meaning, and the human tendency to read meaning into that output is
+                itself a hazard. The canonical academic source for mimicry without
+                understanding.
+              </p>
+              <p className="ref-link">
+                <a href="https://doi.org/10.1145/3442188.3445922" target="_blank" rel="noopener">
+                  doi.org/10.1145/3442188.3445922
+                </a>
+              </p>
+            </li>
+          </ol>
+
+          <h2 className="ref-group">The single-neuron complexity gap</h2>
+          <ol className="references-page-list" start={7}>
+            <li>
+              <p>
+                <strong>
+                  Gidon, A., Zolnik, T. A., Fidzinski, P., Bolduan, F., Papoutsi, A.,
+                  Poirazi, P., Holtkamp, M., Vida, I. &amp; Larkum, M. E.
+                </strong>{" "}
+                (2020).{" "}
+                <em>
+                  Dendritic Action Potentials and Computation in Human Layer 2/3 Cortical
+                  Neurons.
+                </em>{" "}
+                Science, 367(6473), 83&ndash;87.
+              </p>
+              <p className="ref-note">
+                Patch-clamp recordings of human cortical neurons reveal a new class of
+                dendritic calcium spikes that let a single neuron compute XOR, a linearly
+                non-separable function long held to require a multilayer network. The
+                biological unit is not the 1943 summator the perceptron models.
+              </p>
+              <p className="ref-link">
+                <a href="https://doi.org/10.1126/science.aax6239" target="_blank" rel="noopener">
+                  doi.org/10.1126/science.aax6239
+                </a>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <strong>Beniaguev, D., Segev, I. &amp; London, M.</strong> (2021).{" "}
+                <em>Single Cortical Neurons as Deep Artificial Neural Networks.</em> Neuron,
+                109(17), 2727&ndash;2739.e3.
+              </p>
+              <p className="ref-note">
+                Replicating the input-output behavior of one cortical pyramidal neuron
+                required a deep network of five to eight layers. A single biological neuron
+                is already a deep network. The &ldquo;AI is basically a brain&rdquo; analogy
+                fails at the level of the single cell, before any question of scale.
+              </p>
+              <p className="ref-link">
+                <a href="https://doi.org/10.1016/j.neuron.2021.07.002" target="_blank" rel="noopener">
+                  doi.org/10.1016/j.neuron.2021.07.002
+                </a>
+              </p>
+            </li>
+          </ol>
+
+          <h2 className="ref-group">Architectural foundation</h2>
+          <ol className="references-page-list" start={9}>
+            <li>
+              <p>
+                <strong>LeCun, Y.</strong> (2022).{" "}
+                <em>A Path Towards Autonomous Machine Intelligence.</em> OpenReview.
+              </p>
+              <p className="ref-note">
+                A position paper by a Turing-award laureate arguing that the autoregressive
+                generator should not be the controller. Proposes a configurable predictive
+                world model with planning and intrinsic motivation, sitting around
+                generation rather than beneath it. The centerpiece architecture, JEPA, is
+                explicitly non-generative: it captures dependencies without emitting
+                predictions. The frontier-credentialed version of the same move &mdash; take
+                the predictor out of the driver&rsquo;s seat.
+              </p>
+              <p className="ref-link">
+                <a href="https://openreview.net/pdf?id=BZ5a1r-kVsf" target="_blank" rel="noopener">
+                  openreview.net/pdf?id=BZ5a1r-kVsf
+                </a>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <strong>Friston, K.</strong> (2010).{" "}
+                <em>The Free-Energy Principle: A Unified Brain Theory?</em> Nature Reviews
+                Neuroscience. With{" "}
+                <strong>Parr, T., Pezzulo, G. &amp; Friston, K.</strong> (2022).{" "}
+                <em>Active Inference.</em> MIT Press.
+              </p>
+              <p className="ref-note">
+                A perception-action system maintains itself by minimizing prediction error
+                against a generative model of the world, and it does so by acting on the
+                world, not by emitting text. The positive theory of an agent bound to
+                reality through a closed feedback loop &mdash; the structural inverse of
+                open-loop generation, and the formal backbone under the FEP mapping.
+              </p>
+              <p className="ref-link">
+                <a href="https://doi.org/10.1038/nrn2787" target="_blank" rel="noopener">
+                  doi.org/10.1038/nrn2787
+                </a>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <strong>Harnad, S.</strong> (1990).{" "}
+                <em>The Symbol Grounding Problem.</em> Physica D.
+              </p>
+              <p className="ref-note">
+                Symbols manipulated only by reference to other symbols never acquire
+                meaning; the meaning has to be grounded in something outside the symbol
+                system. Establishes at the foundations why a model trained on text alone
+                holds no world it can be right or wrong about. Symbols pointing at symbols,
+                never at reality.
+              </p>
+              <p className="ref-link">
+                <a href="https://doi.org/10.1016/0167-2789(90)90087-6" target="_blank" rel="noopener">
+                  doi.org/10.1016/0167-2789(90)90087-6
+                </a>
+              </p>
+            </li>
+
             <li>
               <p>
                 <strong>Hawkins, J. &amp; Numenta</strong>.{" "}
@@ -151,8 +289,8 @@ export default function References() {
             </li>
           </ol>
 
-          <h2 className="ref-group">Hallucination rates in practice</h2>
-          <ol className="references-page-list" start={7}>
+          <h2 className="ref-group">Hallucination in practice</h2>
+          <ol className="references-page-list" start={13}>
             <li>
               <p>
                 <strong>Vectara HHEM Leaderboard</strong> (2022&ndash;2026).{" "}
@@ -206,10 +344,32 @@ export default function References() {
                 </a>
               </p>
             </li>
+
+            <li>
+              <p>
+                <strong>Farquhar, S., Kossen, J., Kuhn, L. &amp; Gal, Y.</strong> (2024).{" "}
+                <em>
+                  Detecting Hallucinations in Large Language Models Using Semantic Entropy.
+                </em>{" "}
+                Nature, 630, 625&ndash;630.
+              </p>
+              <p className="ref-note">
+                Hallucination is intrinsic enough that detecting it requires a dedicated
+                statistical apparatus measuring uncertainty over meaning rather than over
+                words. The authors prefer the sharper term <em>confabulation</em>: output
+                that is arbitrary and wrong while sounding plausible. The model needs an
+                external instrument to flag what it cannot flag for itself.
+              </p>
+              <p className="ref-link">
+                <a href="https://doi.org/10.1038/s41586-024-07421-0" target="_blank" rel="noopener">
+                  doi.org/10.1038/s41586-024-07421-0
+                </a>
+              </p>
+            </li>
           </ol>
 
           <h2 className="ref-group">Synthetic content on the web</h2>
-          <ol className="references-page-list" start={10}>
+          <ol className="references-page-list" start={17}>
             <li>
               <p>
                 <strong>Graphite</strong>. <em>AI Content Study.</em> Analysis of 65,000
@@ -279,7 +439,7 @@ export default function References() {
           </ol>
 
           <h2 className="ref-group">Scale of generation</h2>
-          <ol className="references-page-list" start={16}>
+          <ol className="references-page-list" start={23}>
             <li>
               <p>
                 <strong>Microsoft Q3 2025 Earnings</strong> (Satya Nadella). Azure AI
@@ -288,8 +448,86 @@ export default function References() {
             </li>
           </ol>
 
+          <h2 className="ref-group">Counter-evidence, cited and answered</h2>
+          <ol className="references-page-list" start={24}>
+            <li>
+              <p>
+                <strong>
+                  Gerstgrasser, M., Schaeffer, R., Dey, A., Rafailov, R., et al.
+                </strong>{" "}
+                (2024).{" "}
+                <em>
+                  Is Model Collapse Inevitable? Breaking the Curse of Recursion by
+                  Accumulating Real and Synthetic Data.
+                </em>{" "}
+                arXiv:2404.01413.
+              </p>
+              <p className="ref-note">
+                The strongest objection to the collapse thesis. Confirms that replacing real
+                data with synthetic data drives collapse, then shows that accumulating
+                synthetic data alongside the original real data avoids it. Included
+                deliberately: the argument that means to leave no valid objection has to cite
+                its own strongest objection and answer it.
+              </p>
+              <p className="ref-note">
+                <em>How to argue against this.</em> The result holds only in a setting where
+                pristine real data is preserved and keeps entering in fixed proportion
+                &mdash; precisely the condition the thesis names, not a refutation of it. On
+                the actual web the synthetic fraction is rising and provenance is not
+                recoverable, so the clean real anchor the proof depends on cannot be
+                isolated, which collapses the accumulate case back into the replace case.
+                Read correctly, Gerstgrasser states the survival inequality rather than
+                breaking it: collapse is avoided only while reality-anchored data the model
+                did not generate enters faster than fidelity leaks out. Producing that data
+                is the binding constraint &mdash; the business, not the rebuttal.
+              </p>
+              <p className="ref-link">
+                <a href="https://arxiv.org/abs/2404.01413" target="_blank" rel="noopener">
+                  arxiv.org/abs/2404.01413
+                </a>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <strong>Shojaee, P., et al.</strong> (2025).{" "}
+                <em>
+                  The Illusion of Thinking: Understanding the Strengths and Limitations of
+                  Reasoning Models via the Lens of Problem Complexity.
+                </em>{" "}
+                Apple Machine Learning Research.
+              </p>
+              <p className="ref-note">
+                Reasoning models collapse to near-zero accuracy past a complexity threshold
+                and fail even when handed the solving algorithm, suggesting pattern
+                completion rather than execution.
+              </p>
+              <p className="ref-note">
+                <em>Use with caution.</em> A published rebuttal (Lawsen, 2025,
+                arXiv:2506.09250) argues the collapse was partly an artifact of output-token
+                limits and of test instances that were unsolvable by construction. Strong as
+                a pointer, weak as a load-bearing premise; if used at all, cite the rebuttal
+                in the same breath.
+              </p>
+              <p className="ref-link">
+                <a
+                  href="https://machinelearning.apple.com/research/illusion-of-thinking"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  machinelearning.apple.com/research/illusion-of-thinking
+                </a>
+              </p>
+              <p className="ref-link">
+                <a href="https://arxiv.org/abs/2506.09250" target="_blank" rel="noopener">
+                  arxiv.org/abs/2506.09250 &mdash; Lawsen rebuttal
+                </a>
+              </p>
+            </li>
+          </ol>
+
           <h2 className="ref-group">Cultural antecedents</h2>
-          <ol className="references-page-list" start={17}>
+          <ol className="references-page-list" start={26}>
             <li>
               <p>
                 <strong>Borges, J. L.</strong> (1940).{" "}
