@@ -471,8 +471,8 @@ export default function Home() {
             </p>
             <p>
               All the while maintaining a causal effect link with temporal understanding. No
-              longer operating in statistics, rather bound to reality and operating towards
-              truth.
+              longer operating in statistics, rather gravitationally bound to reality and
+              operating towards truth.
             </p>
           </div>
 
@@ -538,8 +538,9 @@ export default function Home() {
           </h2>
           <div className="section-body reveal reveal-delay-2">
             <p>
-              The only way to compound sustainably to avoid model collapse and rot is to
-              adaptively work with reality and inherit what is true.
+              The only way to compound sustainably, to avoid collapse and rot, is to build a
+              better grounded modeling engine. One that stays open to reality, adaptively works
+              with it, tests itself against it, and feeds only on what proves true.
             </p>
             <p>
               Seeing that it is inexhaustible and difficult to verify, the system gains
