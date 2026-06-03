@@ -373,15 +373,12 @@ export default function Home() {
           </h2>
           <div className="section-body reveal reveal-delay-2">
             <p>
-              AI is one component inside Solomon&apos;s brain, merely generating. Underneath
-              sits the substrate, the structure that perceives the world, holds what is
-              true, and governs every claim before it compounds.
+              Our system perceives the world, holds what is true, and governs every claim
+              before it compounds. The AI in Solomon operates only as one constrained
+              component inside it, never the operator of the whole.
             </p>
             <p>
-              Solomon does not pretend to verify everything it receives from reality; it
-              discerns, separating what holds from what does not and acting accordingly, so
-              information is used accurately instead of blindly compounded. It can tell the
-              difference, and so make a difference.
+              Blossoming and adhering to its genetic make up by these axioms below:
             </p>
           </div>
 
@@ -503,18 +500,18 @@ export default function Home() {
           </h2>
           <div className="section-body reveal reveal-delay-2">
             <p>
-              The architecture takes its shape from the body that built it. Cortex, brainstem,
-              nerve, synapse, the form is borrowed from human anatomy and repurposed as
-              a structure for governed cognition.
+              We spawn a structure capable of holding its own purpose by basing its design on
+              the anatomy of the human brain. It uses sub-components like a brainstem and cores
+              that attach to governed cognitive layers.
             </p>
             <p>
-              Our brain is a structure that uses AI. Our system holds a world model and builds
-              the physics under which it may act in reality. The AI in Solomon operates as
-              one constrained component inside it, never the operator of the whole.
+              From this it reaches further levels of adaptation, gaining powers of introspection
+              through brain plasticity.
             </p>
             <p>
-              A structured foundation where generation can exist, because the nerves bridge it
-              to the truth. The body acts only within laws the brain enforces.
+              And so it becomes capable of discernment, telling the difference in order to make
+              a difference. Having separated true from false, it acts accordingly, without blind
+              compounding, until it can improve itself by itself.
             </p>
           </div>
 
@@ -541,19 +538,19 @@ export default function Home() {
           </h2>
           <div className="section-body reveal reveal-delay-2">
             <p>
-              Solomon adapts and recursively learns by closing the loop between itself and
-              reality. Each cycle teaches the next, and each cycle inherits only what was
-              true.
+              The only way to compound sustainably to avoid model collapse and rot is to
+              adaptively work with reality and inherit what is true.
             </p>
             <p>
-              Compounding of truth and verified information makes the system sustainable
-              and incapable of the same collapses as other AIs.
+              Seeing that it is inexhaustible and difficult to verify, the system gains
+              variance and richness in patterns, by being continually fed fresh ones.
             </p>
             <p>
-              Truth accumulates in the substrate. Pattern richness deepens, routing
-              precision sharpens, reasoning capacity grows, and contextual intelligence
-              gets exponentially stronger with every cycle it runs. Ezer compounds
-              against this substrate, not against itself.
+              Exponentially strengthening contextual intelligence by accumulating truth to
+              more precisely route information and sharpen reasoning.
+            </p>
+            <p>
+              Not from itself, but from the world.
             </p>
           </div>
 
