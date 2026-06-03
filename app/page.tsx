@@ -163,7 +163,7 @@ const thesisItems = [
   { text: "AI is a crystallized picture of the past, frozen at training, and cannot natively evolve." },
   { text: "It holds no live picture of reality." },
   { text: "It cannot discern whether what enters it is true." },
-  { text: "Auto-regressing towards the most statistically probable continuation." },
+  { text: "Auto-regressing towards the most statistically plausible continuation." },
   { text: "Every output counts as a success, so reality mixes with hallucination." },
   { text: "Automation accelerates the self-feeding loop so fluency and confidence only rise as it gets less true.", inflection: true },
   { text: "Near-truth spreads because it is convenient.", red: true },
@@ -463,20 +463,19 @@ export default function Home() {
           </h2>
           <div className="section-body reveal reveal-delay-2">
             <p>
-              Optimization never reaches truth, however far it runs. It has no concept of
-              reality. It operates in no physics, so nothing rules out the false, and the
-              impossible comes out as readily as the real. More optimization only sharpens
-              the same untethered guess.
+              Because reality is not a verifiable domain, truth is only discoverable through
+              testing, while optimizing is just guessing based on what you already know.
             </p>
             <p>
-              A system bound to a world model stops guessing against a corpus and operates
-              against the actual structure of reality. What it produces is held to what the
-              model holds true, and where the model runs out, the gaps become visible rather
-              than get filled.
+              Through an energy-based internal world model bound to real life, it experiences
+              resistance and pushback. Paid in the death of information, by pushing out chaotic
+              data residue. Carrying metabolic weight for every belief it holds, and keeping
+              patterns that work.
             </p>
             <p>
-              Solomon binds the AI to reality. Inside it, the AI no longer operates in
-              statistics. It operates in truth.
+              All the while maintaining a causal effect link with temporal understanding. No
+              longer operating in statistics, rather bound to reality and operating towards
+              truth.
             </p>
           </div>
 
