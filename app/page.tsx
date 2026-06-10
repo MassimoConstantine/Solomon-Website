@@ -460,8 +460,9 @@ export default function Home() {
           </h2>
           <div className="section-body reveal reveal-delay-2">
             <p>
-              Because reality is not a verifiable domain, truth is only discoverable through
-              testing, while optimizing is just guessing based on what you already know.
+              Reality is the final verifying domain, truth is only discoverable through testing
+              against it. Optimizing against a KPI that is not reality will always diverge from
+              it.
             </p>
             <p>
               Through an energy-based internal world model bound to real life, it experiences
