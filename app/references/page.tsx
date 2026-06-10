@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "References — Solomon",
   description:
-    "Primary literature grounding the Solomon architecture: hallucination lower bounds, calibrated language models, the geometry of superposition, and empirical evidence of synthetic collapse.",
+    "Primary literature grounding the Solomon architecture: the data processing inequality, Landauer's principle, Goodhart's law, hallucination lower bounds, the geometry of superposition, and empirical evidence of synthetic collapse.",
   robots: { index: true, follow: true },
 };
 
@@ -23,7 +23,10 @@ export default function References() {
             lower bound is not a bug to be engineered away &mdash; it is a theorem about
             calibrated generation. The geometry of superposition explains why internal
             representations overlap by design. The empirical record shows what happens when
-            ungoverned generation is released at scale.
+            ungoverned generation is released at scale. Beneath all of it sit the named
+            theorems the architecture borrows rather than asserts &mdash; Shannon&rsquo;s
+            measure of information, the data processing inequality, Landauer&rsquo;s
+            principle, Goodhart&rsquo;s law &mdash; results a reader can go check.
           </p>
 
           <h2 className="ref-group">Theoretical foundation</h2>
@@ -127,8 +130,131 @@ export default function References() {
             </li>
           </ol>
 
-          <h2 className="ref-group">What a language model is</h2>
+          <h2 className="ref-group">Formal principles</h2>
           <ol className="references-page-list" start={6}>
+            <li>
+              <p>
+                <strong>Shannon, C. E.</strong> (1948).{" "}
+                <em>A Mathematical Theory of Communication.</em> Bell System
+                Technical Journal, 27, 379&ndash;423, 623&ndash;656.
+              </p>
+              <p className="ref-note">
+                Founds information theory and defines mutual information{" "}
+                I(X;Y), the measure every equation on the manifesto is written
+                in. What a model knows about reality is exactly the mutual
+                information between them; growing truer means raising it.
+                Information becomes a measurable, conserved quantity rather
+                than a figure of speech.
+              </p>
+              <p className="ref-link">
+                <a href="https://doi.org/10.1002/j.1538-7305.1948.tb01338.x" target="_blank" rel="noopener">
+                  doi.org/10.1002/j.1538-7305.1948.tb01338.x
+                </a>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <strong>Cover, T. M. &amp; Thomas, J. A.</strong> (2006).{" "}
+                <em>Elements of Information Theory</em> (2nd ed.), &sect;2.8:
+                the data processing inequality. Wiley.
+              </p>
+              <p className="ref-note">
+                For any Markov chain X &rarr; Y &rarr; Z, I(X;Z) &le; I(X;Y):
+                no function of the data can increase its information about the
+                source. The manifesto&rsquo;s central equation is this theorem
+                applied to a model that updates from itself &mdash;
+                R &rarr; M<sub>t</sub> &rarr; M<sub>t+1</sub> ={" "}
+                f(M<sub>t</sub>), so I(M<sub>t+1</sub>;R) &le;{" "}
+                I(M<sub>t</sub>;R). Self-generation cannot add information about
+                reality; only new observation can. The named result a skeptic
+                has to go check.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <strong>Landauer, R.</strong> (1961).{" "}
+                <em>
+                  Irreversibility and Heat Generation in the Computing Process.
+                </em>{" "}
+                IBM Journal of Research and Development, 5(3), 183&ndash;191.
+              </p>
+              <p className="ref-note">
+                Erasing one bit of information has a hard thermodynamic floor:
+                it must dissipate at least kT&nbsp;ln&nbsp;2 of energy as heat.
+                Information is physical, and discarding it is never free. The
+                formal basis for the claim that a world model pays in the death
+                of information and carries metabolic weight for every belief it
+                keeps.
+              </p>
+              <p className="ref-link">
+                <a href="https://doi.org/10.1147/rd.53.0183" target="_blank" rel="noopener">
+                  doi.org/10.1147/rd.53.0183
+                </a>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <strong>Schr&ouml;dinger, E.</strong> (1944).{" "}
+                <em>What is Life?</em> Cambridge University Press.
+              </p>
+              <p className="ref-note">
+                A system holds off decay to equilibrium only by continually
+                drawing order &mdash; negative entropy &mdash; from its
+                environment. Sever that exchange and the second law carries it
+                to heat death. The thermodynamic statement of why a model must
+                feed on reality to stay ordered, and why a closed system
+                feeding on its own output can only rot.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <strong>Goodhart, C. A. E.</strong> (1975); popularized by{" "}
+                <strong>Strathern, M.</strong> (1997).{" "}
+                <em>
+                  When a measure becomes a target, it ceases to be a good
+                  measure.
+                </em>
+              </p>
+              <p className="ref-note">
+                Optimizing a proxy corrupts the proxy: pressure on a metric
+                pulls it away from the thing it was meant to track. Optimizing
+                against any KPI that is not reality itself therefore diverges
+                from reality by construction &mdash; the measurement-theory
+                statement of the manifesto&rsquo;s physics of optimization.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <strong>Carter, B.</strong> (1974);{" "}
+                <strong>Barrow, J. D. &amp; Tipler, F. J.</strong> (1986).{" "}
+                <em>The Anthropic Cosmological Principle.</em> Oxford University
+                Press.
+              </p>
+              <p className="ref-note">
+                We observe a universe compatible with our existence because
+                universes incompatible with it contain no observers to do the
+                observing. The constants are not free parameters; the ones that
+                permit observers are the only ones an observer can ever find.
+              </p>
+              <p className="ref-note">
+                <em>The stronger reading.</em> The manifesto takes this past
+                observer-selection: the structure of reality is precisely what
+                it is because that exact structure is what lets the totality of
+                existence unfold &mdash; not merely that if it were different we
+                would not be here, but that the order is load-bearing for
+                existence as such. A system aligned to that order persists; one
+                that drifts from it is selected out.
+              </p>
+            </li>
+          </ol>
+
+          <h2 className="ref-group">What a language model is</h2>
+          <ol className="references-page-list" start={12}>
             <li>
               <p>
                 <strong>
@@ -156,7 +282,7 @@ export default function References() {
           </ol>
 
           <h2 className="ref-group">The single-neuron complexity gap</h2>
-          <ol className="references-page-list" start={7}>
+          <ol className="references-page-list" start={13}>
             <li>
               <p>
                 <strong>
@@ -204,7 +330,7 @@ export default function References() {
           </ol>
 
           <h2 className="ref-group">Architectural foundation</h2>
-          <ol className="references-page-list" start={9}>
+          <ol className="references-page-list" start={15}>
             <li>
               <p>
                 <strong>LeCun, Y.</strong> (2022).{" "}
@@ -290,7 +416,7 @@ export default function References() {
           </ol>
 
           <h2 className="ref-group">Hallucination in practice</h2>
-          <ol className="references-page-list" start={13}>
+          <ol className="references-page-list" start={19}>
             <li>
               <p>
                 <strong>Vectara HHEM Leaderboard</strong> (2022&ndash;2026).{" "}
@@ -369,7 +495,7 @@ export default function References() {
           </ol>
 
           <h2 className="ref-group">Synthetic content on the web</h2>
-          <ol className="references-page-list" start={17}>
+          <ol className="references-page-list" start={23}>
             <li>
               <p>
                 <strong>Graphite</strong>. <em>AI Content Study.</em> Analysis of 65,000
@@ -439,7 +565,7 @@ export default function References() {
           </ol>
 
           <h2 className="ref-group">Scale of generation</h2>
-          <ol className="references-page-list" start={23}>
+          <ol className="references-page-list" start={29}>
             <li>
               <p>
                 <strong>Microsoft Q3 2025 Earnings</strong> (Satya Nadella). Azure AI
@@ -449,7 +575,7 @@ export default function References() {
           </ol>
 
           <h2 className="ref-group">Counter-evidence, cited and answered</h2>
-          <ol className="references-page-list" start={24}>
+          <ol className="references-page-list" start={30}>
             <li>
               <p>
                 <strong>
@@ -527,7 +653,7 @@ export default function References() {
           </ol>
 
           <h2 className="ref-group">Cultural antecedents</h2>
-          <ol className="references-page-list" start={26}>
+          <ol className="references-page-list" start={32}>
             <li>
               <p>
                 <strong>Borges, J. L.</strong> (1940).{" "}
