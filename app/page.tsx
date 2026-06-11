@@ -540,16 +540,18 @@ export default function Home() {
           <div className="section-body reveal reveal-delay-2">
             <p>
               The only way to compound sustainably, to avoid collapse and rot, is to build a
-              better grounded modeling engine. One that stays open to reality, adaptively works
-              with it, tests itself against it, and feeds only on what proves true.
+              better grounded world-modeling engine. One whose purpose is to learn: to stay
+              open to reality, adaptively work with it, test itself against it to find truth,
+              and treat the world as its only source of verification.
             </p>
             <p>
-              Seeing that it is inexhaustible and difficult to verify, the system gains
-              variance and richness in patterns, by being continually fed fresh ones.
+              Because reality is inexhaustible and difficult to verify, the system gains
+              variance and richness in patterns by being continually exposed to fresh ones.
             </p>
             <p>
-              Exponentially strengthening contextual intelligence by accumulating truth to
-              more precisely route information and sharpen reasoning.
+              Exponentially strengthening contextual intelligence by accumulating truth,
+              transforming feedback into adaptation, and more precisely routing information
+              to sharpen reasoning.
             </p>
             <p>
               Not from itself, but from the world.
