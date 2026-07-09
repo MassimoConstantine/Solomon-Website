@@ -356,9 +356,11 @@ export default function Home() {
             </p>
             <p className="eq-hint">Hover any symbol to read it</p>
             <p className="equation-caption equation-legend">
-              A model grows truer about reality only by the new information about reality that
-              reaches it. Feed it its own output and nothing new enters, so it cannot improve,
-              however much it processes. Truth is imported from reality, not computed from within.
+              A system that closes in on itself, with no external referent, can only optimize
+              for coherence. But internal consistency has no necessary relationship with
+              truth, so it drifts away from reality, and from what we want, without anything
+              inside it able to notice. It is now optimizing the wrong target perfectly. That
+              is the road to Skynet.
             </p>
           </div>
 
