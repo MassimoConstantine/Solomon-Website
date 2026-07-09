@@ -112,18 +112,38 @@ nav.scrolled .nav-label {
   align-items: center;
   justify-content: center;
   padding: 0;
-  perspective: 1600px;
-  perspective-origin: 50% 50%;
   overflow: hidden;
 }
 
-.hero-fractal img {
+.hero-fractal .diamond-wrap {
+  will-change: transform, opacity;
+}
+
+.diamond-stage {
+  position: relative;
   width: min(112vh, 112vw);
   height: min(112vh, 112vw);
+}
+
+/* The still image sits underneath as a loading/no-WebGL fallback;
+   the canvas crossfades over it once the first frame renders. */
+.diamond-stage img,
+.diamond-stage canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   display: block;
-  will-change: transform, opacity;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
+}
+
+.diamond-stage canvas {
+  touch-action: pan-y;
+  opacity: 0;
+  transition: opacity 1.1s ease;
+}
+
+.diamond-stage canvas.ready {
+  opacity: 1;
 }
 
 /* ---- CONTAINER ---- */
@@ -1015,7 +1035,7 @@ footer {
     min-height: min(100vw, 75vh);
     align-items: flex-end;
   }
-  .hero-fractal img {
+  .diamond-stage {
     width: min(100vw, 75vh);
     height: min(100vw, 75vh);
   }
