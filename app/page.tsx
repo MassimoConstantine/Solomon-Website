@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { site } from "@/lib/site";
+import HeroDiamond from "./HeroDiamond";
 // import GeometryOfTruth from "./GeometryOfTruth"; // hidden — swapped for the convergence figure
 
 const MI_TIP =
@@ -192,7 +193,7 @@ const heptagonPoints = governanceItems.map((item, i) => {
 const heptagonOutline = heptagonPoints.map((p) => `${p.x},${p.y}`).join(" ");
 
 export default function Home() {
-  const fractalRef = useRef<HTMLImageElement>(null);
+  const fractalRef = useRef<HTMLDivElement>(null);
   const [selected, setSelected] = useState<number | null>(null);
 
   const toggleItem = (index: number) =>
@@ -214,18 +215,7 @@ export default function Home() {
 
     const nav = document.getElementById("nav");
 
-    let targetRotY = 0;
-    let currentRotY = 0;
     let rafId = 0;
-
-    const onMouseMove = (e: MouseEvent) => {
-      const cx = window.innerWidth / 2;
-      targetRotY = ((e.clientX - cx) / cx) * 6;
-    };
-
-    const onMouseLeave = () => {
-      targetRotY = 0;
-    };
 
     const tick = () => {
       const y = window.scrollY;
@@ -236,32 +226,23 @@ export default function Home() {
         else nav.classList.remove("scrolled");
       }
 
-      currentRotY += (targetRotY - currentRotY) * 0.08;
-
-      const img = fractalRef.current;
-      if (img) {
+      const wrap = fractalRef.current;
+      if (wrap) {
         const progress = Math.min(y / vh, 1);
         const translateY = y * 0.25;
         const scale = 1 - progress * 0.15;
         const opacity = Math.max(0, 1 - progress * 0.85);
-        img.style.transform =
-          `translate3d(0, ${translateY}px, 0) ` +
-          `scale(${scale}) ` +
-          `rotateY(${currentRotY}deg)`;
-        img.style.opacity = String(opacity);
+        wrap.style.transform = `translate3d(0, ${translateY}px, 0) scale(${scale})`;
+        wrap.style.opacity = String(opacity);
       }
 
       rafId = window.requestAnimationFrame(tick);
     };
 
-    window.addEventListener("mousemove", onMouseMove, { passive: true });
-    window.addEventListener("mouseleave", onMouseLeave, { passive: true });
     rafId = window.requestAnimationFrame(tick);
 
     return () => {
       observer.disconnect();
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mouseleave", onMouseLeave);
       window.cancelAnimationFrame(rafId);
     };
   }, []);
@@ -279,8 +260,9 @@ export default function Home() {
       </nav>
 
       <section className="hero-fractal">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img ref={fractalRef} src="/solomon-fractal.png" alt="Solomon" />
+        <div ref={fractalRef} className="diamond-wrap">
+          <HeroDiamond />
+        </div>
       </section>
 
       <section className="hero">

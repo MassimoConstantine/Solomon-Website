@@ -117,10 +117,12 @@ function buildEnvTexture(THREE: Three) {
   // bright dome that stays light through the horizon band — face-on facets
   // reflect the horizon behind the camera, so that band carries the look
   const dome = g.createLinearGradient(0, 0, 0, 512);
+  // the stone refracts this dome, so it needs range to look like a stone at all
+  // — but the floor is mid-grey, not black, which is what keeps it pale
   dome.addColorStop(0, "#ffffff");
-  dome.addColorStop(0.4, "#b4b4b4");
-  dome.addColorStop(0.6, "#383838");
-  dome.addColorStop(1, "#060606");
+  dome.addColorStop(0.4, "#e6e6e6");
+  dome.addColorStop(0.6, "#9e9e9e");
+  dome.addColorStop(1, "#4c4c4c");
   g.fillStyle = dome;
   g.fillRect(0, 0, 1024, 512);
   const rnd = (n: number) => {
@@ -130,8 +132,10 @@ function buildEnvTexture(THREE: Three) {
   for (let i = 0; i < 30; i++) {
     const w = 30 + rnd(i + 67) * 120;
     const bright = rnd(i + 13) > 0.4;
-    const col = bright ? "255,255,255" : "0,0,0";
-    const alpha = bright ? 0.4 + rnd(i + 7) * 0.6 : 0.25 + rnd(i + 7) * 0.45;
+    // dark streaks are grey rather than black — they give neighbouring facets
+    // distinct flashes without stamping hard black wedges across them
+    const col = bright ? "255,255,255" : "55,55,55";
+    const alpha = bright ? 0.4 + rnd(i + 7) * 0.6 : 0.2 + rnd(i + 7) * 0.3;
     g.save();
     g.translate(rnd(i) * 1024, 120 + rnd(i + 31) * 190);
     g.rotate((rnd(i + 99) - 0.5) * 1.6);
@@ -248,12 +252,19 @@ export default function HeroDiamond() {
       const stoneMat = new THREE.MeshPhysicalMaterial({
         color: 0xffffff,
         metalness: 0,
-        roughness: 0.05,
+        // keep the surface sharp — roughness on a transmissive material blurs
+        // the refracted image and the stone reads as flat frosted grey
+        roughness: 0.04,
         transmission: 1,
-        thickness: 1.4,
-        ior: 2.417,
-        dispersion: 0.12,
-        envMapIntensity: 1.8,
+        // thin + low IOR keeps it see-through: less path length to tint the
+        // transmitted light, less refraction folding the interior into a core
+        thickness: 0.45,
+        ior: 1.52,
+        // no dispersion / iridescence — both split white light into the green
+        // and purple fringes that broke the even, colourless look
+        attenuationColor: 0xffffff,
+        attenuationDistance: 4,
+        envMapIntensity: 2.2,
         specularIntensity: 1,
       });
       const stone = new THREE.Mesh(stoneGeo, stoneMat);
@@ -263,7 +274,7 @@ export default function HeroDiamond() {
       const edgeMat = new THREE.LineBasicMaterial({
         color: 0xffffff,
         transparent: true,
-        opacity: 0.1,
+        opacity: 0.22,
       });
       pendant.add(new THREE.LineSegments(edgeGeo, edgeMat));
 
@@ -406,8 +417,8 @@ export default function HeroDiamond() {
         const tiltX = hoverT * -(hoverNY - 0.16) * 0.12;
         tilt.rotation.x += (tiltX - tilt.rotation.x) * Math.min(1, dt * 4);
 
-        stoneMat.envMapIntensity = 1.8 + 0.8 * hoverT;
-        edgeMat.opacity = 0.1 + 0.12 * hoverT;
+        stoneMat.envMapIntensity = 2.2 + 0.8 * hoverT;
+        edgeMat.opacity = 0.22 + 0.12 * hoverT;
         orbit.intensity = reduceMotion ? 0 : 90 * hoverT;
         orbit.position.set(
           Math.cos(t * 1.6) * 2.4,
