@@ -377,9 +377,24 @@ export default function AmbientSound() {
     };
     events.forEach((e) => window.addEventListener(e, wake, { passive: true }));
 
-    // Coming back to the tab is another chance to start.
+    // A tab you are not looking at makes no sound. Hiding suspends the
+    // context outright — a background tab that keeps playing is the most
+    // common way ambient audio becomes a nuisance, and it is also how an
+    // orphaned tab ends up humming behind everything else. Coming back is
+    // another chance to start.
     const onVisible = () => {
-      if (document.visibilityState === "visible") wake();
+      if (document.visibilityState === "visible") {
+        wake();
+        return;
+      }
+      const g = graph.current;
+      if (!g || g.ctx.state !== "running") return;
+      ramp(g, 0, 0.25);
+      window.setTimeout(() => {
+        if (document.visibilityState === "hidden" && g.ctx.state === "running") {
+          settle(g.ctx.suspend());
+        }
+      }, 300);
     };
     document.addEventListener("visibilitychange", onVisible);
 
