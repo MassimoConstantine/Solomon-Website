@@ -71,7 +71,30 @@ const ZONE_IN = 3;
 const A4 = 432;
 const A2 = A4 / 4;
 
+// AudioContext lifecycle calls return promises that reject in perfectly
+// ordinary situations — closing a context while a resume() is still in
+// flight, resuming one the browser has decided not to start. They are
+// awaited nowhere, so an unhandled rejection would surface as a runtime
+// error; this is the one place that discards them.
+function settle(p: Promise<void> | undefined) {
+  void p?.catch(() => undefined);
+}
+
 type Graph = { ctx: AudioContext; master: GainNode; zone: GainNode };
+
+// Every context this module has ever built. Closing by reference on unmount
+// is right in the normal case; this is the backstop for any path that loses
+// the reference — a rebuild mid-gesture, a hot reload, a navigation that
+// races the file check — so leaving the page always silences everything.
+const liveContexts = new Set<AudioContext>();
+
+function closeEverything() {
+  for (const ctx of liveContexts) {
+    ctx.onstatechange = null;
+    if (ctx.state !== "closed") settle(ctx.close());
+  }
+  liveContexts.clear();
+}
 
 function makeReverb(ctx: AudioContext, seconds: number) {
   const ir = ctx.createBuffer(2, ctx.sampleRate * seconds, ctx.sampleRate);
@@ -191,6 +214,10 @@ function buildSynth(ctx: AudioContext, out: AudioNode) {
 // Firefox only honour an AudioContext created or resumed during a gesture.
 function buildGraph(useFile: boolean): Graph {
   const ctx = new AudioContext();
+  liveContexts.add(ctx);
+  ctx.addEventListener("statechange", () => {
+    if (ctx.state === "closed") liveContexts.delete(ctx);
+  });
   const master = ctx.createGain(); // mute button
   master.gain.value = 0;
   const zone = ctx.createGain(); // hero in view
@@ -216,15 +243,6 @@ async function hasFile(): Promise<boolean> {
   } catch {
     return false;
   }
-}
-
-// AudioContext lifecycle calls return promises that reject in perfectly
-// ordinary situations — closing a context while a resume() is still in
-// flight, resuming one the browser has decided not to start. They are
-// awaited nowhere, so an unhandled rejection would surface as a runtime
-// error; this is the one place that discards them.
-function settle(p: Promise<void> | undefined) {
-  void p?.catch(() => undefined);
 }
 
 function rampParam(ctx: AudioContext, param: AudioParam, to: number, seconds: number) {
@@ -366,6 +384,7 @@ export default function AmbientSound() {
     document.addEventListener("visibilitychange", onVisible);
 
     publishBreath(null); // the heartbeat runs from load, audible or not
+    window.addEventListener("pagehide", closeEverything);
 
     hasFile().then((ok) => {
       if (disposed) return;
@@ -396,12 +415,9 @@ export default function AmbientSound() {
       events.forEach((e) => window.removeEventListener(e, wake));
       document.removeEventListener("visibilitychange", onVisible);
       if (suspendTimer.current) window.clearTimeout(suspendTimer.current);
-      const g = graph.current;
-      if (g) {
-        g.ctx.onstatechange = null;
-        if (g.ctx.state !== "closed") settle(g.ctx.close());
-        graph.current = null;
-      }
+      window.removeEventListener("pagehide", closeEverything);
+      graph.current = null;
+      closeEverything();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- mount once; `ensure` reads refs only
   }, []);
