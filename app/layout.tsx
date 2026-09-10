@@ -1,20 +1,62 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
-import { JetBrains_Mono } from "next/font/google";
+import {
+  Cormorant,
+  Fraunces,
+  JetBrains_Mono,
+  Noto_Serif_JP,
+  Space_Grotesk,
+  Zen_Kaku_Gothic_New,
+} from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-// Computer Modern — display serif for headlines, equations, and labels.
-const computerModern = localFont({
-  src: [
-    { path: "./fonts/cmunrm.woff", weight: "400", style: "normal" },
-    { path: "./fonts/cmunti.woff", weight: "400", style: "italic" },
-  ],
-  variable: "--font-cm",
+// Shoji: the pairing Japanese editorial design uses, at its lightest weights.
+// Noto Serif JP for titles, Zen Kaku Gothic New for text, Cormorant for
+// equations, JetBrains Mono for the small capitals. Nothing bold anywhere.
+const notoSerifJP = Noto_Serif_JP({
+  subsets: ["latin"],
+  weight: ["300"],
+  variable: "--font-title",
   display: "swap",
-  fallback: ["Georgia", "Times New Roman", "serif"],
+  fallback: ["Georgia", "serif"],
+});
+
+const zenKaku = Zen_Kaku_Gothic_New({
+  subsets: ["latin"],
+  weight: ["300", "400"],
+  variable: "--font-text",
+  display: "swap",
+  fallback: ["Helvetica Neue", "Arial", "sans-serif"],
+});
+
+const cormorant = Cormorant({
+  subsets: ["latin"],
+  weight: ["300"],
+  style: ["normal", "italic"],
+  variable: "--font-eq",
+  display: "swap",
+  fallback: ["Georgia", "serif"],
+});
+
+// The one heavy mark on the site. Used once, on the screen after the hero,
+// and nowhere else — see docs/HANDOFF-WEBSITE-ONE-STROKE §2.
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-stroke",
+  display: "swap",
+  fallback: ["Helvetica Neue", "Arial", "sans-serif"],
+});
+
+// The wordmark, and only the wordmark.
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: ["300"],
+  variable: "--font-mark",
+  display: "swap",
+  fallback: ["Georgia", "serif"],
 });
 
 const jetBrainsMono = JetBrains_Mono({
@@ -35,6 +77,8 @@ export const metadata: Metadata = {
   creator: site.author.name,
   publisher: site.legalName,
   keywords: [
+    "Solomon",
+    "Solomon Research Lab",
     "governed intelligence",
     "Truth Protocol",
     "wisdom architecture",
@@ -52,7 +96,6 @@ export const metadata: Metadata = {
     "Bayesian governance",
     "substrate compounding",
     "brain nerves body architecture",
-    "world model",
     "epistemic ceiling",
     "hallucination architecture",
     "post-LLM",
@@ -61,6 +104,9 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "/",
+    types: {
+      "application/rss+xml": [{ url: "/feed.xml", title: "Solomon — Research" }],
+    },
   },
   openGraph: {
     type: "website",
@@ -73,8 +119,9 @@ export const metadata: Metadata = {
       {
         url: site.ogImage,
         width: 1200,
-        height: 1200,
-        alt: "Solomon — governed intelligence",
+        height: 630,
+        type: "image/png",
+        alt: site.ogImageAlt,
       },
     ],
   },
@@ -82,8 +129,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: site.name,
     description: site.description,
-    images: [site.ogImage],
+    images: [{ url: site.ogImage, alt: site.ogImageAlt }],
   },
+  category: "technology",
+  referrer: "origin-when-cross-origin",
+  formatDetection: { telephone: false, address: false, email: false },
   robots: {
     index: true,
     follow: true,
@@ -116,7 +166,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${computerModern.variable} ${jetBrainsMono.variable}`}
+      className={`${notoSerifJP.variable} ${zenKaku.variable} ${cormorant.variable} ${fraunces.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}
     >
       <body>
         {children}

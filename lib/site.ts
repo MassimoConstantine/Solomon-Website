@@ -13,12 +13,21 @@ export const site = {
   author: {
     name: "Harald Ikonen",
     role: "Founder, Solomon Research Lab",
+    email: "harald@gideagency.com",
   },
   links: {
     whitepaper: "/which-way-does-the-spirit-collapse.pdf",
+    linkedin: "https://www.linkedin.com/company/collapsing-ai",
+    medium: "https://medium.com/@Harald-Ikonen",
   },
-  // OpenGraph image — falls back to favicon for now until a dedicated OG asset exists.
-  ogImage: "/solomon-fractal.png",
+  // First public release of the manifesto, and its last substantive revision.
+  // Bump `updated` when the argument changes, not for typography.
+  published: "2026-09-09",
+  updated: "2026-09-10",
+  // OpenGraph card, 1200×630: the wordmark and the stroke on the site's paper.
+  // Regenerate from scratchpad/og-card.html when the hero sentence changes.
+  ogImage: "/og.png",
+  ogImageAlt: "Solomon — You can't reach ASI through optimization. Truth is the opposite.",
 } as const;
 
 export type SiteConfig = typeof site;

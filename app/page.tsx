@@ -1,7 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import Link from "next/link";
 import { site } from "@/lib/site";
+import AmbientSound from "./AmbientSound";
+import SandHero from "./SandHero";
+import BrainFigure from "./BrainFigure";
+import SandBand from "./SandBand";
 // import GeometryOfTruth from "./GeometryOfTruth"; // hidden — swapped for the convergence figure
 
 const MI_TIP =
@@ -35,8 +40,17 @@ const jsonLd = [
     description: site.description,
     founder: {
       "@type": "Person",
+      "@id": `${site.url}/#founder`,
       name: site.author.name,
       jobTitle: site.author.role,
+      email: `mailto:${site.author.email}`,
+      sameAs: [site.links.linkedin, site.links.medium],
+    },
+    email: `mailto:${site.author.email}`,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Helsinki",
+      addressCountry: "FI",
     },
     makesOffer: {
       "@type": "Offer",
@@ -44,14 +58,14 @@ const jsonLd = [
         "@type": "Product",
         name: "Ezer",
         description:
-          "Ezer is the AI Solomon governs — a constrained operator inside the brain-nerves-body architecture. Generation is bounded by verification; every claim is anchored to evidence outside the system.",
+          "Ezer is the AI Solomon governs. It learns a business and becomes it: every claim it holds is anchored to evidence outside the system, and everything it is given compounds as it adapts.",
         brand: {
           "@type": "Organization",
           name: site.legalName,
         },
       },
     },
-    sameAs: [],
+    sameAs: [site.links.linkedin, site.links.medium],
   },
   {
     "@context": "https://schema.org",
@@ -70,9 +84,16 @@ const jsonLd = [
     "@type": "TechArticle",
     headline: "Intelligence ≠ Wisdom — The Solomon Architecture",
     url: site.url,
+    mainEntityOfPage: site.url,
+    datePublished: site.published,
+    dateModified: site.updated,
+    image: `${site.url}${site.ogImage}`,
+    inLanguage: "en",
     author: {
       "@type": "Person",
+      "@id": `${site.url}/#founder`,
       name: site.author.name,
+      sameAs: [site.links.linkedin, site.links.medium],
     },
     publisher: {
       "@type": "Organization",
@@ -99,6 +120,64 @@ const jsonLd = [
       "III. Physics",
       "IV. Reality",
       "V. Adaptive Loop",
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    "@id": `${site.url}/#glossary`,
+    name: "Solomon glossary",
+    description:
+      "The terms the Solomon architecture is built from, each defined in one sentence.",
+    hasDefinedTerm: [
+      {
+        "@type": "DefinedTerm",
+        name: "Governed intelligence",
+        description:
+          "A system in which generation is bounded by verification: every claim entering the substrate is anchored to evidence that exists outside the system, and action occurs only within laws the brain enforces.",
+      },
+      {
+        "@type": "DefinedTerm",
+        name: "Wisdom",
+        description:
+          "Intelligence that knows what it knows — the structural ability to distinguish what was verified from what was generated.",
+      },
+      {
+        "@type": "DefinedTerm",
+        name: "Synthetic Collapse",
+        description:
+          "The failure mode of ungoverned generation: near-truth propagates as convenience, settles into common knowledge through reuse, hardens into authority through citation, and embeds as infrastructure.",
+      },
+      {
+        "@type": "DefinedTerm",
+        name: "Geometry of Truth",
+        description:
+          "Truth as a bounded domain. A sphere — a language model — grows inside it but cannot fill its corners; a cube — a system whose form matches the domain — fills it completely.",
+      },
+      {
+        "@type": "DefinedTerm",
+        name: "Brain, nerves, body",
+        description:
+          "Solomon's anatomy. The brain holds what has been verified; the nerves carry signal in from email, transcripts, calendar, files and signed third-party data; the body acts, only within laws the brain enforces.",
+      },
+      {
+        "@type": "DefinedTerm",
+        name: "Ezer",
+        description:
+          "The AI Solomon governs. It learns a business and holds on to what is true in it; generation belongs to Ezer, verification and the substrate belong to Solomon.",
+      },
+      {
+        "@type": "DefinedTerm",
+        name: "Adaptive Loop",
+        description:
+          "The cycle that writes every verified signal back into the substrate, so the system at T+1 is more grounded than the system at T, not merely more prompted.",
+      },
+      {
+        "@type": "DefinedTerm",
+        name: "Substrate compounding",
+        description:
+          "S(t+1) = S(t) · (1 + Σ G_i · ΔBayes_i): the substrate is the sum of everything that has ever passed governance, and it only grows.",
+      },
     ],
   },
   {
@@ -134,7 +213,7 @@ const jsonLd = [
         name: "What is the brain-nerves-body architecture?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "The brain holds the world model, written only through constrained pathways. The nerves carry signal from email, transcripts, calendar, files, signed third-party data, and direct conversation. The body acts only within laws the brain enforces. Each claim is anchored to evidence outside the system.",
+          text: "The brain holds what has been verified, written only through constrained pathways. The nerves carry signal from email, transcripts, calendar, files, signed third-party data, and direct conversation. The body acts only within laws the brain enforces. Each claim is anchored to evidence outside the system.",
         },
       },
       {
@@ -192,7 +271,6 @@ const heptagonPoints = governanceItems.map((item, i) => {
 const heptagonOutline = heptagonPoints.map((p) => `${p.x},${p.y}`).join(" ");
 
 export default function Home() {
-  const fractalRef = useRef<HTMLImageElement>(null);
   const [selected, setSelected] = useState<number | null>(null);
 
   const toggleItem = (index: number) =>
@@ -213,56 +291,17 @@ export default function Home() {
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
     const nav = document.getElementById("nav");
-
-    let targetRotY = 0;
-    let currentRotY = 0;
-    let rafId = 0;
-
-    const onMouseMove = (e: MouseEvent) => {
-      const cx = window.innerWidth / 2;
-      targetRotY = ((e.clientX - cx) / cx) * 6;
+    const onScroll = () => {
+      if (!nav) return;
+      if (window.scrollY > window.innerHeight * 0.7) nav.classList.add("scrolled");
+      else nav.classList.remove("scrolled");
     };
-
-    const onMouseLeave = () => {
-      targetRotY = 0;
-    };
-
-    const tick = () => {
-      const y = window.scrollY;
-      const vh = window.innerHeight;
-
-      if (nav) {
-        if (y > vh * 0.7) nav.classList.add("scrolled");
-        else nav.classList.remove("scrolled");
-      }
-
-      currentRotY += (targetRotY - currentRotY) * 0.08;
-
-      const img = fractalRef.current;
-      if (img) {
-        const progress = Math.min(y / vh, 1);
-        const translateY = y * 0.25;
-        const scale = 1 - progress * 0.15;
-        const opacity = Math.max(0, 1 - progress * 0.85);
-        img.style.transform =
-          `translate3d(0, ${translateY}px, 0) ` +
-          `scale(${scale}) ` +
-          `rotateY(${currentRotY}deg)`;
-        img.style.opacity = String(opacity);
-      }
-
-      rafId = window.requestAnimationFrame(tick);
-    };
-
-    window.addEventListener("mousemove", onMouseMove, { passive: true });
-    window.addEventListener("mouseleave", onMouseLeave, { passive: true });
-    rafId = window.requestAnimationFrame(tick);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
 
     return () => {
       observer.disconnect();
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mouseleave", onMouseLeave);
-      window.cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
 
@@ -274,14 +313,14 @@ export default function Home() {
       />
 
       <nav id="nav">
-        <span className="nav-mark">Solomon</span>
-        <span className="nav-label">Research Preview</span>
+        <span className="nav-mark">solomon</span>
+        <AmbientSound />
       </nav>
 
-      <section className="hero-fractal">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img ref={fractalRef} src="/solomon-fractal.png" alt="Solomon" />
-      </section>
+      <SandHero />
+
+      <div className="shoji">
+
 
       <section className="hero">
         <div className="container">
@@ -328,6 +367,8 @@ export default function Home() {
         </div>
       </section>
 
+      <SandBand />
+
       <section className="content-section" id="thesis">
         <div className="container">
           <p className="section-label reveal">I. Fundamental Flaw.</p>
@@ -366,6 +407,8 @@ export default function Home() {
 
         </div>
       </section>
+
+      <SandBand />
 
       <section className="content-section content-section--accent" id="what-we-build">
         <div className="container">
@@ -417,12 +460,9 @@ export default function Home() {
                       cy={p.hy}
                       r="20"
                     />
-                    <circle
-                      className="heptagon-node"
-                      cx={p.x}
-                      cy={p.y}
-                      r={active ? 3 : 2}
-                    />
+                    {/* constant radius — selection is shown in colour, not size,
+                        so pressing an axiom never moves the drawing */}
+                    <circle className="heptagon-node" cx={p.x} cy={p.y} r="2.5" />
                     <text
                       className="heptagon-label"
                       x={p.lx}
@@ -453,6 +493,8 @@ export default function Home() {
 
         </div>
       </section>
+
+      <SandBand />
 
       <section className="content-section" id="physics">
         <div className="container">
@@ -495,6 +537,8 @@ export default function Home() {
         </div>
       </section>
 
+      <SandBand />
+
       <section className="content-section" id="reality">
         <div className="container">
           <p className="section-label reveal">IV. Reality</p>
@@ -518,20 +562,22 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="section-figure section-figure--wide reveal reveal-delay-3">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/solomon-temple.png"
-              alt="A brain inside a body. Regions — cortex, sensory, motor, memory, gating, limbic — hold AI neurons; introspection sits above; the brainstem descends; sensory and affector nerves cross the body boundary."
-              style={{ width: "100%", height: "auto", display: "block" }}
-            />
+          <div className="section-figure brain-fig">
+            <BrainFigure />
             <p className="figure-caption">
-              Fig. 4, A brain inside a body. Named regions hold the AI&apos;s neurons; introspection sits above the cortex; the brainstem descends below. Sensory nerves carry signal in, affector nerves carry action out, the loop closes at the boundary of the body.
+              Fig. 4, The cognition loop. Sensory feeds gating, gating feeds the executive,
+              the executive drives motor, and motor returns through the world to sensory.
+              The line back from motor to the executive is the check: nothing the system
+              does is taken as done until the world has answered for it. Value, memory and
+              drives are what the executive holds. The hairline is the boundary &mdash;
+              Solomon above it, the world below.
             </p>
           </div>
         </div>
       </section>
 
+
+      <SandBand />
 
       <section className="content-section" id="adaptive-loop">
         <div className="container">
@@ -579,34 +625,65 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="cta-section" id="cta">
+      <SandBand />
+
+      <section className="cta-section" id="ezer">
         <div className="container">
-          <h2 className="cta-headline reveal">Born from Research</h2>
-          <div className="cta-buttons reveal reveal-delay-1">
-            <a
-              href="/which-way-does-the-spirit-collapse.pdf#toolbar=0"
-              target="_blank"
-              rel="noopener"
-              className="cta-button"
-            >
-              View the Whitepaper
-            </a>
+          <p className="section-label reveal">Ezer</p>
+          <h2 className="cta-headline reveal">Learns your business and becomes it.</h2>
+          <div className="cta-lede reveal reveal-delay-1">
+            <p>
+              It tells what is true from what is not, and it holds on to the
+              difference. You never have to tell it twice.
+            </p>
+            <p>
+              Everything you give it, and everything you have it do, compounds as it
+              adapts. It stays aligned with what you meant, not with what it last
+              said.
+            </p>
+            <p>
+              The best part is that you do not really need to use it. The less you do,
+              the better.
+            </p>
+          </div>
+          <div className="cta-buttons reveal reveal-delay-2">
             <a
               href="https://www.enterpriseworldmodel.com"
               target="_blank"
               rel="noopener"
-              className="cta-button cta-button--secondary"
+              className="action"
             >
               Get to know Ezer
             </a>
           </div>
-          <div className="cta-refs reveal reveal-delay-2">
-            <a href="/references" target="_blank" rel="noopener">
-              References
+        </div>
+      </section>
+
+      <SandBand />
+
+      <section className="cta-section cta-section--research" id="research">
+        <div className="container">
+          <h2 className="cta-headline reveal">Born from Research</h2>
+          <div className="cta-buttons reveal reveal-delay-1">
+            <Link href="/research" className="action">
+              Research
+            </Link>
+            <a
+              href="/which-way-does-the-spirit-collapse.pdf#toolbar=0"
+              target="_blank"
+              rel="noopener"
+              className="action"
+            >
+              Whitepaper
             </a>
+            <Link href="/references" className="action">
+              References
+            </Link>
           </div>
         </div>
       </section>
+
+      <SandBand />
 
       <footer>
         <div className="container footer-inner">
@@ -641,6 +718,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      </div>
     </>
   );
 }

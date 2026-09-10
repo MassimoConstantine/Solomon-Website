@@ -2,9 +2,10 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "References — Solomon",
+  title: "References",
   description:
     "Primary literature grounding the Solomon architecture: the data processing inequality, Landauer's principle, Goodhart's law, hallucination lower bounds, the geometry of superposition, and empirical evidence of synthetic collapse.",
+  alternates: { canonical: "/references" },
   robots: { index: true, follow: true },
 };
 

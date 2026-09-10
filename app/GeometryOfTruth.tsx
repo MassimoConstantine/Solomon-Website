@@ -14,7 +14,7 @@ export default function GeometryOfTruth() {
 
     import("three").then((THREE) => {
       const sz = () => ({ w: canvas.clientWidth, h: canvas.clientHeight });
-      let { w, h } = sz();
+      const { w, h } = sz();
 
       const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
       renderer.setSize(w, h, false);
