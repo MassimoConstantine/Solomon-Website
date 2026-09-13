@@ -4086,16 +4086,56 @@ body {
   text-align: center;
 }
 
+/* LinkedIn and Medium are marks, not words: no underline, the footer's ink,
+   brightening on hover the way the underlined links clear theirs */
+.footer-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-meta a.footer-icon {
+  display: inline-flex;
+  padding: 0;
+  border-bottom: 0;
+  line-height: 0;
+  color: var(--ink);
+  opacity: 0.72;
+  transition: opacity 0.35s ease;
+}
+
+.footer-meta a.footer-icon:hover,
+.footer-meta a.footer-icon:focus-visible {
+  opacity: 1;
+}
+
+.footer-icon svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
 @media (max-width: 640px) {
+  /* every section's actions (Get to know Ezer, the research links) stack in
+     a column on phones; the old column rule pinned them to the left edge */
+  .cta-buttons,
   .cta-section--research .cta-buttons {
     align-items: center;
   }
 
-  /* the contacts stack rather than wrap, so Medium is not left alone on a
-     line of its own */
+  /* the email takes its own line, and the two icons share the next */
   .footer-right {
     flex-direction: column;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1.5rem;
+  }
+
+  .footer-social {
+    gap: 2rem;
+  }
+
+  .footer-icon svg {
+    width: 20px;
+    height: 20px;
   }
 }
