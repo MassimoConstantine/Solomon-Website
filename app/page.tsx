@@ -746,6 +746,9 @@ export default function Home() {
           </div>
 
           <div className="footer-meta">
+            {/* Helsinki sits between the work and the contacts, so the two
+                read as separate groups */}
+            <span className="footer-left">Helsinki, Finland</span>
             <span className="footer-right">
               <a href="mailto:harald@gideagency.com">harald@gideagency.com</a>
               <span className="footer-sep" aria-hidden="true">/</span>
@@ -765,7 +768,6 @@ export default function Home() {
                 Medium
               </a>
             </span>
-            <span className="footer-left">Helsinki, Finland</span>
           </div>
         </div>
       </footer>

@@ -4073,3 +4073,29 @@ body {
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 74%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000 0%, #000 74%, transparent 100%);
 }
+
+/* =====================================================================
+   Born from Research is centred at every width. The title's box is capped
+   at 18em, so without auto margins it sat left whenever the column was
+   wider than that; on phones the actions stack in a column, and the old
+   column rule pinned them to the left edge.
+   ===================================================================== */
+.cta-section .cta-headline {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .cta-section--research .cta-buttons {
+    align-items: center;
+  }
+
+  /* the contacts stack rather than wrap, so Medium is not left alone on a
+     line of its own */
+  .footer-right {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+}
