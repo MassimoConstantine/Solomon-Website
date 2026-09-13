@@ -4089,19 +4089,25 @@ body {
 /* Get to know Ezer is the page's one button: a very dark grey rectangle with
    rounded corners, white text, no underline. It lifts a shade on hover. */
 .action.action--button {
-  display: inline-block;
-  padding: 0.85rem 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  /* the face sits low in its line box; 4px underneath lifts the letters to
+     the optical centre */
+  padding: 0 1.25rem 4px;
   border: 0;
-  border-radius: 10px;
-  background: #222222;
+  border-radius: 6px;
+  background: #2e2e2e;
   color: #ffffff;
-  line-height: 1.2;
+  font-size: 14px;
+  line-height: 1;
   transition: background-color 0.3s ease;
 }
 
 .action.action--button:hover,
 .action.action--button:focus-visible {
-  background: #3a3a3a;
+  background: #454545;
   color: #ffffff;
 }
 
