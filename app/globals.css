@@ -4086,6 +4086,25 @@ body {
   text-align: center;
 }
 
+/* Get to know Ezer is the page's one button: a very dark grey rectangle with
+   rounded corners, white text, no underline. It lifts a shade on hover. */
+.action.action--button {
+  display: inline-block;
+  padding: 0.85rem 1.75rem;
+  border: 0;
+  border-radius: 10px;
+  background: #222222;
+  color: #ffffff;
+  line-height: 1.2;
+  transition: background-color 0.3s ease;
+}
+
+.action.action--button:hover,
+.action.action--button:focus-visible {
+  background: #3a3a3a;
+  color: #ffffff;
+}
+
 /* LinkedIn and Medium are marks, not words: no underline, the footer's ink,
    brightening on hover the way the underlined links clear theirs */
 .footer-social {

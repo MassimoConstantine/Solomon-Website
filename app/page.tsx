@@ -702,7 +702,7 @@ export default function Home() {
               href="https://www.enterpriseworldmodel.com"
               target="_blank"
               rel="noopener"
-              className="action"
+              className="action action--button"
             >
               Get to know Ezer
             </a>
