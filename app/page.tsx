@@ -18,9 +18,34 @@ const MN_TIP = "The model next step.";
 const F_TIP = "Update from the model alone — no new input from reality.";
 const IMR_TIP = "How much the model knows about reality.";
 
+// Keeps a symbol's note on screen: slides it back inside the viewport when the
+// symbol sits near an edge, and drops it below the symbol when the fixed nav
+// would cover it. The arrow stays on the symbol (see .eq-tip in globals.css).
+function placeTip(term: HTMLElement) {
+  const tip = term.querySelector<HTMLElement>(".eq-tip");
+  if (!tip) return;
+  const margin = 12;
+  tip.style.setProperty("--tip-shift", "0px");
+  tip.classList.remove("eq-tip--below");
+  const r = tip.getBoundingClientRect();
+  const vw = document.documentElement.clientWidth;
+  let shift = 0;
+  if (r.left < margin) shift = margin - r.left;
+  else if (r.right > vw - margin) shift = vw - margin - r.right;
+  tip.style.setProperty("--tip-shift", `${shift}px`);
+  const navBottom = document.querySelector("nav")?.getBoundingClientRect().bottom ?? 0;
+  if (r.top < Math.max(navBottom, 0) + margin) tip.classList.add("eq-tip--below");
+}
+
 function EqSym({ children, tip }: { children: ReactNode; tip: string }) {
   return (
-    <span className="eq-term" tabIndex={0} aria-label={tip}>
+    <span
+      className="eq-term"
+      tabIndex={0}
+      aria-label={tip}
+      onMouseEnter={(e) => placeTip(e.currentTarget)}
+      onFocus={(e) => placeTip(e.currentTarget)}
+    >
       {children}
       <span className="eq-tip" role="tooltip">
         {tip}
@@ -254,24 +279,50 @@ const thesisItems = [
 const HEPT_NODE_R = 64;
 const HEPT_HIT_R = 74;
 const HEPT_LABEL_R = 84;
+// The two side vertices (Measure, Steward) point almost straight out, so a
+// centred label runs back over its node. They read outward from the node
+// instead, a fixed gap away; the trailing letter-spacing already adds a
+// little air on the left side, so that gap is trimmed to match.
+const HEPT_SIDE_GAP = 8;
+const HEPT_TRAILING_SPACE = 1.5;
 const heptagonPoints = governanceItems.map((item, i) => {
   const angle = ((-90 + i * (360 / 7)) * Math.PI) / 180;
   const cos = Math.cos(angle);
   const sin = Math.sin(angle);
+  const x = 100 + HEPT_NODE_R * cos;
+  const y = 100 + HEPT_NODE_R * sin;
+  const side = Math.abs(cos) > 0.9 ? Math.sign(cos) : 0;
   return {
     ...item,
-    x: 100 + HEPT_NODE_R * cos,
-    y: 100 + HEPT_NODE_R * sin,
+    x,
+    y,
     hx: 100 + HEPT_HIT_R * cos,
     hy: 100 + HEPT_HIT_R * sin,
-    lx: 100 + HEPT_LABEL_R * cos,
-    ly: 100 + HEPT_LABEL_R * sin,
+    lx: side > 0
+      ? x + HEPT_SIDE_GAP
+      : side < 0
+        ? x - (HEPT_SIDE_GAP - HEPT_TRAILING_SPACE)
+        : 100 + HEPT_LABEL_R * cos,
+    ly: side ? y : 100 + HEPT_LABEL_R * sin,
+    anchor: (side > 0 ? "start" : side < 0 ? "end" : "middle") as "start" | "end" | "middle",
   };
 });
 const heptagonOutline = heptagonPoints.map((p) => `${p.x},${p.y}`).join(" ");
 
 export default function Home() {
   const [selected, setSelected] = useState<number | null>(null);
+
+  // Place every symbol's note up front, not only on hover: a hidden note at a
+  // formula's end still hangs past the screen edge, and on a phone that let
+  // the page scroll sideways.
+  useEffect(() => {
+    const placeAll = () =>
+      document.querySelectorAll<HTMLElement>(".eq-term").forEach(placeTip);
+    placeAll();
+    void document.fonts.ready.then(placeAll);
+    window.addEventListener("resize", placeAll);
+    return () => window.removeEventListener("resize", placeAll);
+  }, []);
 
   const toggleItem = (index: number) =>
     setSelected((prev) => (prev === index ? null : index));
@@ -467,7 +518,7 @@ export default function Home() {
                       className="heptagon-label"
                       x={p.lx}
                       y={p.ly}
-                      textAnchor="middle"
+                      textAnchor={p.anchor}
                       dominantBaseline="middle"
                     >
                       {p.title}

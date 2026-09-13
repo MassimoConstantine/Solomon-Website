@@ -4005,3 +4005,71 @@ nav {
     padding: 2.1rem 1.15rem 1.35rem;
   }
 }
+
+/* =====================================================================
+   A symbol's note is prose. It wraps inside its box — the formula's
+   nowrap was leaking in and running the text out past the box — and
+   placeTip() in page.tsx slides it back on screen near an edge. The
+   arrow counter-shifts so it still points at the symbol.
+   ===================================================================== */
+.eq-tip {
+  white-space: normal;
+  overflow-wrap: break-word;
+  max-width: min(260px, calc(100vw - 24px));
+  transform: translateX(calc(-50% + var(--tip-shift, 0px)));
+}
+
+.eq-tip::after {
+  transform: translateX(calc(-50% - var(--tip-shift, 0px)));
+}
+
+.eq-tip.eq-tip--below {
+  bottom: auto;
+  top: calc(100% + 0.55rem);
+}
+
+.eq-tip.eq-tip--below::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: var(--text);
+}
+
+/* Nothing may widen the page sideways. `clip` on both, not `hidden`: hidden
+   on body would make it a scroll container of its own, and phones let a
+   hidden-overflow page be panned anyway. */
+html,
+body {
+  overflow-x: clip;
+}
+
+/* Formulas are one line. On a phone the symbols were pinned at 26px while
+   only the operators between them shrank, so the hero's formula could never
+   fit a small screen. Here the symbols follow the formula, and the formula
+   sizes to the screen: the widest runs about 18.4x its font size, and the
+   column loses 45px to padding. */
+@media (max-width: 420px) {
+  .equation,
+  .hero-equation,
+  .equation.eq-interactive {
+    font-size: min(20px, calc((100vw - 48px) / 18.6));
+  }
+
+  .eq-term {
+    font-size: inherit;
+  }
+}
+
+/* =====================================================================
+   The hero does not end at a line. The sand thins out over the last
+   quarter of the screen: the canvas fades to transparent and the body's
+   paper — the same grain — shows through, so hero and page are one sheet.
+   ===================================================================== */
+.hero-sand {
+  background: transparent;
+}
+
+.hero-sand canvas {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 74%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 74%, transparent 100%);
+}

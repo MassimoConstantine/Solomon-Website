@@ -5,6 +5,12 @@ declare global {
   interface Window {
     __solomonBreath: number | null;
   }
+
+  // Safari's Audio Session API (not yet in TypeScript's DOM types). Absent in
+  // other browsers.
+  interface Navigator {
+    audioSession?: { type: string };
+  }
 }
 
 export {};

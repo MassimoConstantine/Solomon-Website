@@ -213,6 +213,11 @@ function buildSynth(ctx: AudioContext, out: AudioNode) {
 // Built synchronously so it can be created inside a click handler — Safari and
 // Firefox only honour an AudioContext created or resumed during a gesture.
 function buildGraph(useFile: boolean): Graph {
+  // iOS plays Web Audio in the "ambient" session, which the ringer switch
+  // silences — on a phone in silent mode the pad never sounded. "playback" is
+  // the session a video uses: it ignores the switch (and, like a video,
+  // pauses music from other apps). Safari 16.4+; absent elsewhere.
+  if (navigator.audioSession) navigator.audioSession.type = "playback";
   const ctx = new AudioContext();
   liveContexts.add(ctx);
   ctx.addEventListener("statechange", () => {
