@@ -24,10 +24,10 @@ export const site = {
   // Bump `updated` when the argument changes, not for typography.
   published: "2026-09-09",
   updated: "2026-09-10",
-  // OpenGraph card, 1200×630: the wordmark and the stroke on the site's paper.
-  // Regenerate from scratchpad/og-card.html when the hero sentence changes.
-  ogImage: "/og.png",
-  ogImageAlt: "Solomon — You can't reach ASI through optimization. Truth is the opposite.",
+  // OpenGraph card, 1200×630: a still of the sand hero with the wordmark.
+  // Captured at /?steps=600 with animation paused after the simulation render.
+  ogImage: "/og-hero.png",
+  ogImageAlt: "Solomon — dark sand grains gathering on the critical line, on white textured paper.",
 } as const;
 
 export type SiteConfig = typeof site;
