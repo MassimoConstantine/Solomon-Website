@@ -4164,3 +4164,108 @@ body {
     height: 20px;
   }
 }
+
+/* =====================================================================
+   READABILITY. Older eyes read this site too. Body text goes up a size and
+   out of the hairline weight; labels and captions stop being 10px whispers
+   with letters a third of an em apart; figure labels reach a legible size;
+   hints are no longer half-transparent. Harald's call, 2026-10-20.
+   ===================================================================== */
+.section-body,
+.section-body p,
+.cta-lede,
+.cta-lede p,
+.thesis-item .thesis-text,
+.equation-caption,
+.equation-caption.equation-legend,
+.heptagon-center p,
+.reg-intro,
+.reg-abstract,
+.reg-open-note,
+.reg-track-blurb,
+.ref-note,
+.references-page-list,
+.action,
+.cta-refs a {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.section-label,
+section.content-section--accent .section-label,
+.figure-caption,
+.eq-hint,
+.cta-sub,
+.thesis-item .thesis-num,
+.thesis-item--inflection .thesis-num,
+.thesis-item--aftermath .thesis-num,
+.heptagon-hint,
+.footer-left,
+.footer-opus a,
+.footer-meta a,
+.reg-nav-label,
+.reg-id,
+.reg-meta,
+.reg-status,
+.reg-authors,
+.reg-tag,
+.reg-links a,
+.reg-verification-label,
+.reg-cite,
+.reg-open-subject,
+.reg-nav-count,
+.reg-nav-foot,
+.ref-group,
+.ref-link {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  line-height: 1.8;
+}
+
+.eq-hint,
+.heptagon-hint {
+  opacity: 1;
+}
+
+.eq-tip {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.reg-nav-item {
+  font-size: 16px;
+}
+
+/* Fig. 4 renders at ~0.94 of its viewBox, so 13 units reads as ~12px */
+.brain-svg .f-label {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+}
+
+.brain-svg .f-label--faint {
+  font-size: 12px;
+}
+
+/* captions get a wider measure at their new size, so they do not wrap to a
+   ladder of short lines */
+.figure-caption,
+.brain-fig .figure-caption,
+.section-figure .figure-caption,
+.hero-figure .figure-caption,
+.hero-figure .eq-hint {
+  max-width: 72ch;
+}
+
+/* Fig. 1 draws at ~1.67× its viewBox: 8 units reads as ~13px */
+.hero-figure svg .label {
+  font-size: 8px;
+}
+
+/* the axiom names: darker, so they read before they are pressed */
+.heptagon-vertex .heptagon-label {
+  fill: #3D3D3D;
+  font-weight: 400;
+}

@@ -699,7 +699,7 @@ export default function Home() {
           </div>
           <div className="cta-buttons reveal reveal-delay-2">
             <a
-              href="https://www.enterpriseworldmodel.com"
+              href="https://kenegdo.si"
               target="_blank"
               rel="noopener"
               className="action action--button"
